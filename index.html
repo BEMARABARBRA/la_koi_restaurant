@@ -106,27 +106,33 @@
   </div>
 </section>
 
-<!-- ============= the Boss vision ============= -->
+<!-- ========== BOSS VISION SECTION ========== -->
 <section class="vision-section">
   <div class="vision-container">
 
     <!-- Text -->
-    <div class="vision-text">
+    <div class="vision-text animate-on-scroll">
       <h2>The Boss Vision</h2>
       <p>
-        At La-Koi, we believe dining is an art form. Our vision is to create a space where every meal is a masterpiece,
-        every cocktail a symphony of flavors, and every visit an unforgettable experience.
+        At La-Koi, we believe dining is an art form.
+        <strong>
+          Our vision is to create a space where every meal is a masterpiece,
+          every cocktail a symphony of flavors, and every visit an unforgettable experience.
+        </strong>
       </p>
       <a href="#about" class="hero-btn">LEARN MORE</a>
     </div>
-
+  </div>
     <!-- Image -->
     <div class="vision-image">
-      <img src="la_koi_photos/chef_cooking4.jpeg" alt="La-Koi Chef at Work">
+      <img src="la_koi_photos/la_koiboss2.jpeg" alt="La-Koi Chef at Work">
     </div>
 
-  </div>
 </section>
+
+
+
+
   <!-- ================= JAVASCRIPT FOR SLIDER ================= -->
   <script>
     // Select all images inside slider
@@ -165,6 +171,37 @@
 
   // Initial state
   navbar.classList.add("transparent");
+</script>
+
+<!-- ============= the animation on the words on the vision section ============= -->
+<script>
+  // Animate text on scroll
+  const scrollElements = document.querySelectorAll(".animate-on-scroll");
+
+  const elementInView = (el, offset = 100) => {
+    const elementTop = el.getBoundingClientRect().top;
+    return elementTop <= (window.innerHeight - offset);
+  };
+
+  const displayScrollElement = (element) => {
+    element.classList.add("visible");
+  };
+
+  const hideScrollElement = (element) => {
+    element.classList.remove("visible");
+  };
+
+  const handleScrollAnimation = () => {
+    scrollElements.forEach((el) => {
+      if (elementInView(el, 150)) {
+        displayScrollElement(el);
+      } 
+    })
+  }
+
+  window.addEventListener("scroll", () => { 
+    handleScrollAnimation();
+  });
 </script>
 
 </body>

@@ -207,22 +207,25 @@
 }
 
 .hero-btn {
-  /*Herosectionbutton*/display: inline-block;
-  /*Allowspadding&margin*/margin-top: 18px;
-  /*Spaceabovethebutton*/padding: 12px 30px;
-  /*Innerspacing(top/bottom,left/right)*/background-color: rgba(0, 0, 0, 0.4);
-  /*Transparentblackbackground*/color: #fff;
-  /*Whitetextcolor*/text-decoration: none;
-  /*Removeunderlinefromlink*/font-size: 15px;
-  /*Buttontextsize*/font-weight: 600;
-  /*Semi-boldtext*/letter-spacing: 1px;
-  /*Spaced-outlettersforelegance*/text-transform: uppercase;
-  /*Converttexttouppercase*/border-radius: 0px;
-  /*Fullyroundedpillshape*/border: 2px solid rgb(255, 140, 0)  ;
-  /*Wine/maroonoutline*/transition: all 0.3s ease;
-                      /* Smooth hover animation */:;
-  
+  display: inline-block;               /* Allows padding & margin */
+  margin-top: 18px;                    /* Space above the button */
+  padding: 12px 30px;                  /* Inner spacing (top/bottom, left/right) */
+  background-color: rgba(0, 0, 0, 0.4); /* Transparent black background */
+  color: #fff;                         /* White text */
+  text-decoration: none;               /* Remove underline from link */
+  font-size: 15px;                     /* Button text size */
+  font-weight: 600;                    /* Semi-bold text */
+  letter-spacing: 1px;                 /* Spaced-out letters for elegance */
+  text-transform: uppercase;           /* Convert text to uppercase */
+  border: 2px solid rgb(255, 140, 0); /* Orange outline */
+  transition: all 0.3s ease;           /* Smooth hover animation */
 }
+
+.hero-btn:hover {
+  background-color: rgb(255, 140, 0);  /* Fill button on hover */
+  color: #fff;                         /* Keep text white */
+}
+
 
 
 /* Hover effect */
@@ -270,19 +273,23 @@
 
 /* ===== FLEX CONTAINER WITH TRANSLUCENT PANEL ===== */
 .experience-container {
-  display: flex;
-  /*Side-by-sidelayoutforimageandtext*/align-items: center;
-  /*Verticallycentercontent*/gap: 60px;
-  /*Spacebetweenimageandtext*/max-width: 1300px;
-  /*Limitcontainerwidth*/margin: 0 auto;
-  /*Centercontainerhorizontally*/padding: 50px;
-  /*Innerpadding*/background: rgb(255, 140, 0, 0.6)  ;
-  /*Transparentblackpanelbehindcontent*/background-image: url("la_koi_photos/orange_background.jpeg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  -
+  display: flex;                  /* Side-by-side layout for image and text */
+  align-items: center;            /* Vertically center content */
+  gap: 60px;                      /* Space between image and text */
+  max-width: 1300px;              /* Limit container width */
+  margin: 0 auto;                 /* Center container horizontally */
+  padding: 50px;                  /* Inner padding */
+
+  /* Translucent overlay color */
+  background: rgba(255, 140, 0, 0.6); /* Orange with 60% opacity */
+
+  /* Background image behind translucent overlay */
+  background-image: url("la_koi_photos/orange_background.jpeg");
+  background-size: cover;          /* Cover the entire container */
+  background-position: center;     /* Center the image */
+  background-repeat: no-repeat;    /* Do not repeat image */
+
+  overflow: hidden;                /* Hide any overflow content */
 }
 
 /* ===== IMAGE WRAPPER ===== */
@@ -371,13 +378,28 @@
 
 
 /* ===== NEW ON THE MENU SECTION ===== */
-/* ===== NEW ON THE MENU ===== */
 .new-section {
-  max-width: 1300px;
-  margin: 100px auto;
-  padding: 0 30px;
-  text-align: center;
+  max-width: 1300px;      /* Limit container width for large screens */
+  margin: 100px auto;      /* Space above/below and center horizontally */
+  padding: 0 30px;         /* Horizontal padding for smaller screens */
+  text-align: center;      /* Center all text/content */
 }
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .new-section {
+    margin: 80px auto;     /* Slightly smaller vertical spacing on tablets */
+    padding: 0 20px;       /* Reduce horizontal padding */
+  }
+}
+
+@media (max-width: 480px) {
+  .new-section {
+    margin: 60px auto;     /* Smaller spacing for mobile */
+    padding: 0 15px;       /* Minimal horizontal padding */
+  }
+}
+
 
 .new-section h1 {
   font-size: 42px;
@@ -421,23 +443,31 @@
 }
 
 /* BUTTON */
+/* BUTTON */
 .menu-btn {
-  position: absolute;
-  bottom: 25px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 14px 32px;
-  background: rgba(0, 0, 0, 0.75);
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-  letter-spacing: 1px;
-  border: 2px solid rgb(255, 140, 0);
+  position: absolute;                 /* Position above the image */
+  bottom: 20px;                       /* Distance from bottom of container */
+  left: 50%;                           /* Center horizontally */
+  transform: translateX(-50%);         /* Perfect horizontal centering */
+  
+  display: inline-block;               
+  padding: 12px 30px;                  
+  background-color: rgba(0, 0, 0, 0.4); 
+  color: #fff;                         
+  text-decoration: none;               
+  font-size: 15px;                     
+  font-weight: 600;                    
+  letter-spacing: 1px;                 
+  text-transform: uppercase;           
+  border: 2px solid rgb(255, 140, 0); 
+  transition: all 0.3s ease;           
+  z-index: 2;                           /* Make sure button is on top */
 }
 
 .menu-btn:hover {
   background: rgba(255, 140, 0, 0.9);
 }
+
 
 /* MOBILE */
 @media (max-width: 768px) {
@@ -451,3 +481,126 @@
   }
 }
 
+/* ========== BOSS VISION SECTION ========== */
+.vision-section {
+  position: relative;           /* needed for overlay */
+  display: flex;                
+  align-items: center;          /* vertically center text + image */
+  justify-content: center;      /* horizontally center the whole block */
+  gap: 0;                       /* no space between text and image */
+  padding: 50px;                /* section padding around edges */
+  background-color: white;      
+  background-image: url("la_koi_photos/whitekitchen_background.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  overflow: hidden;             /* in case pseudo-element extends */
+}
+
+/* dim overlay */
+.vision-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.7); /* white dimming layer */
+  z-index: 0;                                  /* behind content */
+}
+
+/* push content above overlay */
+.vision-section > * {
+  position: relative;       /* so z-index works */
+  z-index: 1;               /* content above overlay */
+}
+
+
+
+/* ===== TEXT CONTAINER ===== */
+.vision-container {
+  flex: 0 0 auto;               
+  background: rgba(255, 140, 0, 0.6);
+  background-image: url("la_koi_photos/blue_background1.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  padding: 40px 30px;           /* top/bottom 30px, left/right 15px */
+  margin: 0;                     /* remove any margin so it touches image */
+}
+
+/* ===== TEXT ===== */
+.vision-text {
+  width: 100%;
+  animation: fadeSlideLeft 1.2s ease forwards;
+}
+
+.vision-text h2 {
+  font-size: 45px;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  margin-bottom: 18px;
+  color: rgb(96, 34, 16);
+}
+
+.vision-text p {
+  font-size: 20px;
+  line-height: 1.7;
+  color: rgba(96, 34, 16, 0.7);
+  max-width: 500px;
+}
+
+/* ===== IMAGE ===== */
+.vision-image {
+  flex: 0 0 auto;               
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;                     /* remove gap with container */
+}
+
+.vision-image img {
+  width: 100%;
+  max-width: 290px;              
+  height: auto;
+  object-fit: contain;           
+  display: block;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeSlideLeft {
+  from { opacity: 0; transform: translateX(-50px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeSlideRight {
+  from { opacity: 0; transform: translateX(50px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .vision-section {
+    flex-direction: column;      
+    padding: 15px;
+    justify-content: center;     /* center stacked content */
+  }
+
+  .vision-container,
+  .vision-image {
+    width: 100%;
+    margin: 0;
+  }
+
+  .vision-image {
+    margin-top: 20px;
+    justify-content: center;
+  }
+
+  .vision-text {
+    text-align: center;
+  }
+}
