@@ -1,0 +1,453 @@
+/* ================= GLOBAL RESET ================= */
+* {
+    margin: 0;                     /* Remove default margin */
+    padding: 0;                    /* Remove default padding */
+    box-sizing: border-box;        /* Ensure predictable sizing */
+    font-family: 'Playfair Display', serif;
+  }
+  
+  /* ================= BODY ================= */
+  body {
+    background-color: #f3ebeb;        /* Default black background */
+    color: #020202;                   /* Default white text */
+    overflow-x: hidden;            /* Prevent horizontal scroll */
+  }
+
+ 
+
+  /* ================= BANNER ================= */
+  .banner {
+    position: relative;            /* Required for overlay and slider */
+    min-height: 100vh;             /* Full viewport height */
+    overflow: hidden;              /* Hide overflowing images */
+  }
+  
+  /* ================= SLIDER CONTAINER ================= */
+  .banner-slider {
+    position: absolute;            /* Position over banner */
+    inset: 0;                      /* Fill entire banner */
+    z-index: 0;                    /* Behind navbar & text */
+  }
+  
+  /* ================= SLIDER IMAGES ================= */
+  .banner-slider img {
+    position: absolute;            /* Stack images on top of each other */
+    inset: 0;                      /* Fill parent container */
+    width: 100%;                   /* Full width */
+    height: 100%;                  /* Full height */
+    object-fit: cover ;           /* Show full image without cropping */
+    object-position: center;       /* Center the image */
+    opacity: 0;                    /* Hide images initially */
+    transition: opacity 1.5s ease-in-out; /* Smooth fade */
+  }
+  
+  /* Show active image */
+  .banner-slider img.active {
+    opacity: 1;                    /* Fade in */
+    z-index: 1;                    /* Ensure visible above others */
+  }
+  
+  /* ================= DARK OVERLAY ================= */
+  .banner::before {
+    content: "";                   
+    position: absolute;            
+    inset: 0;                      
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+    z-index: 0;                    
+  }
+  
+  /* ================= NAVBAR ================= */
+  .navbar {
+    position: fixed;               /* Fix navbar at top */
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    z-index: 999;                  /* Always on top */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth change on scroll */
+  }
+  
+  
+  /* ================= NAV LEFT ================= */
+  .nav-left {
+    display: flex;                 
+    align-items: center;           
+    gap: 10px;                     
+    cursor: pointer;               
+  }
+  
+  /* Hamburger menu lines */
+  .hamburger span {
+    display: block;                
+    width: 25px;                   
+    height: 3px;                   
+    background: #fff;              
+    margin: 4px 0;                 
+  }
+  
+  /* Menu text */
+  .menu-text {
+    font-size: 18px;               
+    font-weight: 900;   
+    text-shadow: rgb(7, 7, 7) 2px 2px 4px;
+    color: orange;           
+  }
+  
+  /* ================= CENTER LOGO ================= */
+  .nav-center img {
+    height: 55px;                  
+    max-width: 100%;               
+    object-fit: contain;           
+  }
+  
+  /* Center logo container as flex */
+.nav-center {
+  display: flex;                /* Place image and text in a row */
+  align-items: center;          /* Vertically center items */
+  gap: 10px;                    /* Space between logo and text */
+}
+
+
+/* Initial transparent navbar (no background) */
+.navbar.transparent {
+  background-color: transparent;
+}
+
+/* Navbar on scroll: semi-transparent maroon background */
+.navbar.scrolled {
+  background-color: rgba(96, 35, 16, 0.8); /* Semi-transparent maroon */
+}
+
+/* Navbar links and logo text transitions */
+.navbar.scrolled .menu-text,
+.navbar.scrolled .logo-text,
+.navbar.scrolled .nav-right a {
+  color: #fff;                      /* White text on scroll */
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Optional shadow for readability */
+}
+
+/* Text next to logo */
+.logo-text {
+  font-size: 22px;              /* Adjust size to fit navbar */
+  font-weight: 900;             /* Semi-bold */
+  color: #fff;                  /* White text */
+  white-space: nowrap;          /* Prevent text wrapping */
+  text-shadow: #030303 2px 2px 4px; /* Subtle shadow for readability */
+  color: orange;
+  
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .logo-text {
+    font-size: 16px;            /* Smaller on tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-text {
+    font-size: 14px;            /* Smaller on mobile */
+  }
+}
+
+  /* ================= NAV RIGHT ================= */
+  .nav-right a {
+    color: #fff;                   
+    text-decoration: none;         
+    font-weight: 800; 
+    font-size: 18px;
+    text-shadow: rgb(7, 7, 7) 2px 2px 4px;
+    color: orange;
+    
+    
+    
+  }
+  
+  /* ================= HERO TEXT ================= */
+  .hero {
+    margin-top: 150px;               /* Space below navbar */
+    min-height: calc(100vh - 80px);  /* Full height minus navbar */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;         /* Left-align text */
+    text-align: left;
+    position: relative;
+    z-index: 2;
+}
+
+/* Wrap both heading and subtitle in a container for background */
+.hero-text-box {
+  background-color: rgb(96, 35, 16, 0.8);;/*Semi-transparentmaroonbackground*/
+  padding: 20px 30px;/*Spacearoundthetext*/
+  display: inline-block;/* Background only covers the text */
+  
+}
+
+
+/* Heading inside box */
+.hero-text-box h1 {
+    font-size: 48px;
+    font-family: 'Playfair Display', serif;
+    /* font-style: italic; */
+    color: #fff;
+    margin-bottom: 6px;
+}
+
+/* Subtitle inside box */
+.hero-text-box p {
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.hero-btn {
+  /*Herosectionbutton*/display: inline-block;
+  /*Allowspadding&margin*/margin-top: 18px;
+  /*Spaceabovethebutton*/padding: 12px 30px;
+  /*Innerspacing(top/bottom,left/right)*/background-color: rgba(0, 0, 0, 0.4);
+  /*Transparentblackbackground*/color: #fff;
+  /*Whitetextcolor*/text-decoration: none;
+  /*Removeunderlinefromlink*/font-size: 15px;
+  /*Buttontextsize*/font-weight: 600;
+  /*Semi-boldtext*/letter-spacing: 1px;
+  /*Spaced-outlettersforelegance*/text-transform: uppercase;
+  /*Converttexttouppercase*/border-radius: 0px;
+  /*Fullyroundedpillshape*/border: 2px solid rgb(255, 140, 0)  ;
+  /*Wine/maroonoutline*/transition: all 0.3s ease;
+                      /* Smooth hover animation */:;
+  
+}
+
+
+/* Hover effect */
+.hero-btn:hover {                               /* When user hovers on button */
+  background-color: rgba(96, 35, 16, 0.75);      /* Wine background on hover */
+  border-color: white;                 /* Keep wine border */
+  transform: translateY(-2px);                  /* Slight lift effect */
+}
+
+
+  /* ================= RESPONSIVE STYLING ================= */
+  @media (max-width: 768px) {
+    .menu-text { display: none; }
+    .hero h1 { font-size: 34px; }
+    .hero p { font-size: 16px; }
+    .navbar { padding: 0 20px; }
+  }
+  
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 28px; }
+    .hero p { font-size: 14px; }
+  }
+  
+/* ===== EXPERIENCE SECTION ===== */
+.experience-section {
+  position: relative;                               /* Required for overlay and content layering */
+  padding: 70px 4%;                                /* Spacious padding for modern layout */
+  color: #ffffff;                                   /* Default text color */
+  background-color: white;
+
+  background-image: url("la_koi_photos/white_background_circles.jpeg"); 
+  background-size: cover;                           
+  background-position: center;                      
+  background-repeat: no-repeat;                    
+  overflow: hidden;                                 
+}
+
+
+
+/* ===== LIFT CONTENT ABOVE OVERLAY ===== */
+.experience-section > * {
+  position: relative;                               /* Ensure content sits above overlay */
+  z-index: 2;                                       /* Bring content above pseudo-element */
+}
+
+/* ===== FLEX CONTAINER WITH TRANSLUCENT PANEL ===== */
+.experience-container {
+  display: flex;
+  /*Side-by-sidelayoutforimageandtext*/align-items: center;
+  /*Verticallycentercontent*/gap: 60px;
+  /*Spacebetweenimageandtext*/max-width: 1300px;
+  /*Limitcontainerwidth*/margin: 0 auto;
+  /*Centercontainerhorizontally*/padding: 50px;
+  /*Innerpadding*/background: rgb(255, 140, 0, 0.6)  ;
+  /*Transparentblackpanelbehindcontent*/background-image: url("la_koi_photos/orange_background.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  -
+}
+
+/* ===== IMAGE WRAPPER ===== */
+.experience-image {
+  flex: 1;                                          /* Equal width with text */
+  height: 400px;                                    /* Fixed image height */
+  overflow: hidden;                                 /* Hide any overflow from image zoom */
+  animation: fadeSlideLeft 1.2s ease forwards;      /* Entrance animation from left */
+}
+
+/* ===== IMAGE ITSELF ===== */
+.experience-image img {
+  width: 100%;                                      /* Full width of wrapper */
+  height: 100%;                                     /* Full height of wrapper */
+  object-fit: cover;                                /* Maintain aspect ratio while filling container */
+  transition: transform 0.6s ease;                  /* Smooth zoom on hover */
+}
+
+/* ===== IMAGE HOVER EFFECT ===== */
+.experience-image:hover img {
+  transform: scale(1.05);                           /* Subtle luxury zoom effect */
+}
+
+/* ===== TEXT CONTAINER ===== */
+.experience-text {
+  flex: 1;                                          /* Equal width with image */
+  animation: fadeSlideRight 1.2s ease forwards;     /* Entrance animation from right */
+}
+
+/* ===== HEADING ===== */
+.experience-text h2 {
+  font-size: 45px;                                  /* Bold, modern heading size */
+  font-family: 'Playfair Display', serif;           /* Elegant serif font */
+  font-style: italic;                               /* Sophisticated look */
+  margin-bottom: 18px;                              /* Space below heading */
+  color: rgb(96, 34, 16);                          /* Luxury orange accent */
+  text-shadow: 1px 1px 3px rgba(255, 250, 250, 0.5); /* Subtle shadow for depth */
+}
+
+/* ===== PARAGRAPH ===== */
+.experience-text p {
+  font-size: 20px;                                  /* Readable body text */
+  line-height: 1.7;                                 /* Comfortable line spacing */
+  color: rgb(96, 34, 16, 0.6);                                   /* Soft white text */
+  max-width: 520px;                                 /* Prevent overly wide lines */
+}
+
+/* ===== ENTRANCE ANIMATIONS ===== */
+@keyframes fadeSlideLeft {
+  from {                                            /* Start of animation */
+    opacity: 0;                                     /* Start invisible */
+    transform: translateX(-60px);                   /* Slide from left */
+  }
+  to {                                              /* End of animation */
+    opacity: 1;                                     /* Fully visible */
+    transform: translateX(0);                       /* Final position */
+  }
+}
+
+@keyframes fadeSlideRight {
+  from {                                            /* Start of animation */
+    opacity: 0;                                     /* Start invisible */
+    transform: translateX(60px);                    /* Slide from right */
+  }
+  to {                                              /* End of animation */
+    opacity: 1;                                     /* Fully visible */
+    transform: translateX(0);                       /* Final position */
+  }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 900px) {                          /* Tablets & smaller */
+  .experience-container {
+    flex-direction: column;                          /* Stack image and text vertically */
+    padding: 30px;                                   /* Reduce padding for smaller screens */
+  }
+
+  .experience-text h2 {
+    font-size: 32px;                                 /* Smaller heading */
+  }
+
+  .experience-image {
+    height: 300px;                                   /* Reduce image height */
+  }
+}
+
+
+/* ===== NEW ON THE MENU SECTION ===== */
+/* ===== NEW ON THE MENU ===== */
+.new-section {
+  max-width: 1300px;
+  margin: 100px auto;
+  padding: 0 30px;
+  text-align: center;
+}
+
+.new-section h1 {
+  font-size: 42px;
+  margin-bottom: 50px;
+  letter-spacing: 2px;
+  color: rgb(96, 34, 16);
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+/* FLEX ROW */
+.menu-row {
+  display: flex;
+  gap: 40px;
+}
+
+/* EACH IMAGE TAKES EQUAL WIDTH */
+.menu-col {
+  flex: 1;
+  position: relative;
+  height: 380px;
+  /*visiblearea*/overflow: hidden;
+  /*HARDCROP*/
+}
+
+
+/* IMAGE */
+.menu-col img {
+  position: absolute;
+  top: -20%;            /* PUSH IMAGE UP */
+  left: 0;
+  width: 100%;
+  height: 140%;         /* BIGGER than container */
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+
+.menu-col:hover img {
+  transform: scale(1.08);
+}
+
+/* BUTTON */
+.menu-btn {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 14px 32px;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border: 2px solid rgb(255, 140, 0);
+}
+
+.menu-btn:hover {
+  background: rgba(255, 140, 0, 0.9);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .menu-col {
+    height: 300px;
+  }
+
+  .menu-col img {
+    height: 160%;
+    top: -30%;
+  }
+}
+

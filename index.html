@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>La-Koi Restaurant | Fine Dining & Signature Experiences</title>
+
+  <meta name="description"
+        content="La-Koi Restaurant offers fine dining, cocktails, nyama choma and unforgettable experiences in Uganda.">
+
+  <!-- Link to CSS -->
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+  <!-- ================= BANNER SECTION ================= -->
+  <section class="banner">
+
+    <!-- ================= SLIDER IMAGES ================= -->
+    <div class="banner-slider">
+      <img src="la_koi_photos/burger_fries.jpeg" alt="Restaurant Interior">
+      <img src="la_koi_photos/wraps_4.jpeg" alt="Signature Dish 1">
+      <img src="la_koi_photos/ice_cream8.jpeg" alt="Signature Dish 1">
+      <img src="la_koi_photos/coctails3.jpeg" alt="Signature Dish 1">
+    </div>
+
+    <!-- ================= NAVIGATION BAR ================= -->
+    <header class="navbar" role="navigation" aria-label="Main Navigation">
+      <div class="nav-left">
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <span class="menu-text">Menu</span>
+      </div>
+
+      <div class="nav-center">
+        <img src="la_koi_photos/Lakoi_new_logo.png" alt="La-Koi Restaurant Logo" loading="lazy">
+        <span class="logo-text">La-Koi Restaurant & Lounge</span>
+      </div>
+      
+
+      <div class="nav-right">
+        <a href="#contact">Reserve</a>
+      </div>
+    </header>
+
+    <!-- ================= HERO TEXT ================= -->
+    <div class="hero">
+      <div class="hero-text-box">
+        <h1>La-Koi Restaurant & Lounge</h1>
+        <p>Fine Dining • Signature Cocktails • Unforgettable Moments</p>
+    
+        <a href="#about" class="hero-btn">Discover</a>
+      </div>
+    </div>
+    
+    
+
+  </section>
+
+  <!-- ========== SECOND SECTION ========== -->
+<section class="experience-section">
+  <div class="experience-container">
+
+    <!-- Image -->
+    <div class="experience-image">
+      <img src="la_koi_photos/Flaming_Stir_Fry.jpeg" alt="La-Koi Signature Dish">
+    </div>
+
+    <!-- Text -->
+    <div class="experience-text">
+      <h2>Bold Flavors. Sophisticated Vibes.</h2>
+      <p>
+        La-Koi is more than just a meal . <strong>La-Koi is an experience.</strong>
+        Join us for chef-driven dishes, artisan cocktails,
+        and an atmosphere that lingers long after the final course.
+      </p>
+      <a href="#about" class="hero-btn">EXPLORE</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============== NEW ON THE MENU =============== -->
+
+<section class="new-section">
+  <h1>NEW ON THE MENU</h1>
+
+  <div class="menu-row">
+    <!-- local food -->
+    <div class="menu-col">
+      <img src="la_koi_photos/Luwombo_food.jpg" alt="luwombo food">
+      <a href="#about" class="menu-btn">LUWOMBO MENU</a>
+    </div>
+
+    <!-- pot food -->
+    <div class="menu-col">
+      <img src="la_koi_photos/pot_food6.webp" alt="hot pot food">
+      <a href="#about" class="menu-btn">HOT-POT MENU</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============= the Boss vision ============= -->
+<section class="vision-section">
+  <div class="vision-container">
+
+    <!-- Text -->
+    <div class="vision-text">
+      <h2>The Boss Vision</h2>
+      <p>
+        At La-Koi, we believe dining is an art form. Our vision is to create a space where every meal is a masterpiece,
+        every cocktail a symphony of flavors, and every visit an unforgettable experience.
+      </p>
+      <a href="#about" class="hero-btn">LEARN MORE</a>
+    </div>
+
+    <!-- Image -->
+    <div class="vision-image">
+      <img src="la_koi_photos/chef_cooking4.jpeg" alt="La-Koi Chef at Work">
+    </div>
+
+  </div>
+</section>
+  <!-- ================= JAVASCRIPT FOR SLIDER ================= -->
+  <script>
+    // Select all images inside slider
+    const slides = document.querySelectorAll(".banner-slider img");
+    let currentSlide = 0; // Start from first image
+
+    function showNextSlide() {
+      slides.forEach((slide, index) => {
+        slide.classList.remove("active"); // Remove active class from all
+      });
+
+      slides[currentSlide].classList.add("active"); // Show current slide
+      currentSlide = (currentSlide + 1) % slides.length; // Loop back to start
+    }
+
+    // Initial display
+    showNextSlide();
+
+    // Change slide every 4 seconds
+    setInterval(showNextSlide, 4000);
+  </script>
+
+<!-- ========= JavaScript: Detect Scroll & Add Class ======== -->
+<script>
+  const navbar = document.querySelector(".navbar");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {  // Trigger when user scrolls down 50px
+      navbar.classList.add("scrolled");
+      navbar.classList.remove("transparent");
+    } else {
+      navbar.classList.remove("scrolled");
+      navbar.classList.add("transparent");
+    }
+  });
+
+  // Initial state
+  navbar.classList.add("transparent");
+</script>
+
+</body>
+</html>
