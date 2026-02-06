@@ -791,6 +791,7 @@
 }
 
 /* ================= TOOLTIP ================= */
+/* ================= TOOLTIP ================= */
 .tooltip {
   position: relative;
   color: inherit;
@@ -852,7 +853,6 @@
 
 .social-link.linkedin::after { background-color: #0a66c2; }
 .social-link.linkedin::before { border-color: #0a66c2 transparent transparent transparent; }
-
 /* TikTok brand colors */
 .social-link.tiktok {
   color: #e6e3e3; /* default text color */
@@ -914,5 +914,35 @@
 
   .footer-copyright .col.copyright p {
     font-size: 0.75rem;
+  }
+}
+
+
+/* ================= FOOTER COLUMN UNIVERSAL CENTERING ================= */
+
+/* Targets .col AND any other footer column classes */
+.footer .col,
+.footer [class*="col"] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;     /* center content horizontally */
+  text-align: center;      /* center text */
+}
+
+/* Preserve existing link colors & hover effects */
+.footer a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: inherit;
+}
+
+/* Mobile responsiveness only */
+@media (max-width: 768px) {
+  .footer .col,
+  .footer [class*="col"] {
+    margin-bottom: 20px;
   }
 }
