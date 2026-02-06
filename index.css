@@ -604,3 +604,330 @@
     text-align: center;
   }
 }
+
+/* ==============================
+   LA KOI GIFT CARD SECTION
+   ============================== */
+
+/* SECTION BACKGROUND */
+.gift_card {
+  min-height: 60vh;                         /* visible hero height */
+  background-image: url("la_koi_photos/la_koi_giftcard.jpeg"); /* CHANGE PATH */
+  background-size: cover;                  /* cover entire section */
+  background-position: center;             /* center image */
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;                     /* vertical center */
+  justify-content: center;                 /* horizontal center */
+  padding: 20px;
+  position: relative;
+}
+
+/* OPTIONAL DARK OVERLAY FOR IMAGE */
+.gift_card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);         /* image darkener */
+  z-index: 1;
+}
+
+/* CONTENT BOX */
+.gift_card .overlay-content {
+  margin-top: 20px;
+  position: relative;
+  z-index: 2;                              /* above overlay */
+  background: rgba(0, 0, 0, 0.6);          /* transparent content bg */
+  color: #ffffff;
+  padding: 30px 50px;
+  max-width: 650px;
+  text-align: center;
+  backdrop-filter: blur(4px);              /* modern glass effect */
+}
+
+/* HEADING */
+.gift_card h1 {
+  font-size: 2.6rem;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+/* PARAGRAPHS */
+.gift_card p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+/* NOTE TEXT */
+.gift_card p:last-of-type {
+  font-size: 0.95rem;
+  opacity: 0.85;
+  font-style: italic;
+}
+
+/* BUTTON */
+.gift_card .btn {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 14px 38px;
+  background-color: #c89b3c;               /* La-Koi luxury gold */
+  border: 2px solid #fff;
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.gift_card .btn:hover {
+  background-color: #e0b44c;
+  transform: translateY(-2px);
+}
+
+/* ==============================
+   RESPONSIVE
+   ============================== */
+@media (max-width: 768px) {
+  .gift_card {
+    min-height: 70vh;
+  }
+
+  .gift_card .overlay-content {
+    padding: 30px 25px;
+  }
+
+  .gift_card h1 {
+    font-size: 2rem;
+  }
+
+  .gift_card p {
+    font-size: 1rem;
+  }
+}
+
+/* =============== FOOTER ================== */
+.footer {
+  background-color: #111111;
+  color: #e5e5e5;
+  padding: 60px 6% 40px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.footer .row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.footer .col {
+  flex: 1;
+  min-width: 180px;
+}
+
+/* Logo container */
+.col .logo {
+  display: flex;
+  justify-content: center; /* center horizontally */
+  align-items: center;     /* center vertically */
+  /* padding: 15px 0;      */
+  /* background-color: #fff;   */
+  /* optional: clean background */
+}
+
+/* Logo link */
+.logo-link {
+  display: inline-block;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Logo image */
+.logo-link img {
+  max-width: 120px;   /* adjust to fit header nicely */
+  height: auto;
+  display: block;
+}
+
+/* Hover effect to make it feel premium */
+.logo-link:hover img {
+  transform: scale(1.05);    /* subtle zoom */
+  filter: brightness(1.1);    /* slightly brighter */
+  cursor: pointer;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .logo-link img {
+    max-width: 140px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .logo-link img {
+    max-width: 120px;
+  }
+}
+
+.footer .col h4 {
+  font-size: 0.95rem;
+  color: #ffffff;
+  margin-bottom: 8px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.footer .col p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #b5b5b5;
+  margin-bottom: 6px;
+  word-wrap: break-word;
+}
+
+.footer .col p:hover {
+  color: #ffffff;
+}
+
+/* ================= TOOLTIP ================= */
+.tooltip {
+  position: relative;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Tooltip box */
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%) scale(0.8);
+  background-color: #333;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s ease;
+  z-index: 1000;
+}
+
+/* Tooltip arrow */
+.tooltip::before {
+  content: "";
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%) scale(0.8);
+  border-width: 6px;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s ease;
+  z-index: 1000;
+}
+
+/* Show tooltip on hover (desktop) */
+.tooltip:hover::after,
+.tooltip:hover::before {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+/* Specific colors */
+.whatsapp-link::after { background-color: #25D366; }
+.whatsapp-link::before { border-color: #25D366 transparent transparent transparent; }
+
+.email-link::after { background-color: #1e73be; }
+.email-link::before { border-color: #1e73be transparent transparent transparent; }
+
+.social-link.facebook::after { background-color: #1877f2; }
+.social-link.facebook::before { border-color: #1877f2 transparent transparent transparent; }
+
+.social-link.linkedin::after { background-color: #0a66c2; }
+.social-link.linkedin::before { border-color: #0a66c2 transparent transparent transparent; }
+
+/* TikTok brand colors */
+.social-link.tiktok {
+  color: #e6e3e3; /* default text color */
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* TikTok hover effect */
+.social-link.tiktok:hover {
+  color: #69C9D0; /* TikTok cyan accent */
+  text-shadow: 1px 1px 2px #EE1D52, -1px -1px 2px #69C9D0; /* mimics TikTok logo colors */
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+/* ================= COPYRIGHT ================= */
+.footer .col.copyright {
+  width: 100%;                    /* ensure full width */
+  text-align: center;             /* center text */
+  padding: 10px 0 20px 0;         /* reduce top padding for closer spacing, keep bottom for breathing */
+  margin: 0;                       /* remove extra margin */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;            /* center line and text vertically */
+  justify-content: center;
+  gap: 10px;                      /* space between line and text */
+}
+
+/* Decorative line above text */
+.footer .col.copyright::before {
+  content: "";
+  display: block;
+  width: 200px;                   /* elegant shorter line */
+  height: 2px;
+  background-color: #8f8f8f;      /* subtle visible grey */
+  border-radius: 2px;             /* slightly rounded ends */
+}
+
+/* Copyright text */
+.footer .col.copyright p {
+  font-size: 0.85rem;
+  color: #8f8f8f;
+  margin: 0;                      
+  line-height: 1.5;
+}
+
+
+
+/* ================= LINK HOVER ================= */
+.footer .col a:hover {
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 992px) {
+  .footer .col { flex: 1 1 45%; min-width: 180px; }
+}
+
+@media (max-width: 576px) {
+  .footer .row {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
+  .footer .col { text-align: center; }
+}
+
+/* ================= ACCESSIBILITY ================= */
+.footer .col a:focus {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+.footer .col a:hover {
+  color: #fff;
+  transform: translateY(-2px);
+}
