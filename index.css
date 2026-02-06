@@ -869,65 +869,50 @@
 }
 
 /* ================= COPYRIGHT ================= */
-.footer .col.copyright {
-  width: 100%;                    /* ensure full width */
-  text-align: center;             /* center text */
-  padding: 10px 0 20px 0;         /* reduce top padding for closer spacing, keep bottom for breathing */
-  margin: 0;                       /* remove extra margin */
-  position: relative;
+.footer-copyright {
+  width: 100%;
+  display: flex;                  /* center child column */
+  justify-content: center;        /* horizontal center */
+  align-items: center;            /* vertical center */
+  padding: 10px 0;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.footer-copyright .col.copyright {
+  width: 100%;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;            /* center line and text vertically */
-  justify-content: center;
-  gap: 10px;                      /* space between line and text */
+  align-items: center;
+  gap: 5px;
 }
 
-/* Decorative line above text */
-.footer .col.copyright::before {
+/* Decorative line */
+.footer-copyright .col.copyright::before {
   content: "";
-  display: block;
-  width: 200px;                   /* elegant shorter line */
-  height: 2px;
-  background-color: #8f8f8f;      /* subtle visible grey */
-  border-radius: 2px;             /* slightly rounded ends */
+  width: 100%;
+  max-width: 1200px;
+  height: 1px;
+  background-color: #383737;
+  border-radius: 2px;
 }
 
-/* Copyright text */
-.footer .col.copyright p {
+/* Text */
+.footer-copyright .col.copyright p {
+  margin-top: 10px;
   font-size: 0.85rem;
   color: #8f8f8f;
-  margin: 0;                      
-  line-height: 1.5;
+  text-align: center;
 }
 
-
-
-/* ================= LINK HOVER ================= */
-.footer .col a:hover {
-  color: #fff;
-  transform: translateY(-2px);
-}
-
-/* ================= RESPONSIVE ================= */
-@media (max-width: 992px) {
-  .footer .col { flex: 1 1 45%; min-width: 180px; }
-}
-
-@media (max-width: 576px) {
-  .footer .row {
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
+/* Small screens */
+@media (max-width: 480px) {
+  .footer-copyright .col.copyright::before {
+    width: 60%;
   }
-  .footer .col { text-align: center; }
-}
 
-/* ================= ACCESSIBILITY ================= */
-.footer .col a:focus {
-  outline: 2px solid #fff;
-  outline-offset: 2px;
-}
-.footer .col a:hover {
-  color: #fff;
-  transform: translateY(-2px);
+  .footer-copyright .col.copyright p {
+    font-size: 0.75rem;
+  }
 }
