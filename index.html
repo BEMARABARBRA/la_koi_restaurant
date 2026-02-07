@@ -47,41 +47,42 @@
 </head>
 
 <body>
+<!-- ================= BANNER SECTION ================= -->
+<section class="banner">
 
-  <!-- ================= BANNER SECTION ================= -->
-  <section class="banner">
+  <!-- ================= SLIDER IMAGES ================= -->
+  <div class="banner-slider">
+    <img src="la_koi_photos/Luwombo_food.jpg" alt="Signature Dish 1" loading="lazy">
+    <img src="la_koi_photos/kalo.jpeg" alt="Signature Dish 2" loading="lazy">
+    <img src="la_koi_photos/gonja.jpeg" alt="Signature Dish 3" loading="lazy">
+    <img src="la_koi_photos/burger_fries.jpeg" alt="Signature Dish 4" loading="lazy">
+    <img src="la_koi_photos/wraps_4.jpeg" alt="Signature Dish 5" loading="lazy">
+    <img src="la_koi_photos/ice_cream8.jpeg" alt="Signature Dish 6" loading="lazy">
+    <img src="la_koi_photos/coctails3.jpeg" alt="Signature Dish 7" loading="lazy">
+  </div>
 
-    <!-- ================= SLIDER IMAGES ================= -->
-    <div class="banner-slider">
-      <img src="la_koi_photos/Luwombo_food.jpg" alt="Signature Dish 1" loading="lazy">
-      <img src="la_koi_photos/kalo.jpeg" alt="Signature Dish 1" loading="lazy">
-      <img src="la_koi_photos/gonja.jpeg" alt="Signature Dish 1" loading="lazy">
-      <img src="la_koi_photos/burger_fries.jpeg" alt="Restaurant Interior" loading="lazy">
-      <img src="la_koi_photos/wraps_4.jpeg" alt="Signature Dish 1" loading="lazy">
-      <img src="la_koi_photos/ice_cream8.jpeg" alt="Signature Dish 1" loading="lazy">
-      <img src="la_koi_photos/coctails3.jpeg" alt="Signature Dish 1" loading="lazy">
+  <!-- ================= NAVIGATION BAR ================= -->
+  <header class="navbar" role="navigation" aria-label="Main Navigation">
+    <div class="nav-left">
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <span class="menu-text">Menu</span>
     </div>
 
-    <!-- ================= NAVIGATION BAR ================= -->
-    <header class="navbar" role="navigation" aria-label="Main Navigation">
-      <div class="nav-left">
-        <div class="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <span class="menu-text">Menu</span>
-      </div>
+    <div class="nav-center">
+      <img src="la_koi_photos/la_koi-newlogo_clean.jpeg" alt="La-Koi Restaurant Logo" loading="lazy">
+      <span class="logo-text">La-Koi Restaurant & Lounge</span>
+    </div>
 
-      <div class="nav-center">
-        <img src="la_koi_photos/la_koi-newlogo_clean.jpeg" alt="La-Koi Restaurant Logo" loading="lazy">
-        <span class="logo-text">La-Koi Restaurant & Lounge</span>
-      </div>
+    <div class="nav-right">
+      <a href="#contact">Reserve</a>
+    </div>
+  </header>
 
-      <div class="nav-right">
-        <a href="#contact">Reserve</a>
-      </div>
-    </header>
+ 
 
     <!-- ================= HERO TEXT ================= -->
     <div class="hero">
@@ -93,6 +94,38 @@
     </div>
 
   </section>
+
+
+   <!-- ================= MENU OVERLAY ================= -->
+<div class="menu-overlay" id="menuOverlay">
+  <div class="menu-panel">
+
+    <div class="menu-overlay-logo">
+      <img src="la_koi_photos/la_koi-newlogo_clean.jpeg" alt="La-Koi Restaurant Logo" loading="lazy">
+    </div>
+    
+
+
+    <ul>
+      <li><a href="about_us.html">About</a></li>
+      <li><a href="morning.html">Morning</a></li>
+
+      <li class="dropdown">
+        <a href="touch_kitchen.html" class="dropdown-toggle">Touch Kitchen</a>
+        <span class="dropdown-tagline">Main food hub — lunch & dinner</span>
+
+        <ul class="dropdown-menu">
+          <li><a href="Ugandan_cuisine.html">Ugandan Cuisine</a></li>
+          <li><a href="western_classics.html">Western Classics</a></li>
+        </ul>
+      </li>
+
+      <li><a href="deals.html">Chef’s Deals</a></li>
+      <li><a href="deserts.html">Desserts</a></li>
+      <li><a href="drinks.html">Drinks</a></li>
+    </ul>
+  </div>
+</div>
 
   <!-- ========== EXPERIENCE SECTION ========== -->
   <section class="experience-section">
@@ -309,6 +342,45 @@
 
     window.addEventListener("scroll", handleScrollAnimation);
   </script>
+
+<!-- ================= MENU TOGGLE SCRIPT ================= -->
+<script>
+  // Menu overlay toggle
+  const hamburger = document.querySelector('.hamburger');
+  const menuText = document.querySelector('.menu-text');
+  const overlay = document.getElementById('menuOverlay');
+
+  function toggleMenu() {
+    overlay.classList.toggle('active');
+  }
+
+  hamburger.addEventListener('click', toggleMenu);
+  menuText.addEventListener('click', toggleMenu);
+
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) overlay.classList.remove('active');
+  });
+
+  // Dropdown toggle inside overlay
+  const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+
+  dropdownToggles.forEach(toggle => {
+    toggle.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      const li = toggle.parentElement;
+      const submenu = li.querySelector('.dropdown-menu');
+      const tagline = li.querySelector('.dropdown-tagline');
+
+      const isOpen = submenu.classList.toggle('active');
+
+      // Hide tagline when dropdown open, show when closed
+      tagline.style.display = isOpen ? 'none' : 'block';
+    });
+  });
+</script>
+
+
 
 </body>
 </html>
