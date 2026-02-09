@@ -1,0 +1,252 @@
+/* ================= GLOBAL RESET ================= */
+/* Remove default margins/padding, box sizing, and set font */
+* {
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+    font-family: "Roboto", Arial, sans-serif; 
+  }
+  
+  /* ================= BODY BACKGROUND ================= */
+  body {
+    background: #f4f6f8; /* Light grey base for readability */
+    padding: 20px; 
+    color: #111; /* Dark grey text for SEO/readability */
+    line-height: 1.6; /* Improve readability */
+  }
+  
+  /* ================= BODY BACKGROUND IMAGE ================= */
+  body::before {
+    content: ''; 
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 100%; 
+    background-image: url('la_koi_photos/Luwombo_food.jpg'); 
+    background-size: cover; /* Cover entire viewport */
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed; 
+    opacity: 0.85; 
+    z-index: -2; 
+  }
+  
+  /* ================= BACKGROUND OVERLAY ================= */
+  .background-overlay {
+    position: fixed; 
+    inset: 0; 
+    background: rgba(7, 7, 7, 0.55); 
+    z-index: -1; 
+  }
+  
+  /* ================= BACK BUTTON ================= */
+  .back-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgb(97, 36, 18, 0.8)    ;
+    /*Darkgreyforcompanycolor*/backdrop-filter: blur(10px);
+    padding: 12px 20px;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+  .back-btn:hover {
+    background: orange; /* Darker grey hover */
+    transform: translateY(-2px); 
+  }
+  
+  /* ================= FORM CONTAINER ================= */
+  .container {
+    max-width: 650px; 
+    margin: auto; 
+    background: rgba(255, 255, 255, 0.62 ); /* Slightly more opaque for clarity */
+    padding: 30px; 
+    border-radius: 12px; 
+    box-shadow: 0 12px 30px rgba(0,0,0,0.9); 
+  }
+  
+  /* ================= LABELS ================= */
+  label {
+    display: block; 
+    margin-bottom: 6px; 
+    font-weight: 600; 
+    color: #222; /* Dark grey for readability */
+    font-size: 15px; 
+  }
+  
+  /* ================= INPUT, SELECT & TEXTAREA ================= */
+  input, select, textarea {
+    width: 100%; 
+    padding: 14px; 
+    margin-bottom: 18px; 
+    border-radius: 8px; 
+    border: 1px solid #ccc; 
+    font-size: 15px; 
+    background-color: #fff; /* White background for contrast */
+    transition: all 0.3s ease; 
+  }
+  input:focus, select:focus, textarea:focus {
+    outline: none; 
+    border-color: #555; /* Dark grey focus border */
+    box-shadow: 0 0 6px rgba(0,0,0,0.1); 
+  }
+  
+  /* ================= TEXTAREA SPECIFIC ================= */
+  textarea {
+    min-height: 150px; 
+    resize: vertical; 
+  }
+  
+  /* ================= INTERNATIONAL PHONE INPUT ================= */
+  .iti {
+    width: 100%; 
+    margin-bottom: 18px; 
+  }
+  .iti input {
+    padding-left: 90px !important; /* Space for country flag */
+  }
+  
+  /* ================= DELIVERY OPTIONS ================= */
+  /* ================= DELIVERY OPTIONS (RADIO BUTTONS) ================= */
+  .delivery-options {
+    display: flex;                      /* Keep radio buttons in a row */
+    gap: 30px;                           /* Space between options */
+    margin-bottom: 18px;                /* Space below delivery options */
+    align-items: center;                /* Vertically center label and radio */
+  }
+  
+  /* Hide the default radio button */
+  .delivery-options input[type="radio"] {
+    appearance: none;                   /* Remove default browser style */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 18px;                         /* Custom width */
+    height: 18px;                        /* Custom height */
+    border: 2px solid #333;              /* Dark grey border */
+    border-radius: 50%;                  /* Make it circular */
+    position: relative;                  /* For inner dot */
+    cursor: pointer;                     /* Pointer cursor */
+    margin: 0;                            /* Remove default margin */
+  }
+  
+  /* The inner dot when selected */
+  .delivery-options input[type="radio"]:checked::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);   /* Center the dot */
+    width: 10px;                         /* Dot size */
+    height: 10px;                        /* Dot size */
+    background-color: #612412;           /* WhatsApp green for selected */
+    border-radius: 50%;                  /* Circular dot */
+  }
+  
+  /* Label styling */
+  .delivery-options label {
+    font-weight: 500;                   /* Slightly bold */
+    color: #222;                        /* Dark grey text */
+    cursor: pointer;                     /* Cursor pointer on labels */
+    display: flex;                      /* Flex to align label text and radio */
+    align-items: center;                /* Vertical alignment */
+    gap: 8px;                           /* Space between dot and label text */
+  }
+  
+  
+  
+  /* ================= SUBMIT BUTTON ================= */
+  button {
+    width: 100%; 
+    background: #612412; /* Company dark grey */
+    color: #fff; 
+    border: none; 
+    padding: 16px; 
+    font-size: 16px; 
+    cursor: pointer; 
+    font-weight: 600; 
+    transition: all 0.3s ease; 
+  }
+  button:hover {
+    background: orange; /* Slightly lighter grey hover */
+    transform: translateY(-2px); 
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15); 
+  }
+  
+  /* ================= SUCCESS MESSAGE ================= */
+  .success-msg {
+    display: none; 
+    margin-top: 10px; 
+    color: #612412; /* SEO-friendly green for success */
+    font-weight: bold; 
+    font-size: 14px; 
+    text-align: center; 
+  }
+  
+  /* ================= AUTOCOMPLETE DROPDOWN ================= */
+  .autocomplete-items {
+    position: relative; 
+    border: 1px solid #ccc; 
+    border-top: none; 
+    max-height: 180px; 
+    overflow-y: auto; 
+    background: #fff; 
+    margin-top: -10px; 
+    margin-bottom: 18px; 
+    border-radius: 6px; 
+    z-index: 99; 
+  }
+  .autocomplete-item {
+    padding: 10px; 
+    cursor: pointer; 
+  }
+  .autocomplete-item:hover {
+    background-color: #f0f0f0; 
+  }
+  
+  /* ================= RESPONSIVE DESIGN ================= */
+  @media (max-width: 768px) {
+    .container {
+        padding: 20px; 
+    }
+    input, select, textarea, button {
+        font-size: 14px; 
+    }
+  }
+  @media (max-width: 480px) {
+    body {
+        padding: 12px; 
+    }
+    .container {
+        padding: 15px; 
+    }
+    .delivery-options {
+        flex-direction: column; 
+    }
+    input, select, textarea, button {
+        font-size: 13px; 
+    }
+    .back-btn {
+        top: 12px;
+        right: 12px;
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+  }
+  
+  /* ================= SEO & ACCESSIBILITY ================= */
+  /* Ensure all inputs have labels for screen readers */
+  input:required, textarea:required, select:required {
+    outline: 2px solid transparent;
+  }
+  
+  /* Focus style for accessibility */
+  input:focus-visible, textarea:focus-visible, select:focus-visible {
+    outline: 2px solid #111; 
+  }
+  
