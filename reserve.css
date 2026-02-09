@@ -51,13 +51,16 @@
     color: #fff;
     font-weight: 700;
     text-decoration: none;
-    border: 2px solid rgba(255, 255, 255, 0.6);
+    border: 2px solid rgba(248, 182, 1, 0.6);
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     z-index: 1000;
     transition: all 0.3s ease;
 }
   .back-btn:hover {
-    background: orange; /* Darker grey hover */
+    color: #111; /* Darker text on hover for contrast */
+    font-weight: 700;
+    background: rgba(255, 166, 0, 0.8); /* Darker grey hover */
+    /* border: 3px solid rgba(99, 18, 8, 0.6); */
     transform: translateY(-2px); 
   }
   
@@ -173,8 +176,10 @@
     transition: all 0.3s ease; 
   }
   button:hover {
-    background: orange; /* Slightly lighter grey hover */
+    background: rgba(255, 166, 0, 0.8);  /* Slightly lighter grey hover */
     transform: translateY(-2px); 
+    color: #111; /* Darker text on hover for contrast */
+    font-weight: 700;
     box-shadow: 0 8px 20px rgba(0,0,0,0.15); 
   }
   
