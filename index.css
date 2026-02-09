@@ -422,29 +422,36 @@
 
 /* Order Now button */
 .order-now-btn {
-  display: inline-flex;               /* allows full control */
-  align-items: center;                /* vertical center */
-  justify-content: flex-start;        /* left-align content inside button */
-  padding: 10px 45px;                 /* padding for top/bottom and sides */
+  display: inline-flex;
+  align-items: center;           /* vertical center */
+  justify-content: center;       /* center text inside button */
+  padding: 15px 35px;            /* top/bottom, left/right padding */
   font-size: 16px;
   font-weight: 600;
-  background: rgb(97, 36, 18);  /* luxury gold */
-  border: 2px solid #f5f3ef;             /* white border for contrast */
+  background: rgb(97, 36, 18);   /* luxury brown/gold feel */
+  border: 1px solid #f5f3ef;    /* white border for contrast */
   text-decoration: none;
   transition: background 0.3s ease, transform 0.2s ease;
   color: #fff !important;
-  width: max-content;                 /* shrink to content width */
-  
+  width: auto;                   /* shrink/grow based on text */
+  border-radius: 30px;
 }
 
 .order-now-btn .btn-text {
-  padding: 0 20px 0 20px;             /* left and right padding inside text */
+  padding: 0;                     /* no extra padding inside */
+  white-space: nowrap;            /* prevent text from breaking */
 }
 
 .order-now-btn:hover {
-  background: #9a6e1f;                /* darker gold on hover */
+  background: #9a6e1f;            /* darker gold on hover */
   transform: scale(1.05);
   color: #fff !important;
+}
+
+/* Optional: center the delivery section */
+.menu-delivery {
+  text-align: center;
+  margin: 20px 0;
 }
 
 
