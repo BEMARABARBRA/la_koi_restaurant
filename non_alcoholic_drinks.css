@@ -5,7 +5,6 @@
   box-sizing: border-box;
 }
 
-/* ================= BODY ================= */
 body {
   font-family: 'Poppins', sans-serif;
   background: #0e1c14;
@@ -18,52 +17,50 @@ body {
   min-height: 100vh;
 }
 
-/* ================= LEFT SIDE ================= */
 .menu-content {
   width: 55%;
-  padding: 60px;
-  background: linear-gradient(180deg, #612411, #361005);
+  padding: 40px;
+  background: linear-gradient(180deg, #300c02, #000000); /* Matched the alcoholic menu depth */
   overflow-y: auto;
 }
 
 /* ================= TITLE ================= */
 .menu-title {
-  font-size: 42px;                 /* Large heading */
-  margin-bottom: 40px;              /* Space below */
-  letter-spacing: 3px;              /* Elegant spacing */
-  text-align: center;               /* Center the text */
-
-  /* Gradient Text */
-  background: linear-gradient(90deg, #f5a104, #faf9f6, #FF8C00);
-  -webkit-background-clip: text;    /* Clip gradient to text */
-  -webkit-text-fill-color: transparent; /* Make text transparent */
-  
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.6); /* Soft shadow */
+  font-size: 45px;
+  margin-bottom: 20px;
+  letter-spacing: 3px;
+  background: linear-gradient(90deg, #f5a104, #ffffff, #FF8C00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
 }
-
 
 /* ================= DRINK GRID ================= */
 .drink-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 25px;
+  gap: 15px;
 }
 
-/* ================= DRINK ITEM ================= */
 .drink-item {
   background: rgba(255,255,255,0.05);
-  padding: 20px;
+  padding: 18px;
   border-left: 3px solid #E79808;
+  border-radius: 2px;
 }
 
-/* Drink header */
 .drink-header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
 }
 
-/* Price styling */
+.drink-header h3 {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #efefef;
+}
+
 .drink-header span {
   color: #E79808;
   font-weight: bold;
@@ -86,77 +83,57 @@ body {
 }
 
 .controls input {
-  width: 50px;
+  width: 45px;
   text-align: center;
+  border: none;
+  background: #fff;
 }
 
-/* Order button */
 .order-btn {
-  background: #27ae60;
-  color: #fff;
+  background: #27ae60 !important;
+  color: #fff !important;
+  margin-left: auto;
 }
 
 /* ================= SECTION TITLES ================= */
 .section-title {
-  margin: 50px 0 20px 0; /* spacing above and below */
-  font-size: 25px; /* medium heading */
-
-  /* White → Yellow Orange → Gold gradient */
-  background: linear-gradient(90deg, #f2b705, #ffffff, #ffb703, #f2b705);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* stronger depth */
-  letter-spacing: 1px;
+  margin: 45px 0 15px 0;
+  font-size: 24px;
+  color: #E79808;
+  border-bottom: 1px solid rgba(231, 152, 8, 0.3);
+  padding-bottom: 5px;
+  text-transform: uppercase;
 }
-
 
 /* ================= BACK BUTTON ================= */
 .back-btn {
   position: fixed;
   top: 20px;
   right: 20px;
-  background: rgb(97, 36, 18, 0.8)    ;
-  /*Darkgreyforcompanycolor*/backdrop-filter: blur(10px);
+  background: rgba(97, 36, 18, 0.9);
   padding: 12px 20px;
   color: #fff;
   font-weight: 700;
   text-decoration: none;
-  border: 2px solid rgba(248, 182, 1, 0.6);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  border: 2px solid #E79808;
   z-index: 1000;
-  transition: all 0.3s ease;
-}
-.back-btn:hover {
-  color: #111; /* Darker text on hover for contrast */
-  font-weight: 700;
-  background: rgba(255, 166, 0, 0.8); /* Darker grey hover */
-  /* border: 3px solid rgba(99, 18, 8, 0.6); */
-  transform: translateY(-2px); 
 }
 
-
-/* ================= RIGHT IMAGE ================= */
+/* ================= RIGHT IMAGE (BAR) ================= */
 .menu-image {
   width: 45%;
-  background-image: url("la_koi_photos/GiggleJuice_glassCocktail.jpeg");
+  background-image: url("la_koi_photos/Hibiscus_Pineapple_Smoothie.jpeg"); /* High quality bar view */
   background-size: cover;
   background-position: center;
-  padding-left: 20px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
 }
 
 /* ================= RESPONSIVE ================= */
 @media (max-width: 900px) {
-  .split-menu {
-    flex-direction: column;
-  }
-
-  .menu-content,
-  .menu-image {
-    width: 100%;
-  }
-
-  .drink-grid {
-    grid-template-columns: 1fr;
-  }
+  .split-menu { flex-direction: column; }
+  .menu-content, .menu-image { width: 100%; }
+  .menu-image { height: 350px; position: relative; }
+  .drink-grid { grid-template-columns: 1fr; }
 }

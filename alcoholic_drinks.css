@@ -1,0 +1,137 @@
+/* ================= GLOBAL RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #0e1c14;
+    color: #fff;
+  }
+  
+  /* ================= SPLIT LAYOUT ================= */
+  .split-menu {
+    display: flex;
+    min-height: 100vh;
+  }
+  
+  .menu-content {
+    width: 55%;
+    padding: 40px;
+    background: linear-gradient(180deg, #300c02, #000000);
+    overflow-y: auto;
+  }
+  
+  /* ================= TITLE ================= */
+  .menu-title {
+    font-size: 45px;
+    margin-bottom: 20px;
+    letter-spacing: 3px;
+    background: linear-gradient(90deg, #f5a104, #ffffff, #FF8C00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+  }
+  
+  /* ================= DRINK GRID ================= */
+  .drink-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  
+  .drink-item {
+    background: rgba(255,255,255,0.05);
+    padding: 18px;
+    border-left: 3px solid #E79808;
+  }
+  
+  .drink-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  
+  .drink-header h3 {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: #ddd;
+  }
+  
+  .drink-header span {
+    color: #E79808;
+    font-weight: bold;
+  }
+  
+  /* ================= CONTROLS ================= */
+  .controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .controls button {
+    padding: 4px 8px;
+    border: none;
+    cursor: pointer;
+    background: #E79808;
+    color: #000;
+    font-weight: bold;
+  }
+  
+  .controls input {
+    width: 35px;
+    text-align: center;
+  }
+  
+  .order-btn {
+    background: #27ae60 !important;
+    color: #fff !important;
+    margin-left: auto;
+    font-size: 0.8rem;
+  }
+  
+  /* ================= SECTION TITLES ================= */
+  .section-title {
+    margin: 45px 0 15px 0;
+    font-size: 20px;
+    color: #E79808;
+    border-bottom: 1px solid rgba(231, 152, 8, 0.3);
+    padding-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px; */
+  }
+  
+  /* ================= BACK BUTTON ================= */
+  .back-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(97, 36, 18, 0.9);
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid #E79808;
+    z-index: 1000;
+  }
+  
+  /* ================= RIGHT IMAGE (BAR) ================= */
+  .menu-image {
+    width: 45%;
+    background-image: url("la_koi_photos/bar_image1.jpeg");
+    background-size: cover;
+    background-position: center;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+  }
+  
+  /* ================= RESPONSIVE ================= */
+  @media (max-width: 900px) {
+    .split-menu { flex-direction: column; }
+    .menu-content, .menu-image { width: 100%; }
+    .menu-image { height: 350px; position: relative; }
+    .drink-grid { grid-template-columns: 1fr; }
+  }

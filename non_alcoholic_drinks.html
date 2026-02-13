@@ -1,97 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <!-- ================= META DATA ================= -->
-  <meta charset="UTF-8"> <!-- Character encoding -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive scaling -->
-  <meta name="description" content="La-Koi Restaurant & Lounge Non-Alcoholic Drinks Menu in Bugolobi, Uganda.">
-  <meta name="keywords" content="La-Koi, Non-Alcoholic Drinks, Mocktails, Smoothies, Teas, Bugolobi">
-  <meta name="author" content="La-Koi Restaurant & Lounge">
-
-  <!-- ================= PAGE TITLE ================= -->
-  <title>La-Koi Luxury Drinks Menu</title>
-
-  <!-- ================= GOOGLE FONT ================= -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="La-Koi Restaurant & Lounge - Non-Alcoholic Drinks Menu">
+  <title>La-Koi Luxury Soft Drinks Menu</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
-  <!-- ================= CSS LINK ================= -->
   <link rel="stylesheet" href="non_alcoholic_drinks.css">
-
 </head>
 
 <body>
-
-  <!-- back button -->
   <a href="index.html" class="back-btn">Home</a>
 
-<!-- ================= SPLIT MENU ================= -->
 <section class="split-menu">
-
-  <!-- ================= LEFT SIDE ================= -->
   <div class="menu-content">
+    <h1 class="menu-title">NON-ALCOHOLIC MENU</h1>
 
-    <!-- Main Page Title -->
-    <h1 class="menu-title">NON-ALCOHOLIC DRINKS</h1>
-
-    <!-- ================= SOFT & ENERGY DRINKS ================= -->
     <h2 class="section-title">Soft & Energy Drinks</h2>
-
     <div class="drink-grid">
-
       <div class="drink-item" data-name="Soda" data-price="2000"></div>
       <div class="drink-item" data-name="Salt Water" data-price="2000"></div>
       <div class="drink-item" data-name="Fresh Juice" data-price="10000"></div>
       <div class="drink-item" data-name="Red Bull" data-price="10000"></div>
-      <div class="drink-item" data-name="Milkshake" data-price="14000"></div>
-      <div class="drink-item" data-name="Smoothie" data-price="15000"></div>
       <div class="drink-item" data-name="Minute Maid 500ml" data-price="8000"></div>
       <div class="drink-item" data-name="Minute Maid 300ml" data-price="4000"></div>
       <div class="drink-item" data-name="Rockboom 300ml" data-price="4000"></div>
       <div class="drink-item" data-name="Sting" data-price="4000"></div>
-
     </div>
 
-    <!-- ================= HOT TEAS ================= -->
-    <h2 class="section-title">Hot Teas & Special Hot Drinks</h2>
-
+    <h2 class="section-title">Shakes & Smoothies</h2>
     <div class="drink-grid">
+      <div class="drink-item" data-name="Milkshake" data-price="14000"></div>
+      <div class="drink-item" data-name="Smoothie" data-price="15000"></div>
+    </div>
 
+    <h2 class="section-title">Hot Teas & Special Brews</h2>
+    <div class="drink-grid">
       <div class="drink-item" data-name="Traditional Black Tea" data-price="5000"></div>
       <div class="drink-item" data-name="African Tea" data-price="7000"></div>
       <div class="drink-item" data-name="Dawa Tea" data-price="8000"></div>
       <div class="drink-item" data-name="Tropical Pineapple Bliss" data-price="12000"></div>
-
     </div>
 
-    <!-- ================= MOCKTAILS ================= -->
     <h2 class="section-title">Refreshing Mocktails</h2>
-
     <div class="drink-grid">
-
       <div class="drink-item" data-name="Virgin Mojito" data-price="15000"></div>
       <div class="drink-item" data-name="Pineapple Ginger Fizz" data-price="15000"></div>
       <div class="drink-item" data-name="Tropical Sunrise" data-price="15000"></div>
       <div class="drink-item" data-name="Blue Breeze – Virgin" data-price="15000"></div>
       <div class="drink-item" data-name="Cucumber Mint Cooler" data-price="15000"></div>
       <div class="drink-item" data-name="Berry Lemonade" data-price="15000"></div>
-
     </div>
 
   </div>
 
-  <!-- ================= RIGHT IMAGE ================= -->
   <div class="menu-image"></div>
-
 </section>
 
-<!-- ================= WHATSAPP SCRIPT ================= -->
 <script>
-
 const whatsappNumber = "256784948474";
-
 document.querySelectorAll(".drink-item").forEach(card => {
-
   const name = card.dataset.name;
   const price = parseInt(card.dataset.price);
 
@@ -100,7 +68,6 @@ document.querySelectorAll(".drink-item").forEach(card => {
       <h3>${name}</h3>
       <span>${price.toLocaleString()}/=</span>
     </div>
-
     <div class="controls">
       <button class="minus">−</button>
       <input type="number" value="1" min="1">
@@ -116,26 +83,13 @@ document.querySelectorAll(".drink-item").forEach(card => {
 
   minus.onclick = () => { if (qtyInput.value > 1) qtyInput.value--; };
   plus.onclick = () => { qtyInput.value++; };
-
   orderBtn.onclick = () => {
-    const qty = parseInt(qtyInput.value);
+    const qty = qtyInput.value;
     const total = price * qty;
-
-    const message = `
-Hello La-Koi Restaurant & Lounge,
-My Order:
-${name}
-Price: ${price.toLocaleString()}/=
-Quantity: ${qty}
-Total: ${total.toLocaleString()}/=
-    `;
-
+    const message = `*Order from La-Koi*\nItem: ${name}\nQuantity: ${qty}\nTotal: ${total.toLocaleString()}/=`;
     window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, "_blank");
   };
-
 });
-
 </script>
-
 </body>
 </html>
