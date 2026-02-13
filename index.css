@@ -355,8 +355,8 @@
   padding: 10px 20px;
   margin-top: 10px;
   background: rgba(245, 245, 245, 0.95);
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  /*border-radius: 8px;
+  */box-shadow: 0 4px 10px rgba(0,0,0,0.15);
   position: relative;
   z-index: 10;
   transition: all 0.3s ease;
@@ -375,12 +375,14 @@
   font-size: 16px;
   font-weight: 600;
   color: #111;
-  padding: 15px;
+  padding: 5px;
   transition: color 0.3s ease;
 }
 
 .dropdown-menu li a:hover {
-  color: #612412;
+  /* color: #612412; */
+  color: whitesmoke;
+  background-color: rgb(73, 27, 13, 0.6); /* deep brown */
 }
 
 /* Arrow indicator */
