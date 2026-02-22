@@ -1,10 +1,13 @@
+/* ================= GLOBAL SETTINGS ================= */
 :root {
     --black: #0d0d0d;
     --card-bg: #1a1a1a;
     --gold: #f2b705;
     --dark-gold: #d49c00;
+    --maroon: #612412; /* YOUR NEW BRAND COLOR */
     --white: #ffffff;
     --gray: #999;
+    --green: #25d366;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -14,87 +17,115 @@ body {
     color: var(--white);
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
+    /* Added a subtle maroon radial gradient to the background for depth */
+    background: radial-gradient(circle at top right, #1a0a05 0%, #0d0d0d 100%);
 }
 
+/* ================= LAYOUT & HEADER ================= */
 .menu-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 60px 20px;
 }
 
-/* Header */
-.menu-header { margin-bottom: 50px; }
+.menu-header { margin-bottom: 50px; text-align: left; }
 .brand-name { font-weight: 600; letter-spacing: 4px; color: var(--gold); font-size: 0.8rem; margin-bottom: 5px; }
 .main-title { font-family: 'Oswald', sans-serif; font-size: clamp(3rem, 10vw, 6rem); line-height: 0.9; text-transform: uppercase; }
 .main-title span { display: block; -webkit-text-stroke: 1px white; color: transparent; }
 
-/* Hero Box */
+/* ================= HERO HIGHLIGHT ================= */
 .hero-highlight {
     display: flex; gap: 40px; align-items: center; flex-wrap: wrap;
-    background: var(--card-bg); padding: 40px; border-radius: 20px; margin-bottom: 80px;
+    /* Changed border and background to use the Maroon color */
+    background: linear-gradient(145deg, var(--card-bg), #2a110a); 
+    padding: 40px; border-radius: 20px; margin-bottom: 80px;
+    border: 1px solid var(--maroon);
 }
 .hero-image-box { flex: 1; min-width: 300px; }
 .hero-image-box img { width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
 .hero-text { flex: 1; min-width: 300px; }
+.hero-text .label { color: var(--gold); font-size: 0.8rem; letter-spacing: 2px; }
 .hero-text h2 { font-family: 'Oswald', sans-serif; font-size: clamp(2rem, 5vw, 4rem); line-height: 1; margin: 15px 0; }
 .hero-text .accent { color: var(--gold); }
-.hero-text p { color: var(--gray); margin-bottom: 25px; }
 
-.order-now-btn {
-    background: var(--gold); border: none; padding: 15px 40px; border-radius: 50px;
-    font-weight: 700; cursor: pointer; transition: 0.3s;
-}
-.order-now-btn:hover { background: var(--white); transform: scale(1.05); }
-
-/* Grid & Items */
+/* ================= MENU GRID & ITEMS ================= */
 .menu-section { margin-bottom: 60px; }
 .category-title {
     font-family: 'Oswald', sans-serif; font-size: 2.2rem; text-transform: uppercase;
-    color: var(--white); margin-bottom: 30px; border-left: 5px solid var(--gold); padding-left: 15px;
+    color: var(--white); margin-bottom: 30px; 
+    /* The line next to the title is now Maroon for a classy look */
+    border-left: 5px solid var(--maroon); padding-left: 15px;
 }
 
 .menu-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 30px;
 }
 
 .menu-item {
     background: var(--card-bg); border-radius: 15px; overflow: hidden;
-    display: flex; flex-direction: column; transition: 0.3s;
+    display: flex; flex-direction: column; transition: 0.3s ease;
+    border: 1px solid rgba(97, 36, 18, 0.2); /* Faint Maroon border */
 }
-.menu-item:hover { transform: translateY(-10px); }
 
-/* KEY: IMAGE SHOWN FULL */
+/* Hover now glows with the Maroon color */
+.menu-item:hover { transform: translateY(-5px); border-color: var(--maroon); box-shadow: 0 10px 20px rgba(97, 36, 18, 0.3); }
+
 .item-img-box {
-    width: 100%;
-    height: 240px;
-    background: #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
+    width: 100%; height: 220px; background: #000;
+    display: flex; align-items: center; justify-content: center; padding: 10px;
 }
-.item-img-box img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain; /* Prevents cropping */
-}
+.item-img-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
-.item-details { padding: 25px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; }
-.item-details h3 { font-family: 'Oswald', sans-serif; font-size: 1.2rem; margin-bottom: 10px; flex-grow: 1; }
-.item-details p { color: var(--gray); font-size: 0.8rem; margin-bottom: 20px; }
+.item-details { padding: 20px; text-align: center; flex-grow: 1; }
+.item-details h3 { font-family: 'Oswald', sans-serif; font-size: 1.3rem; margin-bottom: 8px; color: var(--white); }
+.item-details p { color: var(--gray); font-size: 0.85rem; margin-bottom: 15px; height: 40px; }
 
+/* The Price Strip now uses a gradient of Maroon and Gold text */
 .price-strip {
-    background: var(--gold); color: #000; padding: 12px; font-weight: 700; border-radius: 8px;
+    background: rgba(97, 36, 18, 0.4); 
+    color: var(--gold); padding: 8px; 
+    font-weight: 700; border-radius: 5px; margin-bottom: 20px; 
+    border: 1px solid var(--maroon);
 }
 
-/* Misc */
+/* ================= ORDER CONTROLS ================= */
+.order-wrapper { display: flex; flex-direction: column; gap: 10px; }
+.qty-box { display: flex; align-items: center; justify-content: center; gap: 5px; }
+
+/* Quantity buttons are now Maroon for brand consistency */
+.qty-btn {
+    background: var(--maroon); border: none; width: 35px; height: 35px;
+    border-radius: 5px; cursor: pointer; color: white; font-weight: bold; font-size: 1.2rem;
+}
+
+.qty-box input {
+    width: 50px; height: 35px; text-align: center; border: 1px solid var(--maroon);
+    background: #fff; color: #000; font-weight: bold; border-radius: 5px;
+}
+
+.order-btn {
+    background: var(--green); color: white; border: none; padding: 12px;
+    border-radius: 5px; font-weight: 700; cursor: pointer; font-size: 0.8rem;
+    transition: 0.3s; width: 100%;
+}
+
+.order-btn:hover { background: #1eb954; transform: scale(1.02); }
+
+/* ================= NAVIGATION ================= */
 .back-btn {
-    position: fixed; top: 20px; right: 20px; background: var(--gold); color: #000;
+    position: fixed; top: 20px; right: 20px; 
+    background: var(--maroon); color: #fff; /* Swapped to Maroon background */
     padding: 10px 20px; text-decoration: none; font-weight: 700; border-radius: 5px; z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    border: 1px solid var(--gold);
 }
 
+/* ================= RESPONSIVE DESIGN ================= */
 @media (max-width: 768px) {
     .main-title { font-size: 3.5rem; }
+    .hero-highlight { padding: 20px; }
+    .menu-grid { grid-template-columns: 1fr; }
+    .item-img-box { height: 200px; }
 }
