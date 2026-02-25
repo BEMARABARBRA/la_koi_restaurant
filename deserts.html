@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La-Koi | Dessert Menu</title>
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="deserts.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- 'Oswald' for big MENU, 'Great Vibes' for script, 'Montserrat' for text -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&family=Oswald:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Back Button -->
+    <a href="index.html" class="back-btn">Home</a>
+
+    <!-- HEADER SECTION -->
+    <header class="menu-header">
+        <h1 class="bg-text">MENU</h1>
+        <h2 class="script-text">Desserts</h2>
+    </header>
+
+    <!-- FLOATING CART BUTTON -->
+    <div class="cart-floating" onclick="toggleCart()">
+        <span class="cart-icon">🛒</span>
+        <span id="cart-count-badge" style="display:none;">0</span>
+    </div>
+
+    <!-- CART MODAL -->
+    <div id="cart-modal" class="cart-modal">
+        <div class="cart-header">
+            <h3>Your Order</h3>
+            <button onclick="toggleCart()" class="close-btn">&times;</button>
+        </div>
+        <div id="cart-items" class="cart-items">
+            <!-- Items injected by JS -->
+            <p class="empty-msg">Your cart is empty.</p>
+        </div>
+        <div class="cart-footer">
+            <div class="total-row">Total: <span id="cart-total">0/=</span></div>
+            <button onclick="checkoutWhatsApp()" class="checkout-btn">
+                Complete Order on WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <!-- MENU GRID -->
+    <main class="card-grid">
+
+        <!-- ITEM 1 -->
+        <div class="food-card">
+            <div class="plate-container">
+                <!-- <span class="top-badge">TOP 1</span> -->
+                <img src="la_koi_photos/fruit_salad_bowl.jpeg" alt="Fruit Salad">
+            </div>
+            <div class="card-details">
+                <h3>Fruit Salad</h3>
+                <p class="desc">Fresh seasonal fruits, diced and served chilled for natural sweetness.</p>
+                <div class="price">10,000/=</div>
+                
+                <div class="controls">
+                    <button onclick="changeQty('item1', -1)">-</button>
+                    <span id="qty-item1">0</span>
+                    <button onclick="changeQty('item1', 1, 'Fruit Salad', 10000)">+</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ITEM 2 -->
+        <div class="food-card">
+            <div class="plate-container">
+                <!-- <span class="top-badge">TOP 2</span> -->
+                <img src="la_koi_photos/fruit_icecream2.png" alt="Ice Cream Combo">
+            </div>
+            <div class="card-details">
+                <h3>Ice Cream + Fruit</h3>
+                <p class="desc">Velvety vanilla ice cream paired with fresh, juicy fruit slices.</p>
+                <div class="price">8,000/=</div>
+
+                <div class="controls">
+                    <button onclick="changeQty('item2', -1)">-</button>
+                    <span id="qty-item2">0</span>
+                    <button onclick="changeQty('item2', 1, 'Ice Cream + Fruit', 8000)">+</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ITEM 3 -->
+        <div class="food-card">
+            <div class="plate-container">
+                <!-- <span class="top-badge">TOP 3</span> -->
+                <img src="la_koi_photos/yoghurt_fruits.jpeg" alt="Yogurt Cup">
+            </div>
+            <div class="card-details">
+                <h3>Fruit & Yogurt Cup</h3>
+                <p class="desc">Creamy natural yogurt layered with vibrant seasonal fruits.</p>
+                <div class="price">8,000/=</div>
+
+                <div class="controls">
+                    <button onclick="changeQty('item3', -1)">-</button>
+                    <span id="qty-item3">0</span>
+                    <button onclick="changeQty('item3', 1, 'Fruit & Yogurt Cup', 8000)">+</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ITEM 4 -->
+        <div class="food-card">
+            <div class="plate-container">
+                <img src="la_koi_photos/banana_honey.jpeg" alt="Banana Honey">
+            </div>
+            <div class="card-details">
+                <h3>Banana & Honey</h3>
+                <p class="desc">Sliced ripe bananas drizzled with pure golden honey.</p>
+                <div class="price">6,000/=</div>
+
+                <div class="controls">
+                    <button onclick="changeQty('item4', -1)">-</button>
+                    <span id="qty-item4">0</span>
+                    <button onclick="changeQty('item4', 1, 'Banana & Honey', 6000)">+</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ITEM 5 -->
+        <div class="food-card">
+            <div class="plate-container">
+                <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=600&auto=format&fit=crop" alt="Ice Cream Scoop">
+            </div>
+            <div class="card-details">
+                <h3>Ice Cream Scoop</h3>
+                <p class="desc">Classic scoop. Vanilla, Chocolate, or Strawberry.</p>
+                <div class="price">5,000/=</div>
+
+                <div class="controls">
+                    <button onclick="changeQty('item5', -1)">-</button>
+                    <span id="qty-item5">0</span>
+                    <button onclick="changeQty('item5', 1, 'Ice Cream Scoop', 5000)">+</button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        const WHATSAPP_NUMBER = "256700000000"; // REPLACE THIS
+
+        let cart = {};
+
+        function changeQty(id, change, name, price) {
+            if (!cart[id] && change > 0) {
+                cart[id] = { name: name, price: price, qty: 0 };
+            }
+            if (!cart[id]) return;
+
+            cart[id].qty += change;
+            
+            if (cart[id].qty <= 0) {
+                delete cart[id];
+                const display = document.getElementById(`qty-${id}`);
+                if(display) display.innerText = "0";
+            }
+            updateUI();
+        }
+
+        function updateUI() {
+            let totalCount = 0;
+            let totalPrice = 0;
+            const container = document.getElementById('cart-items');
+            container.innerHTML = "";
+
+            for (let id in cart) {
+                let item = cart[id];
+                totalCount += item.qty;
+                totalPrice += (item.price * item.qty);
+
+                const display = document.getElementById(`qty-${id}`);
+                if (display) display.innerText = item.qty;
+
+                const row = document.createElement('div');
+                row.className = 'cart-row';
+                row.innerHTML = `
+                    <div style="flex-grow:1;"><strong>${item.name}</strong></div>
+                    <div style="margin-right:15px;">x${item.qty}</div>
+                    <div>${(item.price * item.qty).toLocaleString()}/=</div>
+                `;
+                container.appendChild(row);
+            }
+
+            const badge = document.getElementById('cart-count-badge');
+            badge.innerText = totalCount;
+            badge.style.display = totalCount > 0 ? 'flex' : 'none';
+            
+            document.getElementById('cart-total').innerText = totalPrice.toLocaleString() + "/=";
+
+            if (totalCount === 0) {
+                container.innerHTML = '<p class="empty-msg">Your cart is empty.</p>';
+            }
+        }
+
+        function toggleCart() {
+            document.getElementById('cart-modal').classList.toggle('active');
+        }
+
+        function checkoutWhatsApp() {
+            let msg = "Hello! I'd like to order:%0A%0A";
+            let total = 0;
+            let hasItems = false;
+
+            for (let id in cart) {
+                let item = cart[id];
+                let sub = item.price * item.qty;
+                total += sub;
+                msg += `- ${item.name} x${item.qty} (${sub.toLocaleString()}/=)%0A`;
+                hasItems = true;
+            }
+
+            if (!hasItems) {
+                alert("Cart is empty!");
+                return;
+            }
+
+            msg += `%0A*Total: ${total.toLocaleString()}/=*`;
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
+        }
+    </script>
+</body>
+</html>

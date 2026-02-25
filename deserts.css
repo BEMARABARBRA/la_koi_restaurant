@@ -1,0 +1,275 @@
+/* --- RESET & VARIABLES --- */
+:root {
+    --brand-dark: #1a0804;   /* Very dark brown/black base */
+    --brand-maroon: #612412; /* Your Company Maroon */
+    --brand-gold: #F6AF16;   /* Your Company Gold */
+    --card-bg: #2b120a;      /* Lighter brown for cards */
+    --text-white: #ffffff;
+    --text-gray: #d4c5c1;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* Dark Gradient Background */
+    background: radial-gradient(circle at top, var(--brand-maroon), var(--brand-dark) 60%);
+    background-attachment: fixed; /* Keeps gradient steady while scrolling */
+    color: var(--text-white);
+    font-family: 'Montserrat', sans-serif;
+    min-height: 100vh;
+    padding-bottom: 100px;
+}
+
+/* ================= BACK BUTTON ================= */
+.back-btn {
+    position: fixed;
+    top: 40px;
+    right: 20px;
+    background: rgba(97, 36, 18, 0.9);
+    padding: 10px 15px;
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid #E79808;
+    z-index: 1000;
+    font-weight: 600;
+    transition: 0.3s;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+  }   
+  .back-btn:hover {
+    background: #E79808;
+    color: #000;
+  }
+
+/* --- HEADER SECTION --- */
+.menu-header {
+    position: relative;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* Big "MENU" in background */
+.bg-text {
+    font-family: 'Oswald', sans-serif;
+    font-size: 180px;
+    color: rgba(0, 0, 0, 0.3); /* Transparent black */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    letter-spacing: 10px;
+    margin: 0;
+    pointer-events: none;
+}
+
+/* Script "Desserts" Overlay */
+.script-text {
+    font-family: 'Great Vibes', cursive;
+    font-size: 80px;
+    color: var(--text-white);
+    z-index: 2;
+    position: relative;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.8);
+    font-weight: 400;
+}
+
+/* --- GRID LAYOUT --- */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 80px 30px; /* Big row gap to allow plates to pop up */
+    max-width: 1200px;
+    margin: 60px auto 0;
+    padding: 0 20px;
+}
+
+/* --- CARD DESIGN --- */
+.food-card {
+    background-color: var(--card-bg);
+    border-radius: 4px;
+    padding: 0 20px 30px 20px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px; /* Pushes card down so image can stick out top */
+}
+
+/* The Round Plate Image */
+.plate-container {
+    width: 300px;
+    height: 300px;
+    margin: -100px auto 20px; /* Negative margin pulls it up */
+    position: relative;
+}
+
+.plate-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid var(--card-bg); /* Matches card color to look like part of it */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+}
+
+/* Top Badges (TOP 1, TOP 2) */
+.top-badge {
+    position: absolute;
+    top: 0;
+    left: -10px;
+    background-color: #fff;
+    color: #000;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 14px;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Card Text */
+.card-details h3 {
+    text-transform: uppercase;
+    font-size: 18px;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    color: var(--text-white);
+}
+
+.desc {
+    font-size: 13px;
+    color: var(--text-gray);
+    margin-bottom: 20px;
+    line-height: 1.4;
+    min-height: 40px; /* Align cards */
+}
+
+.price {
+    font-size: 24px;
+    color: var(--text-white);
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+/* --- BUTTONS --- */
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.controls button {
+    background-color: transparent;
+    border: 1px solid var(--brand-gold);
+    color: var(--brand-gold);
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.controls button:hover {
+    background-color: var(--brand-gold);
+    color: #000;
+}
+
+.controls span {
+    font-size: 18px;
+    font-weight: bold;
+    width: 20px;
+}
+
+/* --- FLOATING CART --- */
+.cart-floating {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--brand-brown);
+    color: #000;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    cursor: pointer;
+    z-index: 100;
+    border: 3px solid #fff;
+    transition: transform 0.2s;
+}
+
+.cart-floating:hover { transform: scale(1.1); }
+.cart-icon { font-size: 28px; }
+
+#cart-count-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #d32f2f;
+    color: white;
+    font-size: 12px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    border: 2px solid #fff;
+}
+
+/* --- MODAL --- */
+.cart-modal {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    color: #333;
+    width: 90%; max-width: 400px;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.9);
+    z-index: 1000;
+    display: none;
+}
+.cart-modal.active { display: block; animation: fadeIn 0.3s; }
+@keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+
+.cart-header { display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 15px; }
+.cart-items { max-height: 250px; overflow-y: auto; margin-bottom: 20px; }
+.cart-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
+.total-row { text-align: right; font-weight: bold; font-size: 20px; margin-bottom: 15px; }
+.checkout-btn { width: 100%; padding: 15px; background: #25D366; color: #fff; border:none; font-weight:bold; cursor:pointer; border-radius: 4px; }
+.close-btn { background:none; border:none; font-size:24px; cursor:pointer; }
+.empty-msg { text-align: center; color: #888; }
+
+/* --- MOBILE ADJUSTMENTS --- */
+@media (max-width: 768px) {
+    .bg-text { font-size: 100px; }
+    .script-text { font-size: 60px; }
+    .card-grid { gap: 100px 20px; } /* More vertical space for plates */
+}
