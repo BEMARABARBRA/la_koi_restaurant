@@ -1,195 +1,399 @@
-/* ================= GLOBAL ================= */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* ================= VARIABLES ================= */
+:root {
+  --theme-yellow: #ffb700; /* Yellow from image */
+  --theme-brown: #612412;  /* Requested custom color */
+  --bg-dark: #101010;
+  --text-white: #ffffff;
 }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-  /* Using Mahogany Gradient from Drinks section */
-  background: linear-gradient(180deg, #300c02, #000000);
-  background-attachment: fixed;
+  background-color: var(--bg-dark);
+  /* Subtle wood/dark texture effect */
+  background-image: repeating-linear-gradient(90deg, #151515 0px, #1a1a1a 2px, #101010 4px);
+  color: var(--text-white);
   font-family: 'Poppins', sans-serif;
-  color: #fff;
-  padding: 60px 20px;
+  padding-bottom: 80px;
+  overflow-x: hidden;
 }
 
+/* ================= NAVIGATION ================= */
 /* ================= BACK BUTTON ================= */
 .back-btn {
   position: fixed;
   top: 20px;
   right: 20px;
   background: rgba(97, 36, 18, 0.9);
-  padding: 10px 20px;
+  padding: 10px 15px;
   color: #fff;
   text-decoration: none;
   border: 1px solid #E79808;
   z-index: 1000;
   font-weight: 600;
   transition: 0.3s;
-}
-
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}   
 .back-btn:hover {
   background: #E79808;
   color: #000;
 }
 
-.menu-container {
-  max-width: 1100px;
+.main-wrapper {
+  max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  padding: 20px;
 }
 
 /* ================= HEADER ================= */
-.menu-header {
-  margin-bottom: 40px;
-  text-align: left;
+header {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
-.brand-name {
-  font-weight: 600;
-  letter-spacing: 5px;
-  font-size: 1rem;
-  color: #E79808; /* Gold Accent */
-}
-
-.main-title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(4rem, 10vw, 8rem);
-  line-height: 0.75;
-  margin-top: 10px;
-  text-transform: uppercase;
-}
-
-.main-title span {
-  display: block;
-  margin-left: 50px;
+.script-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 4rem;
   color: #fff;
+  margin-bottom: -25px; 
+  font-weight: 400;
 }
 
-/* ================= APPETIZING SECTIONS ================= */
-.section-header {
-  margin-top: 80px;
-  margin-bottom: 40px;
+.bold-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 5rem;
+  color: var(--theme-yellow);
+  text-transform: uppercase;
+  line-height: 1;
+  letter-spacing: 2px;
 }
 
-.category-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 3rem;
-  margin-bottom: 20px;
-  color: #E79808;
-}
-
-.category-image {
-  width: 100%;
-  height: 350px;
-  background-size: cover;
-  background-position: center;
-  border-radius: 0 0 150px 150px;
-  border: 1px solid rgba(231, 152, 8, 0.2);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-}
-
-/* ================= MENU GRID & SPACING ================= */
-.menu-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-}
-
-.menu-item {
-  background: rgba(255, 255, 255, 0.04);
-  padding: 25px;
-  border-left: 3px solid #E79808;
-  transition: all 0.3s ease;
-}
-
-.menu-item:hover {
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.item-content {
+/* ================= HERO BANNER (Overlapping Images) ================= */
+.hero-banner {
+  position: relative;
+  height: 280px;
   display: flex;
-  gap: 20px;
-  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
 }
 
-.number-badge {
-  background: #E79808;
-  color: #000;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
+.yellow-strip {
+  position: absolute;
+  width: 100vw;
+  left: 50%;
+  margin-left: -50vw;
+  height: 120px;
+  background: var(--theme-yellow);
+  z-index: 1;
+}
+
+.circle-container {
+  position: relative;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
-  flex-shrink: 0;
 }
 
-.title-price {
+.circle-img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  border: 6px solid var(--theme-yellow); /* Yellow border matching image */
+  box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+  position: relative;
+}
+
+/* Side images pushed inwards to intersect */
+.left-circle { margin-right: -40px; z-index: 2; }
+.right-circle { margin-left: -40px; z-index: 2; }
+
+/* Center image is bigger and sits on top */
+.center-big {
+  width: 250px;
+  height: 250px;
+  z-index: 3;
+  border-width: 8px;
+}
+
+/* ================= MENU GRID ================= */
+.menu-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+  align-items: start;
+}
+
+.menu-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 10px;
+}
+
+/* Highlighted Middle Section using #612412 */
+.featured-column {
+  background: linear-gradient(180deg, rgba(97, 36, 18, 0.4) 0%, rgba(97, 36, 18, 0.05) 100%);
+  border: 1px solid var(--theme-brown);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.cat-header {
+  background: var(--theme-yellow);
+  color: #000;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 8px 40px;
+  border-radius: 25px;
+  font-size: 1.3rem;
+  margin-bottom: 25px;
+  display: inline-block;
+}
+
+/* Featured Header styling */
+.featured-header {
+  background: var(--theme-brown);
+  color: var(--theme-yellow);
+  border: 2px solid var(--theme-yellow);
+  transform: scale(1.1);
+}
+
+.food-list {
+  list-style: none;
+  width: 100%;
+}
+
+.food-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  margin-bottom: 8px;
+  border-bottom: 1px dashed rgba(255,255,255,0.15);
+  padding: 12px 0;
+  font-family: 'Oswald', sans-serif;
 }
 
-.item-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.4rem;
-  padding-right: 25px; /* Spacing between name and price */
-  flex-grow: 1;
+.food-info .name {
+  font-size: 1.1rem;
+  color: #ddd;
+  letter-spacing: 0.5px;
 }
 
-.price {
-  font-weight: 600;
-  color: #E79808;
-  white-space: nowrap;
-}
-
-.description {
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.5);
-  max-width: 90%;
-}
-
-/* ================= ORDER CONTROLS ================= */
-.controls {
+.food-action {
   display: flex;
   align-items: center;
   gap: 15px;
-  margin-top: 10px;
 }
 
-.controls button {
-  padding: 8px 15px;
-  border: none;
-  cursor: pointer;
-  background: #E79808;
-  color: #000;
+.price {
+  color: var(--theme-yellow);
   font-weight: bold;
-  border-radius: 2px;
+  font-size: 1.15rem;
 }
 
-.controls input {
-  width: 50px;
-  text-align: center;
-  background: rgba(255,255,255,0.1);
-  border: 1px solid #E79808;
+.add-btn {
+  background: transparent;
+  border: 1px solid var(--theme-yellow);
+  color: var(--theme-yellow);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.add-btn:hover {
+  background: var(--theme-yellow);
+  color: #000;
+  transform: scale(1.1);
+}
+
+/* Hover effect for the featured section buttons */
+.featured-column .add-btn:hover {
+  background: var(--theme-brown);
+  border-color: var(--theme-brown);
   color: #fff;
-  padding: 6px;
 }
 
-.order-btn {
-  background: #27ae60 !important; /* Action Green */
-  color: #fff !important;
-  margin-left: auto;
-  border-radius: 4px;
+/* ================= FOOTER PILL ================= */
+/* ================= WHATSAPP FOOTER BUTTON ================= */
+.whatsapp-footer-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  background-color: #25D366; /* Official WhatsApp Green */
+  color: #050505; /* White text */
+  text-decoration: none;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  padding: 12px 35px;
+  border-radius: 50px;
+  margin: 60px auto 20px auto;
+  width: fit-content;
+  box-shadow: 1 5px 1px rgba(37, 211, 102, 0.6); /* Green glowing shadow */
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+/* Styles the SVG logo inside the button */
+.whatsapp-footer-btn svg {
+  fill: #ffffff; 
+  width: 26px;
+  height: 26px;
+}
+
+/* Hover effect */
+.whatsapp-footer-btn:hover {
+  background-color: #128C7E; /* Official WhatsApp Dark Green */
+  color: #080808;
+  transform: translateY(-4px); /* Slight lift effect */
+  box-shadow: 0 8px 20px rgba(18, 140, 126, 0.6);
+}
+
+/* ================= CART UI ================= */
+.cart-float {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: var(--theme-brown); /* Using new color here too */
+  color: var(--theme-yellow);
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.8);
+  cursor: pointer;
+  z-index: 100;
+  border: 2px solid var(--theme-yellow);
+  transition: transform 0.2s;
+}
+
+.cart-float span {
+  position: absolute;
+  top: -5px; right: -5px;
+  background: red;
+  color: white;
+  font-size: 0.9rem;
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  display: flex; justify-content: center; align-items: center;
+  font-weight: bold;
+}
+
+.cart-overlay {
+  position: fixed; top:0; left:0; width:100%; height:100%;
+  background: rgba(0,0,0,0.8);
+  z-index: 101;
+  display: none;
+}
+.cart-overlay.open { display: block; }
+
+.cart-drawer {
+  position: fixed; top:0; right: -100%;
+  width: 85%; max-width: 380px; height: 100%;
+  background: #151515;
+  z-index: 102;
+  transition: 0.3s;
+  border-left: 3px solid var(--theme-brown);
+  display: flex; flex-direction: column;
+}
+.cart-drawer.open { right: 0; }
+
+.cart-header {
+  background: var(--theme-brown);
+  padding: 20px;
+  display: flex; justify-content: space-between; align-items: center;
+  border-bottom: 2px solid var(--theme-yellow);
+}
+.cart-header h3 { color: var(--theme-yellow); margin: 0; font-family: 'Oswald', sans-serif; font-size: 1.5rem; }
+.close-cart { font-size: 2.5rem; cursor: pointer; color: var(--theme-yellow); line-height: 0.5; }
+
+#cart-items-area {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.empty-msg { text-align: center; color: #888; margin-top: 20px; font-style: italic; }
+
+.cart-row {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 15px; border-bottom: 1px dashed #333; padding-bottom: 10px;
+}
+.r-name { font-size: 1rem; color: #fff; font-family: 'Oswald', sans-serif; }
+.r-price { font-size: 0.9rem; color: var(--theme-yellow); }
+
+.row-controls { display: flex; gap: 10px; align-items: center; }
+.row-controls button {
+  background: transparent; border: 1px solid var(--theme-yellow); color: var(--theme-yellow);
+  width: 28px; height: 28px; cursor: pointer; border-radius: 5px; font-weight: bold;
+}
+.row-controls span { font-weight: bold; color: #fff; }
+
+.cart-footer {
+  padding: 25px;
+  background: #0a0a0a;
+  border-top: 1px solid #333;
+}
+.total-line {
+  display: flex; justify-content: space-between;
+  font-size: 1.3rem; color: #fff; font-weight: bold; margin-bottom: 20px;
+  font-family: 'Oswald', sans-serif;
+}
+
+/* Redesigned Checkout Button */
+.checkout-btn {
+  width: 100%;
+  background: var(--theme-brown);
+  color: var(--theme-yellow);
+  padding: 15px;
+  border: 2px solid var(--theme-yellow);
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: 'Oswald', sans-serif;
+  transition: 0.3s;
+}
+.checkout-btn:hover {
+  background: var(--theme-yellow);
+  color: var(--bg-dark);
 }
 
 /* ================= RESPONSIVE ================= */
-@media (max-width: 850px) {
-  .menu-grid { grid-template-columns: 1fr; }
-  .category-image { height: 250px; }
-  .main-title { font-size: 5rem; }
+@media (max-width: 768px) {
+  .script-title { font-size: 3rem; }
+  .bold-title { font-size: 3.5rem; }
+  .hero-banner { height: 180px; }
+  .yellow-strip { height: 80px; }
+  
+  /* Responsive overlaps */
+  .circle-img { width: 100px; height: 100px; border-width: 4px; }
+  .center-big { width: 140px; height: 140px; border-width: 5px; }
+  .left-circle { margin-right: -25px; }
+  .right-circle { margin-left: -25px; }
+  
+  .menu-layout { gap: 20px; grid-template-columns: 1fr; }
 }

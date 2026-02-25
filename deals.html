@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Koi - Crazy Discount Month</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="deals.css">
+    <!-- Removed FontAwesome link to prevent loading issues -->
+</head>
+<body>
+
+    <!-- Decorative Background Elements -->
+    <div class="bg-decor">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <!-- Header Section -->
+    <header>
+        <div class="logo-area">
+            <h1>La Koi</h1>
+            <p>Restaurant & Lounge</p>
+        </div>
+        <div class="header-text">
+            <h2>CRAZY DISCOUNT MONTH</h2>
+            <p>Satisfy Your Cravings Every Day</p>
+        </div>
+    </header>
+
+    <!-- Menu Section -->
+    <main class="menu-container">
+
+        <!-- MONDAY -->
+        <div class="menu-card theme-green">
+            <div class="card-content">
+                <span class="day-badge">MONDAY</span>
+                <h3>Fresh Juice</h3>
+                <p class="offer-desc">Start your week fresh! Was 10k, now only 7k.</p>
+                <div class="price-action">
+                    <span class="price">7,000 UGX</span>
+                    <button class="add-btn" onclick="addToCart('Monday Fresh Juice', 7000)">Add to Cart</button>
+                </div>
+            </div>
+            <div class="card-image">
+                <img src="la_koi_photos/juiceglasses.png" alt="Fresh Juice">
+            </div>
+        </div>
+
+        <!-- TUESDAY -->
+        <div class="menu-card theme-brown reverse">
+            <div class="card-content">
+                <span class="day-badge">TUESDAY</span>
+                <h3>Cocktail Experience</h3>
+                <p class="offer-desc">Buy One, Get One Free on all cocktails!</p>
+                <div class="price-action">
+                    <span class="price">15,000 UGX <small>(Est. Base Price)</small></span>
+                    <button class="add-btn" onclick="addToCart('Tuesday Cocktail (BOGO)', 15000)">Add to Cart</button>
+                </div>
+            </div>
+            <div class="card-image">
+                <img src="la_koi_photos/coctails1.jpeg" alt="Cocktails">
+            </div>
+        </div>
+
+        <!-- WEDNESDAY -->
+        <div class="menu-card theme-green">
+            <div class="card-content">
+                <span class="day-badge">WEDNESDAY</span>
+                <h3>Cold Beer & Nyama Choma</h3>
+                <p class="offer-desc">5-beer bundle for 20k accompanied by Nyama Choma.</p>
+                <div class="price-action">
+                    <span class="price">20,000 UGX</span>
+                    <button class="add-btn" onclick="addToCart('Wed 5-Beer & Nyama Choma', 20000)">Add to Cart</button>
+                </div>
+            </div>
+            <div class="card-image">
+                <img src="la_koi_photos/ugandanbeers.webp" alt="Beer and Meat">
+            </div>
+        </div>
+
+        <!-- THURSDAY -->
+        <div class="menu-card theme-brown reverse">
+            <div class="card-content">
+                <span class="day-badge">THURSDAY</span>
+                <h3>Students Day</h3>
+                <p class="offer-desc">Buy crispy fries @5k and get a FREE ice cream!</p>
+                <div class="price-action">
+                    <span class="price">5,000 UGX</span>
+                    <button class="add-btn" onclick="addToCart('Thu Fries + Free Ice Cream', 5000)">Add to Cart</button>
+                </div>
+            </div>
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1576107232684-1279f390859f?auto=format&fit=crop&q=80&w=600" alt="Fries and Ice Cream">
+            </div>
+        </div>
+
+        <!-- FRIDAY -->
+        <div class="menu-card theme-green">
+            <div class="card-content">
+                <span class="day-badge">FRIDAY</span>
+                <h3>Beer & DJ Night</h3>
+                <p class="offer-desc">5-beer bundle for 20k to enjoy with a live DJ!</p>
+                <div class="price-action">
+                    <span class="price">20,000 UGX</span>
+                    <button class="add-btn" onclick="addToCart('Friday 5-Beer Bundle', 20000)">Add to Cart</button>
+                </div>
+            </div>
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1575037614876-c38db2e5c157?auto=format&fit=crop&q=80&w=600" alt="Beers">
+            </div>
+        </div>
+
+        <!-- WEEKEND -->
+        <div class="menu-card theme-brown reverse">
+            <div class="card-content">
+                <span class="day-badge">WEEKEND SPECIAL</span>
+                <h3>Fish Lovers</h3>
+                <p class="offer-desc">Get 15% off on our delicious whole fish.</p>
+                <div class="price-action">
+                    <span class="price">30,000 UGX <small>(Est. After Discount)</small></span>
+                    <button class="add-btn" onclick="addToCart('Weekend Whole Fish (15% off)', 30000)">Add to Cart</button>
+                </div>
+            </div>
+            <div class="card-image">
+                <img src="la_koi_photos/twowholefish.png" alt="Whole Fish">
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer Information -->
+    <footer>
+        <div class="contact-info">
+            <p>
+                <!-- Pure SVG Location Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F26419" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                Kataza Close, Bugolobi, Kampala, Uganda
+            </p>
+            <p>
+                <!-- Pure SVG WhatsApp Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#F26419">
+                    <path d="M12.031 0C5.397 0 .018 5.378.018 12.012c0 2.115.551 4.178 1.597 5.996L.041 24l6.155-1.614c1.748.951 3.738 1.453 5.834 1.453 6.634 0 12.013-5.378 12.013-12.012S18.665 0 12.031 0zm0 21.821c-1.8 0-3.565-.484-5.11-1.401l-.367-.217-3.8.997 1.015-3.704-.238-.378a9.904 9.904 0 0 1-1.517-5.281c0-5.485 4.463-9.948 9.949-9.948 2.66 0 5.161 1.036 7.042 2.918s2.917 4.381 2.917 7.04c0 5.486-4.463 9.949-9.949 9.949zm5.45-7.443c-.299-.15-1.768-.872-2.042-.971-.274-.1-.473-.15-.672.15-.199.299-.771.971-.945 1.171-.174.199-.348.224-.647.075-.299-.15-1.261-.465-2.403-1.485-.888-.793-1.488-1.772-1.662-2.071-.174-.299-.019-.461.13-.61.135-.135.299-.349.448-.524.15-.174.199-.299.299-.498.1-.199.05-.374-.025-.524-.075-.15-.672-1.62-.922-2.218-.242-.58-.487-.502-.672-.51-.174-.008-.374-.008-.574-.008a1.114 1.114 0 0 0-.821.374c-.299.299-1.145 1.121-1.145 2.733s1.171 3.165 1.335 3.389c.164.224 2.308 3.523 5.59 4.938.78.334 1.388.534 1.862.684.783.248 1.496.213 2.059.129.634-.095 1.944-.795 2.218-1.564.274-.769.274-1.428.199-1.564-.075-.136-.274-.212-.573-.362z"/>
+                </svg>
+                +256 752 407349
+            </p>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Floating Button -->
+    <div class="cart-floating-btn" onclick="toggleCart()">
+        <!-- Pure SVG Cart Icon (Replaces FontAwesome) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        <span id="cart-count">0</span>
+    </div>
+
+    <!-- Dark Overlay for closing the cart by clicking outside -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>Your Order</h2>
+            <button class="close-cart" onclick="toggleCart()">&times; Close</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will inject here via JS -->
+            <p class="empty-cart-msg">Your cart is empty.</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotalPrice">0 UGX</span>
+            </div>
+            <button class="checkout-btn" onclick="checkoutWhatsApp()">
+                <!-- Pure SVG WhatsApp Icon for Checkout Button -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white">
+                    <path d="M12.031 0C5.397 0 .018 5.378.018 12.012c0 2.115.551 4.178 1.597 5.996L.041 24l6.155-1.614c1.748.951 3.738 1.453 5.834 1.453 6.634 0 12.013-5.378 12.013-12.012S18.665 0 12.031 0zm0 21.821c-1.8 0-3.565-.484-5.11-1.401l-.367-.217-3.8.997 1.015-3.704-.238-.378a9.904 9.904 0 0 1-1.517-5.281c0-5.485 4.463-9.948 9.949-9.948 2.66 0 5.161 1.036 7.042 2.918s2.917 4.381 2.917 7.04c0 5.486-4.463 9.949-9.949 9.949zm5.45-7.443c-.299-.15-1.768-.872-2.042-.971-.274-.1-.473-.15-.672.15-.199.299-.771.971-.945 1.171-.174.199-.348.224-.647.075-.299-.15-1.261-.465-2.403-1.485-.888-.793-1.488-1.772-1.662-2.071-.174-.299-.019-.461.13-.61.135-.135.299-.349.448-.524.15-.174.199-.299.299-.498.1-.199.05-.374-.025-.524-.075-.15-.672-1.62-.922-2.218-.242-.58-.487-.502-.672-.51-.174-.008-.374-.008-.574-.008a1.114 1.114 0 0 0-.821.374c-.299.299-1.145 1.121-1.145 2.733s1.171 3.165 1.335 3.389c.164.224 2.308 3.523 5.59 4.938.78.334 1.388.534 1.862.684.783.248 1.496.213 2.059.129.634-.095 1.944-.795 2.218-1.564.274-.769.274-1.428.199-1.564-.075-.136-.274-.212-.573-.362z"/>
+                </svg>
+                Order via WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <!-- JavaScript for Cart and WhatsApp functionality -->
+    <script>
+        let cart = [];
+
+        function addToCart(itemName, itemPrice) {
+            let existingItem = cart.find(item => item.name === itemName);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name: itemName, price: itemPrice, quantity: 1 });
+            }
+            updateCartUI();
+            
+            // Open the cart to show it was added
+            document.getElementById('cartSidebar').classList.add('active');
+            document.getElementById('cartOverlay').classList.add('active');
+        }
+
+        function changeQty(index, amount) {
+            cart[index].quantity += amount;
+            
+            // If quantity drops to 0 or below, remove the item entirely
+            if (cart[index].quantity <= 0) {
+                cart.splice(index, 1);
+            }
+            
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartItemsDiv = document.getElementById('cartItems');
+            const cartCount = document.getElementById('cart-count');
+            const cartTotal = document.getElementById('cartTotalPrice');
+            
+            cartItemsDiv.innerHTML = '';
+            let total = 0;
+            let count = 0;
+
+            if (cart.length === 0) {
+                cartItemsDiv.innerHTML = '<p class="empty-cart-msg">Your cart is empty.</p>';
+            } else {
+                cart.forEach((item, index) => {
+                    let itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+                    count += item.quantity;
+
+                    cartItemsDiv.innerHTML += `
+                        <div class="cart-item">
+                            <div class="item-details">
+                                <h4>${item.name}</h4>
+                                <span class="item-price-unit">${item.price.toLocaleString()} UGX each</span>
+                            </div>
+                            
+                            <div class="item-actions">
+                                <div class="qty-controls">
+                                    <button class="qty-btn" onclick="changeQty(${index}, -1)">−</button>
+                                    <span class="qty-num">${item.quantity}</span>
+                                    <button class="qty-btn" onclick="changeQty(${index}, 1)">+</button>
+                                </div>
+                                <strong class="item-subtotal">${itemTotal.toLocaleString()} UGX</strong>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+
+            cartCount.innerText = count;
+            cartTotal.innerText = total.toLocaleString() + ' UGX';
+        }
+
+        function toggleCart() {
+            document.getElementById('cartSidebar').classList.toggle('active');
+            document.getElementById('cartOverlay').classList.toggle('active');
+        }
+
+        function checkoutWhatsApp() {
+            if (cart.length === 0) {
+                alert("Please add items to your cart first!");
+                return;
+            }
+
+            const phoneNumber = "256752407349"; 
+            let message = "Hello La Koi! I would like to place an order from your Crazy Discount Menu:%0A%0A";
+            
+            let total = 0;
+            cart.forEach(item => {
+                let itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                message += `- ${item.quantity}x ${item.name} (${itemTotal.toLocaleString()} UGX)%0A`;
+            });
+
+            message += `%0A*Total: ${total.toLocaleString()} UGX*`;
+
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
