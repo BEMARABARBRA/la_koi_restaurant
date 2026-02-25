@@ -1,410 +1,568 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html> 
+<html lang="en">  
+<head>   
+  <meta charset="UTF-8">   
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+  
+  <!-- ================= SEO TAGS ================= -->
+  <title>La-Koi Restaurant | Authentic Ugandan Cuisine & Modern Twists</title>    
+  <meta name="description" content="La-Koi Restaurant celebrates Uganda's rich culinary heritage, offering authentic traditional dishes, organic ingredients, and modern twists for a unique dining experience.">    
+  <meta name="keywords" content="La-Koi Restaurant, Ugandan Food, Luwombo, Bugolobi, Kampala Restaurants">
+  <meta name="robots" content="index, follow">    
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Open Graph / WhatsApp Preview -->
+  <meta property="og:type" content="restaurant.restaurant">
+  <meta property="og:title" content="La-Koi Restaurant & Lounge">
+  <meta property="og:description" content="Authentic Ugandan Cuisine • Traditional Flavors • Modern Twists.">
+  <meta property="og:url" content="https://lakoi.com">
+  <meta property="og:image" content="la_koi_photos/Luwombo_food.jpg">
 
-  <title>La-Koi Restaurant | Authentic Ugandan Cuisine & Modern Twists</title>
+  <!-- Link to CSS -->   
+  <link rel="stylesheet" href="index.css">    
+  
+  <!-- ================= RESPONSIVE FIXES & CHAT BOT CSS ================= -->   
+  <style>     
+    /* 1. SAFETY FIXES (Keep images from breaking layout) */     
+    html, body {       
+      max-width: 100%;       
+      overflow-x: hidden;     
+    }      
+    img {       
+      max-width: 100%;       
+      height: auto;       
+      display: block;     
+    }      
+    .row, .menu-row, .experience-container, .vision-container {       
+      flex-wrap: wrap;     
+    }      
+    p, h1, h2, h3, h4, a {       
+      word-wrap: break-word;       
+      overflow-wrap: break-word;     
+    }   
 
-  <meta name="description"
-        content="La-Koi Restaurant celebrates Uganda's rich culinary heritage, offering authentic traditional dishes, organic ingredients, and modern twists for a unique dining experience.">
-
-  <meta name="robots" content="index, follow">
-
-  <!-- Link to CSS -->
-  <link rel="stylesheet" href="index.css">
-
-  <!-- RESPONSIVE SAFETY FIXES (NO DESIGN CHANGE) -->
-  <style>
-    /* Prevent horizontal overflow on all devices */
-    html, body {
-      max-width: 100%;
-      overflow-x: hidden;
-    }
-
-    /* Make all images responsive without changing layout */
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    /* Ensure flex containers wrap safely on small screens */
-    .row,
-    .menu-row,
-    .experience-container,
-    .vision-container {
-      flex-wrap: wrap;
-    }
-
-    /* Prevent text overflow */
-    p, h1, h2, h3, h4, a {
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-    }
-  </style>
-</head>
-
-<body>
-<!-- ================= BANNER SECTION ================= -->
-<section class="banner">
-
-  <!-- ================= SLIDER IMAGES ================= -->
-  <div class="banner-slider">
-    <img src="la_koi_photos/Luwombo_food.jpg" alt="Signature Dish 1" loading="lazy">
-    <img src="la_koi_photos/kalo.jpeg" alt="Signature Dish 2" loading="lazy">
-    <img src="la_koi_photos/gonja.jpeg" alt="Signature Dish 3" loading="lazy">
-    <img src="la_koi_photos/burger_fries.jpeg" alt="Signature Dish 4" loading="lazy">
-    <img src="la_koi_photos/wraps_4.jpeg" alt="Signature Dish 5" loading="lazy">
-    <img src="la_koi_photos/ice_cream8.jpeg" alt="Signature Dish 6" loading="lazy">
-    <img src="la_koi_photos/coctails3.jpeg" alt="Signature Dish 7" loading="lazy">
-  </div>
-
-  <!-- ================= NAVIGATION BAR ================= -->
-  <header class="navbar" role="navigation" aria-label="Main Navigation">
-    <div class="nav-left">
-      <div class="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <span class="menu-text">Menu</span>
-    </div>
-
-    <div class="nav-center">
-      <img src="la_koi_photos/la_koi-newlogo_clean.jpeg" alt="La-Koi Restaurant Logo" loading="lazy">
-      <span class="logo-text">La-Koi Restaurant & Lounge</span>
-    </div>
-
-    <div class="nav-right">
-      <a href="reserve.html">Reserve</a>
-    </div>
-  </header>
-
- 
-
-    <!-- ================= HERO TEXT ================= -->
-    <div class="hero">
-      <div class="hero-text-box">
-        <h1>La-Koi Restaurant & Lounge</h1>
-        <p>Authentic Ugandan Cuisine • Traditional Flavors • Modern Twists</p>
-        <a href="about_us.html" class="hero-btn">Discover</a>
-      </div>
-    </div>
-
-  </section>
-
-
-   <!-- ================= MENU OVERLAY ================= -->
-<div class="menu-overlay" id="menuOverlay">
-  <div class="menu-panel">
-
-    <div class="menu-overlay-logo">
-      <img src="la_koi_photos/la_koi-newlogo_clean.jpeg" alt="La-Koi Restaurant Logo" loading="lazy">
-    </div>
-    
-
-
-    <ul>
-      <li><a href="about_us.html">About</a></li>
-      <li><a href="morning.html">Morning</a></li>
-
-      <li class="dropdown">
-        <a href="touch_kitchen.html" class="dropdown-toggle">Touch Kitchen</a>
-        <span class="dropdown-tagline">Authentic Ugandan Cuisine</span>
-
-        <ul class="dropdown-menu">
-          <li><a href="western_classics.html">Lunch & Dinner</a></li>
-        </ul>
-      </li>
-
-      <li><a href="deals.html">Chef’s Deals</a></li>
-      <li><a href="deserts.html">Desserts</a></li>
-      <!-- <li><a href="drinks_menu.html">Drinks</a></li> -->
-
-      <li class="dropdown">
-        <a href="drinks_menu.html" class="dropdown-toggle">
-          Drinks
-        </a>
-        <span class="dropdown-tagline">
-          Signature Crafted Sips
-        </span>
-      
-        <ul class="dropdown-menu">
-          <li><a href="non_alcoholic_drinks.html">Non-Alcoholic Drinks</a></li>
-          <li><a href="alcholic_drinks.html">Alcoholic Drinks</a></li>
-          <!-- <li><a href="fresh_juices.html">Fresh Juices</a></li> -->
-        </ul>
-      </li>
-      
-    </ul>
-
-    <!-- Delivery Notice + Button -->
-<div class="menu-delivery">
-  <a href="reserve.html" class="order-now-btn">
-    <span class="btn-text">Delivery Available</span>
-  </a>
-</div>
-
-
-  </div>
-</div>
-
-  <!-- ========== EXPERIENCE SECTION ========== -->
-  <section class="experience-section">
-    <div class="experience-container">
-
-      <div class="experience-image">
-        <img src="la_koi_photos/katogo.jpeg" alt="La-Koi Signature Dish" loading="lazy">
-      </div>
-
-      <div class="experience-text">
-        <h2>Celebrating Uganda's Culinary Heritage</h2>
-        <p>
-          La-Koi is more than just a meal, <strong>it’s a journey through Uganda's traditions.</strong>
-          From richly prepared local dishes using organic ingredients, to subtle modern touches inspired by Western cuisine,
-          every visit is a flavorful experience that honors our culture and satisfies every appetite.
-        </p>
-        <a href="#about" class="hero-btn">EXPLORE</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ============== NEW ON THE MENU =============== -->
-  <section class="new-section">
-    <h1>NEW ON THE MENU</h1>
-
-    <div class="menu-row">
-      <div class="menu-col">
-        <img src="la_koi_photos/Luwombo_food.jpg" alt="luwombo food" loading="lazy">
-        <a href="#about" class="menu-btn">LUWOMBO MENU</a>
-      </div>
-
-      <div class="menu-col">
-        <img src="la_koi_photos/pot_food6.webp" alt="hot pot food" loading="lazy">
-        <a href="#about" class="menu-btn">HOT-POT MENU</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== BOSS VISION SECTION ========== -->
-  <section class="vision-section">
-    <div class="vision-container">
-      <div class="vision-text animate-on-scroll">
-        <h2>The Boss’s Vision</h2>
-        <p>
-          At La-Koi, we honor Uganda’s rich culinary traditions while embracing thoughtful modern touches.
-          <strong>Our vision is to celebrate authentic local flavors, organic ingredients, and cultural heritage in every dish,
-          offering a unique experience that brings Ugandan traditions to life for everyone who visits.</strong>
-        </p>
-        <a href="#about" class="hero-btn">LEARN MORE</a>
-      </div>
-    </div>
-
-    <div class="vision-image">
-      <img src="la_koi_photos/la_koiboss2.jpeg" alt="La-Koi Chef at Work" loading="lazy">
-    </div>
-  </section>
-
-  <!-- =========== GIFT CARD =========== -->
-  <section class="gift_card">
-    <div class="overlay-content">
-      <h1>GIVE THE GIFT OF La-Koi</h1>
-      <p>Our La-Koi Giftcards are perfect for any occasion.</p>
-      <p>Note: Our Giftcards are valid for 14days only.</p>
-      <a href="#" class="btn">PURCHASE NOW</a>
-    </div>
-  </section>
-
-  <!-- ============= FOOTER =========== -->
-  <footer>
-    <footer class="footer">
-      <div class="row">
-
-        <div class="col">
-          <div class="logo">
-            <a href="index.html" title="La-Koi Restaurant" class="logo-link">
-              <img src="la_koi_photos/la_koi-newlogo_clean.jpeg" alt="Home Managers Uganda Logo" loading="lazy">
-            </a>
-          </div>
-        </div>
-
-        <div class="col">
-          <h4>Address</h4>
-          <p>Mumia Road / Kataza Close (Opp. Shell), Bugolobi.</p>
-        </div>
-
-        <div class="col">
-          <h4>Contact Details</h4>
-          <p>Client Relationship</p>
-          <a
-            href="https://wa.me/256779384198"
-            target="_blank"
-            rel="noopener"
-            class="tooltip whatsapp-link"
-            data-tooltip="Chat with us on WhatsApp"
-          >
-            +256 779 384 198
-          </a>
-        </div>
-        
-        <div class="col">
-          <h4>Emails</h4>
-          <p>Client Relationship Manager</p>
-          <p>
-            <a
-              href="mailto:olwenyoisaac@gmail.com"
-              class="tooltip email-link"
-              data-tooltip="Send us an email"
-            >
-              olwenyoisaac@gmail.com
-            </a>
-          </p>
-        </div>
-        
-
-
-        <div class="col">
-          <h4>Socials</h4>
-        
-          <p>
-            <a
-              href="https://www.facebook.com/"
-              target="_blank"
-              class="tooltip social-link facebook"
-              data-tooltip="Visit our Facebook page"
-              rel="noopener"
-            >
-              Facebook
-            </a>
-          </p>
-        
-          <p>
-            <a
-              href="https://www.linkedin.com/"
-              target="_blank"
-              class="tooltip social-link linkedin"
-              data-tooltip="Visit our LinkedIn profile"
-              rel="noopener"
-            >
-              LinkedIn
-            </a>
-          </p>
-        
-          <p>
-            <a
-              href="https://www.tiktok.com/"
-              target="_blank"
-              class="tooltip social-link tiktok"
-              data-tooltip="Follow us on TikTok"
-              rel="noopener"
-            >
-              TikTok
-            </a>
-          </p>
-        </div>
-        
-
-        <footer class="footer-copyright">
-          <div class="col copyright">
-            <p>&copy; 2026 La-Koi Restaurant & Lounge. All rights reserved.</p>
-          </div>
-        </footer>
-
-      </div>
-    </footer>
-  </footer>
-
-  <!-- ================= JAVASCRIPT (UNCHANGED) ================= -->
-  <script>
-    const slides = document.querySelectorAll(".banner-slider img");
-    let currentSlide = 0;
-
-    function showNextSlide() {
-      slides.forEach(slide => slide.classList.remove("active"));
-      slides[currentSlide].classList.add("active");
-      currentSlide = (currentSlide + 1) % slides.length;
-    }
-
-    showNextSlide();
-    setInterval(showNextSlide, 4000);
-  </script>
-
-  <script>
-    const navbar = document.querySelector(".navbar");
-
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 50) {
-        navbar.classList.add("scrolled");
-        navbar.classList.remove("transparent");
-      } else {
-        navbar.classList.remove("scrolled");
-        navbar.classList.add("transparent");
+    /* 2. MOBILE NAVBAR FIX 
+       This prevents the Logo Text from overlapping the "Menu" button on small phones.
+    */
+    @media screen and (max-width: 768px) {
+      .logo-text {
+        display: none !important; /* Hides the text next to logo on mobile */
       }
-    });
+      .nav-center img {
+        height: 40px; /* Slightly smaller logo on mobile */
+      }
+      .navbar {
+        padding: 10px 15px; /* Adjust padding for mobile */
+      }
+      /* Ensure the hamburger and text fit */
+      .nav-left {
+        flex: 0 0 auto;
+      }
+      /* Adjust Hero Text on mobile so it's readable */
+      .hero-text-box h1 {
+        font-size: 2rem !important;
+      }
+    }
 
-    navbar.classList.add("transparent");
+    /* 3. FLOATING CHAT BOT CSS */
+    .chat-widget-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background-color: #25D366; /* WhatsApp Green */
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 9999;
+      transition: transform 0.3s ease;
+    }
+    .chat-widget-btn:hover { transform: scale(1.1); }
+    .chat-widget-btn svg { width: 35px; height: 35px; fill: white; }
+
+    .chat-box-container {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 300px;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+      z-index: 9999;
+      display: none; /* Hidden by default */
+      flex-direction: column;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      animation: slideUp 0.3s ease-out;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .chat-header {
+      background-color: #075E54; 
+      color: white;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .chat-header h3 { margin: 0; font-size: 16px; font-weight: 600; }
+    .chat-header span { font-size: 12px; opacity: 0.9; }
+    .close-chat { background: none; border: none; color: white; font-size: 20px; cursor: pointer; }
+
+    .chat-body {
+      background-color: #e5ddd5;
+      padding: 20px;
+      height: 250px;
+      overflow-y: auto;
+      background-image: url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png");
+    }
+    .chat-message-bot {
+      background-color: white;
+      padding: 10px 15px;
+      border-radius: 0 15px 15px 15px;
+      margin-bottom: 10px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+      font-size: 14px;
+      line-height: 1.4;
+      color: #333;
+      max-width: 85%;
+    }
+
+    .chat-footer {
+      padding: 10px;
+      background-color: #f0f0f0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .chat-footer input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      outline: none;
+    }
+    .chat-footer button {
+      background-color: #075E54;
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .chat-footer button svg { width: 18px; height: 18px; fill: white; margin-left: 2px; }
+  </style> 
+
+  <!-- STRUCTURED DATA (Google Maps/SEO) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "La-Koi Restaurant & Lounge",
+    "image": "https://lakoi.com/la_koi_photos/la_koi-newlogo_clean.jpeg",
+    "description": "Authentic Ugandan Cuisine and Modern Twists in Bugolobi",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Mumia Road / Kataza Close (Opp. Shell)",
+      "addressLocality": "Bugolobi",
+      "addressRegion": "Kampala",
+      "addressCountry": "UG"
+    },
+    "telephone": "+256779384198",
+    "priceRange": "$$"
+  }
   </script>
+</head>  
 
-  <script>
-    const scrollElements = document.querySelectorAll(".animate-on-scroll");
+<body> 
+<!-- ================= BANNER SECTION ================= --> 
+<section class="banner">    
+  <!-- ================= SLIDER IMAGES ================= -->   
+  <div class="banner-slider">     
+    <img src="la_koi_photos/Luwombo_food.jpg" alt="Signature Dish 1" loading="lazy"> 
+    <img src="la_koi_photos/pot_goatmeat.png" alt="Signature Dish 2" loading="lazy">  
+    <img src="la_koi_photos/kalo.jpeg" alt="Signature Dish 2" loading="lazy">     
+    <img src="la_koi_photos/boo_soup.png" alt="Signature Dish 3" loading="lazy">     
+    <img src="la_koi_photos/burger_fries.jpeg" alt="Signature Dish 4" loading="lazy">     
+    <img src="la_koi_photos/wraps_4.jpeg" alt="Signature Dish 5" loading="lazy">     
+    <img src="la_koi_photos/ice_cream8.jpeg" alt="Signature Dish 6" loading="lazy">     
+    <img src="la_koi_photos/coctails3.jpeg" alt="Signature Dish 7" loading="lazy">   
+  </div>    
+  
+  <!-- ================= NAVIGATION BAR ================= -->   
+  <header class="navbar" role="navigation" aria-label="Main Navigation">     
+    <div class="nav-left">       
+      <div class="hamburger">         
+        <span></span>         
+        <span></span>         
+        <span></span>       
+      </div>       
+      <span class="menu-text">Menu</span>     
+    </div>      
+    
+    <div class="nav-center">       
+      <img src="la_koi_photos/la_koi-newlogo_clean.jpeg" alt="La-Koi Restaurant Logo" loading="lazy">       
+      <span class="logo-text">La-Koi Restaurant & Lounge</span>     
+    </div>      
+    
+    <div class="nav-right">       
+      <a href="reserve.html">Reserve</a>     
+    </div>   
+  </header>         
+  
+  <!-- ================= HERO TEXT ================= -->     
+  <div class="hero">       
+    <div class="hero-text-box">         
+      <h1>La-Koi Restaurant & Lounge</h1>         
+      <p>Authentic Ugandan Cuisine • Traditional Flavors • Modern Twists</p>         
+      <a href="about_us.html" class="hero-btn">Discover</a>       
+    </div>     
+  </div>    
+</section>      
 
-    const elementInView = (el, offset = 100) => {
-      const elementTop = el.getBoundingClientRect().top;
-      return elementTop <= (window.innerHeight - offset);
-    };
+<!-- ================= MENU OVERLAY ================= --> 
+<div class="menu-overlay" id="menuOverlay">   
+  <div class="menu-panel">      
+    <div class="menu-overlay-logo">       
+      <img src="la_koi_photos/la_koi-newlogo_clean.jpeg" alt="La-Koi Restaurant Logo" loading="lazy">     
+    </div>            
+    <ul>       
+      <li><a href="about_us.html">About</a></li>       
+      <li><a href="morning.html">Morning</a></li>        
+      <li class="dropdown">         
+        <a href="touch_kitchen.html" class="dropdown-toggle">Touch Kitchen</a>         
+        <span class="dropdown-tagline">Authentic Ugandan Cuisine</span>          
+        <ul class="dropdown-menu">           
+          <li><a href="western_classics.html">Lunch & Dinner</a></li>         
+        </ul>       
+      </li>        
+      <li><a href="deals.html">Chef’s Deals</a></li>       
+      <li><a href="deserts.html">Desserts</a></li>       
+      <!-- <li><a href="drinks_menu.html">Drinks</a></li> -->        
+      <li class="dropdown">         
+        <a href="drinks_menu.html" class="dropdown-toggle">           
+          Drinks         
+        </a>         
+        <span class="dropdown-tagline">           
+          Signature Crafted Sips         
+        </span>                
+        <ul class="dropdown-menu">           
+          <li><a href="non_alcoholic_drinks.html">Non-Alcoholic Drinks</a></li>           
+          <li><a href="alcholic_drinks.html">Alcoholic Drinks</a></li>           
+          <!-- <li><a href="fresh_juices.html">Fresh Juices</a></li> -->         
+        </ul>       
+      </li>            
+    </ul>      
+    <!-- Delivery Notice + Button --> 
+    <div class="menu-delivery">   
+      <a href="reserve.html" class="order-now-btn">     
+        <span class="btn-text">Delivery Available</span>   
+      </a> 
+    </div>     
+  </div> 
+</div>    
 
-    const handleScrollAnimation = () => {
-      scrollElements.forEach(el => {
-        if (elementInView(el, 150)) {
-          el.classList.add("visible");
-        }
-      });
-    };
+<!-- ========== EXPERIENCE SECTION ========== -->   
+<section class="experience-section">     
+  <div class="experience-container">        
+    <div class="experience-image">         
+      <img src="la_koi_photos/katogo.jpeg" alt="La-Koi Signature Dish" loading="lazy">       
+    </div>        
+    <div class="experience-text">         
+      <h2>Celebrating Uganda's Culinary Heritage</h2>         
+      <p>           
+        La-Koi is more than just a meal, <strong>it’s a journey through Uganda's traditions.</strong>           
+        From richly prepared local dishes using organic ingredients, to subtle modern touches inspired by Western cuisine,           
+        every visit is a flavorful experience that honors our culture and satisfies every appetite.         
+      </p>         
+      <a href="#about" class="hero-btn">EXPLORE</a>       
+    </div>      
+  </div>   
+</section>    
 
-    window.addEventListener("scroll", handleScrollAnimation);
-  </script>
+<!-- ============== NEW ON THE MENU =============== -->   
+<section class="new-section">     
+  <h1>DROPPING SOON</h1>      
+  <div class="menu-row">       
+    <div class="menu-col">         
+      <img src="la_koi_photos/Luwombo_food.jpg" alt="luwombo food" loading="lazy">         
+      <a href="#about" class="menu-btn">LUWOMBO MENU</a>       
+    </div>        
+    <div class="menu-col">         
+      <img src="la_koi_photos/pot_food6.webp" alt="hot pot food" loading="lazy">         
+      <a href="#about" class="menu-btn">HOT-POT MENU</a>       
+    </div>     
+  </div>   
+</section>    
 
-<!-- ================= MENU TOGGLE SCRIPT ================= -->
+<!-- ========== BOSS VISION SECTION ========== -->   
+<section class="vision-section">     
+  <div class="vision-container">       
+    <div class="vision-text animate-on-scroll">         
+      <h2>The Boss’s Vision</h2>         
+      <p>           
+        At La-Koi, we honor Uganda’s rich culinary traditions while embracing thoughtful modern touches.           
+        <strong>Our vision is to celebrate authentic local flavors, organic ingredients, and cultural heritage in every dish,           
+        offering a unique experience that brings Ugandan traditions to life for everyone who visits.</strong>         
+      </p>         
+      <a href="#about" class="hero-btn">LEARN MORE</a>       
+    </div>     
+  </div>      
+  <div class="vision-image">       
+    <img src="la_koi_photos/la_koiboss2.jpeg" alt="La-Koi Chef at Work" loading="lazy">     
+  </div>   
+</section>    
+
+<!-- =========== GIFT CARD =========== -->   
+<section class="gift_card">     
+  <div class="overlay-content">       
+    <h1>GIVE THE GIFT OF La-Koi</h1>       
+    <p>Our La-Koi Giftcards are perfect for any occasion.</p>       
+    <p>Note: Our Giftcards are valid for 14days only.</p>       
+    <a href="#" class="btn">PURCHASE NOW</a>     
+  </div>   
+</section>    
+
+<!-- ============= FOOTER =========== -->   
+<footer>     
+  <footer class="footer">       
+    <div class="row">          
+      <div class="col">           
+        <div class="logo">             
+          <a href="index.html" title="La-Koi Restaurant" class="logo-link">               
+            <img src="la_koi_photos/la_koi-newlogo_clean.jpeg" alt="Home Managers Uganda Logo" loading="lazy">             
+          </a>           
+        </div>         
+      </div>          
+      <div class="col">           
+        <h4>Address</h4>           
+        <p>Mumia Road / Kataza Close (Opp. Shell), Bugolobi.</p>         
+      </div>          
+      <div class="col">           
+        <h4>Contact Details</h4>           
+        <p>Client Relationship</p>           
+        <a             
+          href="https://wa.me/256779384198"             
+          target="_blank"             
+          rel="noopener"             
+          class="tooltip whatsapp-link"             
+          data-tooltip="Chat with us on WhatsApp"           
+        >             
+          +256 779 384 198           
+        </a>         
+      </div>                  
+      <div class="col">           
+        <h4>Emails</h4>           
+        <p>Client Relationship Manager</p>           
+        <p>             
+          <a               
+            href="mailto:olwenyoisaac@gmail.com"               
+            class="tooltip email-link"               
+            data-tooltip="Send us an email"             
+          >               
+            olwenyoisaac@gmail.com             
+          </a>           
+        </p>         
+      </div>                    
+      <div class="col">           
+        <h4>Socials</h4>                    
+        <p>             
+          <a               
+            href="https://www.facebook.com/"               
+            target="_blank"               
+            class="tooltip social-link facebook"               
+            data-tooltip="Visit our Facebook page"               
+            rel="noopener"             
+          >               
+            Facebook             
+          </a>           
+        </p>                    
+        <p>             
+          <a               
+            href="https://www.linkedin.com/"               
+            target="_blank"               
+            class="tooltip social-link linkedin"               
+            data-tooltip="Visit our LinkedIn profile"               
+            rel="noopener"             
+          >               
+            LinkedIn             
+          </a>           
+        </p>                    
+        <p>             
+          <a               
+            href="https://www.tiktok.com/"               
+            target="_blank"               
+            class="tooltip social-link tiktok"               
+            data-tooltip="Follow us on TikTok"               
+            rel="noopener"             
+          >               
+            TikTok             
+          </a>           
+        </p>         
+      </div>                   
+      <footer class="footer-copyright">           
+        <div class="col copyright">             
+          <p>&copy; 2026 La-Koi Restaurant & Lounge. All rights reserved.</p>           
+        </div>         
+      </footer>        
+    </div>     
+  </footer>   
+</footer>    
+
+<!-- ================= JAVASCRIPT ================= -->   
+<script>     
+  const slides = document.querySelectorAll(".banner-slider img");     
+  let currentSlide = 0;      
+  function showNextSlide() {       
+    slides.forEach(slide => slide.classList.remove("active"));       
+    slides[currentSlide].classList.add("active");       
+    currentSlide = (currentSlide + 1) % slides.length;     
+  }      
+  showNextSlide();     
+  setInterval(showNextSlide, 4000);   
+</script>    
+
+<script>     
+  const navbar = document.querySelector(".navbar");      
+  window.addEventListener("scroll", () => {       
+    if (window.scrollY > 50) {         
+      navbar.classList.add("scrolled");         
+      navbar.classList.remove("transparent");       
+    } else {         
+      navbar.classList.remove("scrolled");         
+      navbar.classList.add("transparent");       
+    }     
+  });      
+  navbar.classList.add("transparent");   
+</script>    
+
+<script>     
+  const scrollElements = document.querySelectorAll(".animate-on-scroll");      
+  const elementInView = (el, offset = 100) => {       
+    const elementTop = el.getBoundingClientRect().top;       
+    return elementTop <= (window.innerHeight - offset);     
+  };      
+  const handleScrollAnimation = () => {       
+    scrollElements.forEach(el => {         
+      if (elementInView(el, 150)) {           
+        el.classList.add("visible");         
+      }       
+    });     
+  };      
+  window.addEventListener("scroll", handleScrollAnimation);   
+</script>  
+
+<!-- ================= MENU TOGGLE SCRIPT ================= --> 
+<script>   
+  // Menu overlay toggle   
+  const hamburger = document.querySelector('.hamburger');   
+  const menuText = document.querySelector('.menu-text');   
+  const overlay = document.getElementById('menuOverlay');    
+  function toggleMenu() {     
+    overlay.classList.toggle('active');   
+  }    
+  hamburger.addEventListener('click', toggleMenu);   
+  menuText.addEventListener('click', toggleMenu);    
+  overlay.addEventListener('click', (e) => {     
+    if (e.target === overlay) overlay.classList.remove('active');   
+  });    
+  // Dropdown toggle inside overlay   
+  const dropdownToggles = document.querySelectorAll('.dropdown-toggle');    
+  dropdownToggles.forEach(toggle => {     
+    toggle.addEventListener('click', (e) => {       
+      e.preventDefault();        
+      const li = toggle.parentElement;       
+      const submenu = li.querySelector('.dropdown-menu');       
+      const tagline = li.querySelector('.dropdown-tagline');        
+      const isOpen = submenu.classList.toggle('active');        
+      // Hide tagline when dropdown open, show when closed       
+      tagline.style.display = isOpen ? 'none' : 'block';     
+    });   
+  }); 
+</script> 
+
+<!-- =========================================
+     ADDED: FLOATING CHAT BOT HTML
+     ========================================= -->
+<div class="chat-widget-btn" onclick="toggleChat()">
+  <!-- WhatsApp SVG Icon -->
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+    <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+  </svg>
+</div>
+
+<div class="chat-box-container" id="whatsappChatBox">
+  <div class="chat-header">
+    <div>
+      <h3>La-Koi Support</h3>
+      <span>Typically replies instantly</span>
+    </div>
+    <button class="close-chat" onclick="toggleChat()">&times;</button>
+  </div>
+  <div class="chat-body">
+    <div class="chat-message-bot">
+      Welcome to La-Koi Restaurant & Lounge — Karibu!<br><br>
+      Discover <strong>refined, authentic Ugandan flavors,</strong> thoughtfully prepared to elevate every moment.
+      <br><br>
+      Our team is ready to assist you. Type your order or inquiry below to connect with us instantly.
+    </div>
+  </div>
+  <div class="chat-footer">
+    <input type="text" id="chatInput" placeholder="Type a message..." onkeypress="handleKeyPress(event)">
+    <button onclick="sendWhatsApp()">
+      <!-- Send SVG Icon -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+    </button>
+  </div>
+</div>
+
+<!-- =========================================
+     ADDED: CHAT BOT LOGIC SCRIPT
+     ========================================= -->
 <script>
-  // Menu overlay toggle
-  const hamburger = document.querySelector('.hamburger');
-  const menuText = document.querySelector('.menu-text');
-  const overlay = document.getElementById('menuOverlay');
-
-  function toggleMenu() {
-    overlay.classList.toggle('active');
+  function toggleChat() {
+    const chatBox = document.getElementById('whatsappChatBox');
+    if (chatBox.style.display === 'none' || chatBox.style.display === '') {
+      chatBox.style.display = 'flex';
+      // Auto focus the input
+      setTimeout(() => document.getElementById('chatInput').focus(), 100);
+    } else {
+      chatBox.style.display = 'none';
+    }
   }
 
-  hamburger.addEventListener('click', toggleMenu);
-  menuText.addEventListener('click', toggleMenu);
+  function sendWhatsApp() {
+    const input = document.getElementById('chatInput');
+    const message = input.value.trim();
+    
+    // The MTN Number from your code
+    const phoneNumber = "256779384198"; 
 
-  overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) overlay.classList.remove('active');
-  });
+    if (message !== "") {
+      const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+      input.value = ""; // Clear input after sending
+      toggleChat(); // Optional: close chat window after sending
+    }
+  }
 
-  // Dropdown toggle inside overlay
-  const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-
-  dropdownToggles.forEach(toggle => {
-    toggle.addEventListener('click', (e) => {
-      e.preventDefault();
-
-      const li = toggle.parentElement;
-      const submenu = li.querySelector('.dropdown-menu');
-      const tagline = li.querySelector('.dropdown-tagline');
-
-      const isOpen = submenu.classList.toggle('active');
-
-      // Hide tagline when dropdown open, show when closed
-      tagline.style.display = isOpen ? 'none' : 'block';
-    });
-  });
+  function handleKeyPress(event) {
+    if (event.key === 'Enter') {
+      sendWhatsApp();
+    }
+  }
 </script>
 
-
-
-</body>
+</body> 
 </html>

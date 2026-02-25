@@ -128,7 +128,8 @@ header {
 /* ================= MENU GRID ================= */
 .menu-layout {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  /* Updated for better responsiveness on small screens */
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
   gap: 30px;
   margin-top: 30px;
   align-items: start;
@@ -396,4 +397,16 @@ header {
   .right-circle { margin-left: -25px; }
   
   .menu-layout { gap: 20px; grid-template-columns: 1fr; }
+}
+
+/* Small devices (phones, less than 380px) */
+@media (max-width: 380px) {
+  .bold-title { font-size: 2.8rem; }
+  
+  /* Prevent horizontal overflow on tiny screens */
+  .hero-banner { height: 160px; }
+  .circle-img { width: 85px; height: 85px; }
+  .center-big { width: 120px; height: 120px; }
+  .left-circle { margin-right: -20px; }
+  .right-circle { margin-left: -20px; }
 }

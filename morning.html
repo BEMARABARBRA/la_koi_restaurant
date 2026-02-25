@@ -1,278 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La-Koi | Special Food Menu</title>
-    
-    <!-- Fonts to match the design (Script for 'Special', Bold for 'MENU') -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Oswald:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    
-    <!-- Link to external CSS -->
-    <link rel="stylesheet" href="morning.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La-Koi | Special Breakfast & Morning Eats Menu</title>
+<link rel="stylesheet" href="morning.css">
 </head>
 <body>
 
-    <!-- Back Button -->
-    <a href="index.html" class="back-btn">Home</a>
+<a href="index.html" class="back-btn">Home</a>
 
+<div class="main-wrapper">
 
-    <div class="main-wrapper">
-        
-        <!-- HEADER -->
-        <header>
-            <h2 class="script-title">Special</h2>
-            <h1 class="bold-title">BREAKFAST MENU</h1>
-        </header>
+<header>
+<h2 class="script-title">Special</h2>
+<h1 class="bold-title">BREAKFAST MENU</h1>
+</header>
 
-        <!-- HERO SECTION (Intersecting Circles) -->
-        <div class="hero-banner">
-            <div class="yellow-strip"></div>
-            <div class="circle-container">
-                <!-- Left: Sausages -->
-                <div class="circle-img left-circle" style="background-image: url('la_koi_photos/Sambusa_Bliss__Crispy_Pastry_Perfection_for_Every_Palette_-_RecipeRella-removebg-preview.png');"></div>
-                <!-- Center: Katogo (Top Layer, Bigger) -->
-                <div class="circle-img center-big" style="background-image: url('la_koi_photos/katogo.jpeg');"></div>
-                <!-- Right: Tea -->
-                <div class="circle-img right-circle" style="background-image: url('la_koi_photos/Soothing_Lavender_Milk_Tea_Recipe___Organic_Facts-removebg-preview.png');"></div>
-            </div>
+<div class="hero-banner">
+<div class="yellow-strip"></div>
+<div class="circle-container">
+<div class="circle-img left-circle" style="background-image: url('la_koi_photos/Sambusa_Bliss__Crispy_Pastry_Perfection_for_Every_Palette_-_RecipeRella-removebg-preview.png');"></div>
+<div class="circle-img center-big" style="background-image: url('la_koi_photos/katogo.jpeg');"></div>
+<div class="circle-img right-circle" style="background-image: url('la_koi_photos/Soothing_Lavender_Milk_Tea_Recipe___Organic_Facts-removebg-preview.png');"></div>
+</div>
+</div>
+
+<div class="menu-layout">
+
+<!-- Bites & Sides -->
+<div class="menu-column">
+<div class="cat-header">Bites & Sides</div>
+<ul class="food-list">
+<li class="food-item">
+<div class="food-info"><span class="name">Pair of Sausages</span></div>
+<div class="food-action"><span class="price">4,000</span><button class="add-btn" data-name="Pair of Sausages" data-price="4000">+</button></div>
+</li>
+<li class="food-item">
+<div class="food-info"><span class="name">Pair of Samosas</span></div>
+<div class="food-action"><span class="price">3,000</span><button class="add-btn" data-name="Pair of Samosas" data-price="3000">+</button></div>
+</li>
+<li class="food-item">
+<div class="food-info"><span class="name">Chapati Plain</span></div>
+<div class="food-action"><span class="price">2,000</span><button class="add-btn" data-name="Chapati Plain" data-price="2000">+</button></div>
+</li>
+</ul>
+</div>
+
+<!-- Morning Eats -->
+<div class="menu-column featured-column">
+<div class="cat-header featured-header">Morning Eats</div>
+<ul class="food-list">
+<li class="food-item">
+<div class="food-info"><span class="name">Katogo (Beef/G-nuts)</span></div>
+<div class="food-action"><span class="price">6,000</span><button class="add-btn" data-name="Katogo (Beef/G-nuts)" data-price="6000">+</button></div>
+</li>
+<li class="food-item">
+<div class="food-info"><span class="name">Ugandan Rolex</span></div>
+<div class="food-action"><span class="price">5,000</span><button class="add-btn" data-name="Ugandan Rolex" data-price="5000">+</button></div>
+</li>
+<li class="food-item">
+<div class="food-info"><span class="name">Omelette (Plain/Spanish)</span></div>
+<div class="food-action"><span class="price">5,000</span><button class="add-btn" data-name="Omelette (Plain/Spanish)" data-price="5000">+</button></div>
+</li>
+</ul>
+</div>
+
+<!-- Tea & Juice -->
+<div class="menu-column">
+<div class="cat-header">Tea & Juice</div>
+<ul class="food-list">
+<li class="food-item">
+<div class="food-info"><span class="name">African Tea</span></div>
+<div class="food-action"><span class="price">7,000</span><button class="add-btn" data-name="African Tea" data-price="7000">+</button></div>
+</li>
+<li class="food-item">
+<div class="food-info"><span class="name">Dawa Tea</span></div>
+<div class="food-action"><span class="price">8,000</span><button class="add-btn" data-name="Dawa Tea" data-price="8000">+</button></div>
+</li>
+<li class="food-item">
+<div class="food-info"><span class="name">Fresh Fruit Juice</span></div>
+<div class="food-action"><span class="price">10,000</span><button class="add-btn" data-name="Fresh Fruit Juice" data-price="10000">+</button></div>
+</li>
+<li class="food-item">
+<div class="food-info"><span class="name">Black Tea</span></div>
+<div class="food-action"><span class="price">5,000</span><button class="add-btn" data-name="Black Tea" data-price="5000">+</button></div>
+</li>
+</ul>
+</div>
+
+</div>
+
+<a href="https://wa.me/256779384198" target="_blank" class="whatsapp-footer-btn">
+Chat on WhatsApp
+</a>
+
+<!-- Cart -->
+<div class="cart-float" id="cart-float">🛒 <span id="cart-count">0</span></div>
+<div class="cart-overlay" id="cart-overlay"></div>
+<div class="cart-drawer" id="cart-drawer">
+<div class="cart-header">
+<h3>Your Order</h3>
+<span class="close-cart" id="close-cart">×</span>
+</div>
+<div id="cart-items-area"><p class="empty-msg">Your cart is empty.</p></div>
+<div class="cart-footer">
+<div class="total-line"><span>Total:</span><span id="cart-total">0/=</span></div>
+<button id="checkout-btn" class="checkout-btn">Confirm & Send Order</button>
+</div>
+</div>
+
+<script>
+// ======= Cart Logic =======
+const CART_KEY = "lakoi_cart";
+const phone = "256779384198";
+let cart = JSON.parse(localStorage.getItem(CART_KEY)) || {};
+
+// Add item
+function addToCart(name, price){
+    cart[name] ? cart[name].qty++ : cart[name] = { price: +price, qty:1 };
+    updateUI();
+}
+
+// Change quantity
+function changeQty(name, amt){
+    if(!cart[name]) return;
+    cart[name].qty += amt;
+    if(cart[name].qty <=0) delete cart[name];
+    updateUI();
+}
+
+// Update UI
+function updateUI(){
+    const itemsArea = document.getElementById("cart-items-area");
+    const totalEl = document.getElementById("cart-total");
+    const countEl = document.getElementById("cart-count");
+    let total=0, count=0;
+    itemsArea.innerHTML = "";
+
+    for(let name in cart){
+        let item = cart[name];
+        total += item.price*item.qty;
+        count += item.qty;
+
+        const div = document.createElement("div");
+        div.className = "cart-row";
+        div.innerHTML = `
+        <div class="row-info">
+            <div class="r-name">${name}</div>
+            <div class="r-price">${item.price.toLocaleString()}/=</div>
         </div>
-
-        <!-- MENU COLUMNS -->
-        <div class="menu-layout">
-            
-            <!-- COLUMN 1: BITES & SIDES -->
-            <div class="menu-column">
-                <div class="cat-header">Bites & Sides</div>
-                
-                <ul class="food-list">
-                    <li class="food-item">
-                        <div class="food-info"><span class="name">Pair of Sausages</span></div>
-                        <div class="food-action">
-                            <span class="price">4,000</span>
-                            <button class="add-btn" onclick="addToCart('Pair of Sausages', 4000)">+</button>
-                        </div>
-                    </li>
-                    <li class="food-item">
-                        <div class="food-info"><span class="name">Pair of Samosas</span></div>
-                        <div class="food-action">
-                            <span class="price">3,000</span>
-                            <button class="add-btn" onclick="addToCart('Pair of Samosas', 3000)">+</button>
-                        </div>
-                    </li>
-                    <li class="food-item">
-                        <div class="food-info"><span class="name">Chapati Plain</span></div>
-                        <div class="food-action">
-                            <span class="price">2,000</span>
-                            <button class="add-btn" onclick="addToCart('Chapati Plain', 2000)">+</button>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- COLUMN 2: MORNING EATS (Featured / Center) -->
-            <div class="menu-column featured-column">
-                <div class="cat-header featured-header">Morning Eats</div>
-                
-                <ul class="food-list">
-                    <li class="food-item">
-                        <div class="food-info"><span class="name">Katogo (Beef/G-nuts)</span></div>
-                        <div class="food-action">
-                            <span class="price">6,000</span>
-                            <button class="add-btn" onclick="addToCart('Katogo (Beef/G-nuts)', 6000)">+</button>
-                        </div>
-                    </li>
-                    <li class="food-item">
-                        <div class="food-info"><span class="name">Ugandan Rolex</span></div>
-                        <div class="food-action">
-                            <span class="price">5,000</span>
-                            <button class="add-btn" onclick="addToCart('Ugandan Rolex', 5000)">+</button>
-                        </div>
-                    </li>
-                    <li class="food-item">
-                        <div class="food-info"><span class="name">Omelette (Plain/Spanish)</span></div>
-                        <div class="food-action">
-                            <span class="price">5,000</span>
-                            <button class="add-btn" onclick="addToCart('Omelette', 5000)">+</button>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- COLUMN 3: DRINKS -->
-            <div class="menu-column">
-                <div class="cat-header">Tea & Juice</div>
-                
-                <ul class="food-list">
-                    <li class="food-item">
-                        <div class="food-info"><span class="name">African Tea</span></div>
-                        <div class="food-action">
-                            <span class="price">7,000</span>
-                            <button class="add-btn" onclick="addToCart('African Tea', 7000)">+</button>
-                        </div>
-                    </li>
-                    <li class="food-item">
-                        <div class="food-info"><span class="name">Dawa Tea</span></div>
-                        <div class="food-action">
-                            <span class="price">8,000</span>
-                            <button class="add-btn" onclick="addToCart('Dawa Tea', 8000)">+</button>
-                        </div>
-                    </li>
-                    <li class="food-item">
-                        <div class="food-info"><span class="name">Fresh Fruit Juice</span></div>
-                        <div class="food-action">
-                            <span class="price">10,000</span>
-                            <button class="add-btn" onclick="addToCart('Fresh Juice', 10000)">+</button>
-                        </div>
-                    </li>
-                    <li class="food-item">
-                        <div class="food-info"><span class="name">Black Tea</span></div>
-                        <div class="food-action">
-                            <span class="price">5,000</span>
-                            <button class="add-btn" onclick="addToCart('Black Tea', 5000)">+</button>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
+        <div class="row-controls">
+            <button class="qty-btn" data-name="${name}" data-amt="-1">−</button>
+            <span>${item.qty}</span>
+            <button class="qty-btn" data-name="${name}" data-amt="1">+</button>
         </div>
+        `;
+        itemsArea.appendChild(div);
+    }
 
-        <!-- FOOTER PILL -->
-        <!-- WHATSAPP FOOTER BUTTON -->
-        <a href="https://wa.me/256784948474" target="_blank" class="whatsapp-footer-btn">
-            <!-- Official WhatsApp SVG Icon -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M12.031 0C5.385 0 0 5.388 0 12.042c0 2.124.553 4.195 1.604 6.014L.15 23.333l5.413-1.42c1.737.96 3.7 1.468 5.717 1.468h.004c6.64 0 12.028-5.388 12.028-12.042C23.312 5.39 17.925 0 12.031 0zm0 21.378c-1.801 0-3.565-.484-5.115-1.402l-.367-.217-3.799.996.996-3.704-.238-.378c-1.008-1.598-1.54-3.454-1.54-5.362 0-5.556 4.522-10.078 10.078-10.078 5.556 0 10.078 4.522 10.078 10.078 0 5.556-4.522 10.078-10.078 10.078zm5.522-7.545c-.303-.152-1.791-.884-2.068-.985-.277-.101-.479-.152-.68.152-.202.303-.781.985-.957 1.187-.177.202-.353.227-.656.076-1.428-.718-2.618-1.597-3.618-2.883-.257-.331-.027-.512.124-.664.136-.137.303-.353.455-.53.152-.177.202-.303.303-.505.101-.202.05-.379-.025-.531-.076-.152-.68-1.641-.931-2.247-.245-.591-.494-.51-.68-.519-.177-.008-.379-.01-.581-.01-.202 0-.53.076-.807.379-.277.303-1.059 1.035-1.059 2.525s1.084 2.929 1.236 3.131c.152.202 2.135 3.259 5.174 4.57.72.312 1.282.498 1.719.638.723.23 1.382.197 1.905.12.585-.086 1.791-.732 2.043-1.439.253-.707.253-1.313.177-1.439-.076-.126-.277-.202-.581-.354z"/>
-            </svg>
-            Chat on WhatsApp
-        </a>
-    </div>
+    if(count===0) itemsArea.innerHTML='<p class="empty-msg">Your cart is empty.</p>';
+    totalEl.innerText = total.toLocaleString()+"/=";
+    countEl.innerText = count;
 
-    <!-- ============================================ -->
-    <!-- SHOPPING CART UI -->
-    <!-- ============================================ -->
-    
-    <!-- Floating Button -->
-    <div class="cart-float" onclick="toggleCart()">
-        🛒 <span id="cart-count">0</span>
-    </div>
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
 
-    <!-- Slide-out Drawer -->
-    <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
-    <div class="cart-drawer" id="cart-drawer">
-        <div class="cart-header">
-            <h3>Your Order</h3>
-            <span class="close-cart" onclick="toggleCart()">×</span>
-        </div>
-        <div id="cart-items-area">
-            <p class="empty-msg">Your cart is empty.</p>
-        </div>
-        <div class="cart-footer">
-            <div class="total-line">
-                <span>Total:</span>
-                <span id="cart-total">0/=</span>
-            </div>
-            <!-- Themed checkout button that links to WhatsApp logic -->
-            <button class="checkout-btn" onclick="checkout()">Confirm & Send Order</button>
-        </div>
-    </div>
+    // Add listeners to qty buttons
+    document.querySelectorAll(".qty-btn").forEach(btn=>{
+        btn.onclick = ()=>changeQty(btn.dataset.name, +btn.dataset.amt);
+    });
+}
 
-    <script>
-        // State
-        let cart = {};
-        const phone = "256784948474"; // MTN number to receive orders
+// Cart drawer toggle
+function toggleCart(){document.getElementById("cart-drawer").classList.toggle("open");document.getElementById("cart-overlay").classList.toggle("open");}
 
-        // Add Item
-        function addToCart(name, price) {
-            if (cart[name]) {
-                cart[name].qty++;
-            } else {
-                cart[name] = { price: price, qty: 1 };
-            }
-            updateUI();
-            
-            // Subtle bump animation on the cart icon when item added
-            const floatBtn = document.querySelector('.cart-float');
-            floatBtn.style.transform = "scale(1.15)";
-            setTimeout(() => floatBtn.style.transform = "scale(1)", 200);
-        }
+// Checkout
+function checkout(){
+    if(Object.keys(cart).length===0){alert("Add items first."); return;}
+    let msg="Hello La-Koi, I would like to order:\n\n";
+    let total=0;
+    for(let name in cart){let item=cart[name]; let sub=item.price*item.qty; total+=sub; msg+=`▪️ ${name} (x${item.qty}) - ${sub.toLocaleString()}/=\n`;}
+    msg+=`\nTOTAL: ${total.toLocaleString()}/=`;
+    // Open WA in new tab reliably
+    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
+}
 
-        // Change Quantity inside Cart
-        function changeQty(name, amount) {
-            if (cart[name]) {
-                cart[name].qty += amount;
-                if (cart[name].qty <= 0) delete cart[name];
-                updateUI();
-            }
-        }
+// ======= Event Listeners =======
+document.querySelectorAll(".add-btn").forEach(btn=>{
+    btn.onclick = ()=>addToCart(btn.dataset.name, btn.dataset.price);
+});
 
-        // Render Cart & Update Totals
-        function updateUI() {
-            const itemsArea = document.getElementById('cart-items-area');
-            const totalEl = document.getElementById('cart-total');
-            const countEl = document.getElementById('cart-count');
-            
-            itemsArea.innerHTML = "";
-            let grandTotal = 0;
-            let totalCount = 0;
+document.getElementById("cart-float").onclick = toggleCart;
+document.getElementById("cart-overlay").onclick = toggleCart;
+document.getElementById("close-cart").onclick = toggleCart;
+document.getElementById("checkout-btn").onclick = checkout;
 
-            if (Object.keys(cart).length === 0) {
-                itemsArea.innerHTML = '<p class="empty-msg">Your cart is empty.</p>';
-            } else {
-                for (let [name, item] of Object.entries(cart)) {
-                    grandTotal += item.price * item.qty;
-                    totalCount += item.qty;
+updateUI();
+</script>
 
-                    const div = document.createElement('div');
-                    div.className = 'cart-row';
-                    div.innerHTML = `
-                        <div class="row-info">
-                            <div class="r-name">${name}</div>
-                            <div class="r-price">${item.price.toLocaleString()}/=</div>
-                        </div>
-                        <div class="row-controls">
-                            <button onclick="changeQty('${name}', -1)">−</button>
-                            <span>${item.qty}</span>
-                            <button onclick="changeQty('${name}', 1)">+</button>
-                        </div>
-                    `;
-                    itemsArea.appendChild(div);
-                }
-            }
-
-            totalEl.innerText = grandTotal.toLocaleString() + "/=";
-            countEl.innerText = totalCount;
-        }
-
-        // Toggle Drawer
-        function toggleCart() {
-            const drawer = document.getElementById('cart-drawer');
-            const overlay = document.getElementById('cart-overlay');
-            drawer.classList.toggle('open');
-            overlay.classList.toggle('open');
-        }
-
-        // Checkout logic (Generates WA message and redirects)
-        function checkout() {
-            if (Object.keys(cart).length === 0) {
-                alert("Please add items to your cart first.");
-                return;
-            }
-
-            let msg = "Hello La-Koi, I would like to order:\n\n";
-            let grandTotal = 0;
-
-            for (let [name, item] of Object.entries(cart)) {
-                let sub = item.price * item.qty;
-                grandTotal += sub;
-                msg += `▪️ ${name} (x${item.qty}) - ${sub.toLocaleString()}\n`;
-            }
-            msg += `\n*TOTAL: ${grandTotal.toLocaleString()}/=*`;
-
-            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
-        }
-    </script>
 </body>
 </html>
