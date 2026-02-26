@@ -14,8 +14,156 @@
 <meta property="og:description" content="Order delicious breakfast and morning eats from La-Koi straight to WhatsApp.">
 <meta property="og:type" content="website">
 
-<!-- Linking your original stylesheet (DO NOT CHANGE) -->
+<!-- Linking your original stylesheet -->
 <link rel="stylesheet" href="morning.css">
+
+<!-- STYLES FOR FLOATING BUTTONS & CART -->
+<style>
+  /* Floating WhatsApp Button */
+  .whatsapp-footer-btn {
+    position: fixed;
+    bottom: 0px;
+    left: 20px;
+    background-color: #25D366;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: sans-serif;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.2s;
+  }
+  .whatsapp-footer-btn:hover { 
+    background-color: #1ebc57; 
+    transform: scale(1.05);
+  }
+
+  /* Cart Floating Icon */
+  .cart-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #612412; /* Matches your yellow/orange theme */
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    z-index: 1000;
+    transition: transform 0.2s;
+    border: 2px solid white;
+  }
+  .cart-float:hover { transform: scale(1.1); }
+
+  .cart-float span {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: red;
+    color: white;
+    font-size: 12px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    border: 2px solid white;
+  }
+
+  /* Cart Drawer Styles */
+  .cart-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1001;
+    display: none;
+    backdrop-filter: blur(2px);
+  }
+  .cart-overlay.open { display: block; }
+
+  .cart-drawer {
+    position: fixed; top: 0; right: -100%; width: 350px; height: 100%;
+    background: white;
+    z-index: 1002;
+    transition: right 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+    max-width: 85%;
+  }
+  .cart-drawer.open { right: 0; }
+
+  .cart-header {
+    padding: 20px;
+    background: #333;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .close-cart { font-size: 30px; cursor: pointer; }
+  
+  #cart-items-area {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background: #f9f9f9;
+  }
+  
+  .cart-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+  }
+  .row-info { font-size: 14px; }
+  .r-name { font-weight: bold; color: #333; }
+  .r-price { color: #666; font-size: 12px; }
+
+  .row-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .qty-btn {
+    background: #ddd; border: none; width: 25px; height: 25px; cursor: pointer; font-weight: bold; border-radius: 50%;
+  }
+
+  .cart-footer {
+    padding: 20px;
+    background: white;
+    border-top: 1px solid #eee;
+  }
+  .total-line {
+    display: flex; justify-content: space-between; font-size: 18px; font-weight: bold; margin-bottom: 15px; color: #333;
+  }
+  .checkout-btn {
+    display: block;
+    width: 100%;
+    background: #25D366;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  .empty-msg { text-align: center; color: #777; margin-top: 50px; }
+</style>
+
 </head>
 <body>
 
@@ -104,10 +252,11 @@
 
 <!-- WhatsApp Footer Button -->
 <a href="#" id="wa-footer-btn" target="_blank" class="whatsapp-footer-btn">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="24" height="24" alt="WA">
 Chat on WhatsApp
 </a>
 
-<!-- Cart -->
+<!-- Cart Components -->
 <div class="cart-float" id="cart-float">🛒 <span id="cart-count">0</span></div>
 <div class="cart-overlay" id="cart-overlay"></div>
 <div class="cart-drawer" id="cart-drawer">
@@ -142,11 +291,15 @@ function getWhatsAppLink(phoneNumber, messageText) {
 }
 
 // Setup the floating Chat button instantly on page load
-document.getElementById("wa-footer-btn").href = getWhatsAppLink(phone, "");
+document.getElementById("wa-footer-btn").href = getWhatsAppLink(phone, "Hello La-Koi, I have an inquiry regarding the Breakfast Menu.");
 
 // ======= Cart Logic =======
 function addToCart(name, price){
-    cart[name] ? cart[name].qty++ : cart[name] = { price: +price, qty:1 };
+    if (cart[name]) {
+        cart[name].qty++;
+    } else {
+        cart[name] = { price: +price, qty: 1 };
+    }
     updateUI();
     
     // Quick pop animation when an item is added
@@ -201,9 +354,13 @@ function updateUI(){
     if(count === 0) {
         itemsArea.innerHTML = '<p class="empty-msg">Your cart is empty.</p>';
         checkoutBtn.href = "#"; // Disable link if empty
+        checkoutBtn.style.opacity = "0.5";
+        checkoutBtn.style.pointerEvents = "none";
     } else {
         msg += `\n*TOTAL: ${total.toLocaleString()}/=*`;
         checkoutBtn.href = getWhatsAppLink(phone, msg);
+        checkoutBtn.style.opacity = "1";
+        checkoutBtn.style.pointerEvents = "auto";
     }
     
     totalEl.innerText = total.toLocaleString()+"/=";
@@ -231,14 +388,6 @@ function toggleCart(){
     document.getElementById("cart-drawer").classList.toggle("open");
     document.getElementById("cart-overlay").classList.toggle("open");
 }
-
-// Prevent checkout click if cart is empty
-document.getElementById("checkout-btn").onclick = function(e) {
-    if(Object.keys(cart).length === 0){
-        e.preventDefault(); 
-        alert("Your cart is empty. Please add items first."); 
-    }
-};
 
 // Listen for ALL "Add to Cart" buttons on the page
 document.querySelectorAll(".add-btn").forEach(btn=>{

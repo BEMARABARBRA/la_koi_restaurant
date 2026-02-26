@@ -1,185 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reserve | La-Koi Restaurant & Lounge</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reserve | La-Koi Restaurant & Lounge</title>
 
-<!-- SEO -->
-<meta name="description" content="Reserve a table or contact La-Koi Restaurant & Lounge for authentic Ugandan cuisine in Bugolobi.">
-<meta name="keywords" content="La-Koi Restaurant, Ugandan Cuisine, Bugolobi Restaurant, Reservations">
-<meta name="author" content="La-Koi Restaurant & Lounge">
+  <!-- SEO -->
+  <meta name="description" content="Reserve a table or contact La-Koi Restaurant & Lounge for authentic Ugandan cuisine in Bugolobi.">
+  <meta name="keywords" content="La-Koi Restaurant, Ugandan Cuisine, Bugolobi Restaurant, Reservations">
+  <meta name="author" content="La-Koi Restaurant & Lounge">
 
-<link rel="stylesheet" href="reserve.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.0/build/css/intlTelInput.css">
+  <link rel="stylesheet" href="reserve.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.0/build/css/intlTelInput.css">
 </head>
 
 <body>
 
-<div class="background-overlay"></div>
-<a href="index.html" class="back-btn">Home</a>
+  <div class="background-overlay"></div>
+  <a href="index.html" class="back-btn">Home</a>
 
-<div class="container">
-<form id="contactForm">
+  <div class="container">
+    <form id="contactForm">
 
-<label for="fullname">Full Name</label>
-<input type="text" id="fullname" required>
+      <label for="fullname">Full Name</label>
+      <input type="text" id="fullname" required>
 
-<label for="email">Email Address</label>
-<input type="email" id="email" required>
+      <label for="email">Email Address</label>
+      <input type="email" id="email" required>
 
-<label for="phone">Contact Number</label>
-<input type="tel" id="phone" required>
+      <label for="phone">Contact Number</label>
+      <input type="tel" id="phone" required>
 
-<label for="district">District</label>
-<input type="text" id="district" autocomplete="off" required>
-<div id="districtList" class="autocomplete-items"></div>
+      <label for="district">District</label>
+      <input type="text" id="district" autocomplete="off" required>
+      <div id="districtList" class="autocomplete-items"></div>
 
-<label for="landmark">Area / Landmark</label>
-<input type="text" id="landmark" required>
+      <label for="landmark">Area / Landmark</label>
+      <input type="text" id="landmark" required>
 
-<label for="service">What would you like to do?</label>
-<select id="service" required>
-  <option value="">Select an option</option>
-  <option value="Table Reservation">Table Reservation</option>
-  <option value="Food Delivery">Food Delivery</option>
-  <option value="Takeaway Order">Takeaway Order</option>
-  <option value="Catering Services">Catering Services</option>
-  <option value="Private Event Booking">Private Event Booking</option>
-  <option value="General Inquiry">General Inquiry</option>
-</select>
+      <label for="service">What would you like to do?</label>
+      <select id="service" required>
+        <option value="">Select an option</option>
+        <option value="Table Reservation">Table Reservation</option>
+        <option value="Food Delivery">Food Delivery</option>
+        <option value="Takeaway Order">Takeaway Order</option>
+        <option value="Catering Services">Catering Services</option>
+        <option value="Private Event Booking">Private Event Booking</option>
+        <option value="General Inquiry">General Inquiry</option>
+      </select>
 
-<label for="date">Preferred Date</label>
-<input type="date" id="date">
+      <label for="date">Preferred Date</label>
+      <input type="date" id="date">
 
-<label for="time">Preferred Time</label>
-<input type="time" id="time">
+      <label for="time">Preferred Time</label>
+      <input type="time" id="time">
 
-<label for="guests">Number of Guests</label>
-<input type="number" id="guests" min="1">
+      <label for="guests">Number of Guests</label>
+      <input type="number" id="guests" min="1">
 
-<label>Send Via</label>
-<div class="delivery-options">
-  <input type="radio" id="whatsapp" name="delivery" value="whatsapp" checked>
-  <label for="whatsapp">WhatsApp</label>
+      <label>Send Via</label>
+      <div class="delivery-options">
+        <input type="radio" id="whatsapp" name="delivery" value="whatsapp" checked>
+        <label for="whatsapp">WhatsApp</label>
 
-  <input type="radio" id="emailOption" name="delivery" value="email">
-  <label for="emailOption">Email</label>
-</div>
+        <input type="radio" id="emailOption" name="delivery" value="email">
+        <label for="emailOption">Email</label>
+      </div>
 
-<button type="submit">Send Message</button>
-<p id="successMessage" class="success-msg"></p>
+      <button type="submit">Send Message</button>
+      <p id="successMessage" class="success-msg"></p>
 
-</form>
-</div>
+    </form>
+  </div>
 
-<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.0/build/js/intlTelInput.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.0/build/js/utils.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.0/build/js/intlTelInput.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.0/build/js/utils.js"></script>
 
-<script>
-/* ---------------- PHONE INPUT ---------------- */
-const iti = window.intlTelInput(document.querySelector("#phone"), {
-  initialCountry: "ug",
-  separateDialCode: true,
-  nationalMode: false
-});
-
-/* ---------------- DISTRICT AUTOCOMPLETE (ALL UGANDA) ---------------- */
-const districts = [
-"Abim","Adjumani","Agago","Alebtong","Amolatar","Amudat","Amuria","Amuru",
-"Apac","Arua","Budaka","Bududa","Bugiri","Bugweri","Buhweju","Buikwe",
-"Bukedea","Bukomansimbi","Bukwo","Bulambuli","Buliisa","Bushenyi","Busia",
-"Butaleja","Butambala","Butebo","Buvuma","Buyende","Dokolo","Gomba","Gulu",
-"Hoima","Ibanda","Iganga","Isingiro","Jinja","Kaabong","Kabale","Kabarole",
-"Kaberamaido","Kagadi","Kakumiro","Kalangala","Kaliro","Kalungu","Kampala",
-"Kamuli","Kamwenge","Kanungu","Kapchorwa","Kapelebyong","Karenga","Kasese",
-"Katakwi","Kayunga","Kazo","Kibaale","Kiboga","Kibuku","Kikuube",
-"Kiruhura","Kiryandongo","Kisoro","Kitagwenda","Kitgum","Koboko","Kole",
-"Kotido","Kumi","Kwania","Kween","Kyankwanzi","Kyegegwa","Kyenjojo",
-"Kyotera","Lamwo","Lira","Luuka","Luwero","Lwengo","Lyantonde",
-"Madi-Okollo","Masaka","Masindi","Mayuge","Mbale","Mbarara","Mitooma",
-"Mityana","Moroto","Moyo","Mpigi","Mubende","Mukono","Nabilatuk",
-"Nakapiripirit","Nakaseke","Nakasongola","Namayingo","Namisindwa",
-"Namutumba","Napak","Nebbi","Ngora","Ntoroko","Ntungamo","Nwoya","Obongi",
-"Omoro","Otuke","Oyam","Pader","Pakwach","Pallisa","Rakai","Rubanda",
-"Rubirizi","Rukiga","Rukungiri","Rwampara","Sembabule","Serere","Sheema",
-"Sironko","Soroti","Tororo","Wakiso","Yumbe","Zombo"
-];
-
-const districtInput = document.getElementById("district");
-const districtList = document.getElementById("districtList");
-
-districtInput.addEventListener("input", function () {
-  const val = this.value.toLowerCase();
-  districtList.innerHTML = "";
-  if (!val) return;
-
-  districts
-    .filter(d => d.toLowerCase().startsWith(val))
-    .forEach(match => {
-      const div = document.createElement("div");
-      div.textContent = match;
-      div.onclick = () => {
-        districtInput.value = match;
-        districtList.innerHTML = "";
-      };
-      districtList.appendChild(div);
+  <script>
+    /* ---------------- PHONE INPUT ---------------- */
+    const input = document.querySelector("#phone");
+    const iti = window.intlTelInput(input, {
+      initialCountry: "ug",
+      separateDialCode: true,
+      utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.0/build/js/utils.js",
     });
-});
 
-/* ---------------- FORM SUBMISSION ---------------- */
-document.getElementById("contactForm").addEventListener("submit", function (e) {
-  e.preventDefault();
+    /* ---------------- DISTRICT AUTOCOMPLETE (ALL UGANDA) ---------------- */
+    const districts = [
+      "Abim", "Adjumani", "Agago", "Alebtong", "Amolatar", "Amudat", "Amuria", "Amuru",
+      "Apac", "Arua", "Budaka", "Bududa", "Bugiri", "Bugweri", "Buhweju", "Buikwe",
+      "Bukedea", "Bukomansimbi", "Bukwo", "Bulambuli", "Buliisa", "Bushenyi", "Busia",
+      "Butaleja", "Butambala", "Butebo", "Buvuma", "Buyende", "Dokolo", "Gomba", "Gulu",
+      "Hoima", "Ibanda", "Iganga", "Isingiro", "Jinja", "Kaabong", "Kabale", "Kabarole",
+      "Kaberamaido", "Kagadi", "Kakumiro", "Kalangala", "Kaliro", "Kalungu", "Kampala",
+      "Kamuli", "Kamwenge", "Kanungu", "Kapchorwa", "Kapelebyong", "Karenga", "Kasese",
+      "Katakwi", "Kayunga", "Kazo", "Kibaale", "Kiboga", "Kibuku", "Kikuube",
+      "Kiruhura", "Kiryandongo", "Kisoro", "Kitagwenda", "Kitgum", "Koboko", "Kole",
+      "Kotido", "Kumi", "Kwania", "Kween", "Kyankwanzi", "Kyegegwa", "Kyenjojo",
+      "Kyotera", "Lamwo", "Lira", "Luuka", "Luwero", "Lwengo", "Lyantonde",
+      "Madi-Okollo", "Masaka", "Masindi", "Mayuge", "Mbale", "Mbarara", "Mitooma",
+      "Mityana", "Moroto", "Moyo", "Mpigi", "Mubende", "Mukono", "Nabilatuk",
+      "Nakapiripirit", "Nakaseke", "Nakasongola", "Namayingo", "Namisindwa",
+      "Namutumba", "Napak", "Nebbi", "Ngora", "Ntoroko", "Ntungamo", "Nwoya", "Obongi",
+      "Omoro", "Otuke", "Oyam", "Pader", "Pakwach", "Pallisa", "Rakai", "Rubanda",
+      "Rubirizi", "Rukiga", "Rukungiri", "Rwampara", "Sembabule", "Serere", "Sheema",
+      "Sironko", "Soroti", "Tororo", "Wakiso", "Yumbe", "Zombo"
+    ];
 
-  const name = fullname.value;
-  const phone = iti.getNumber();
-  const email = document.getElementById("email").value;
-  const district = districtInput.value;
-  const location = landmark.value;
-  const service = document.getElementById("service").value;
-  const date = document.getElementById("date").value;
-  const time = document.getElementById("time").value;
-  const guests = document.getElementById("guests").value;
-  const delivery = document.querySelector('input[name="delivery"]:checked').value;
+    const districtInput = document.getElementById("district");
+    const districtList = document.getElementById("districtList");
 
-  let message =
-`New Inquiry – La-Koi Restaurant & Lounge
+    districtInput.addEventListener("input", function() {
+      const val = this.value.toLowerCase();
+      districtList.innerHTML = "";
+      if (!val) return;
 
-Name: ${name}
-Phone: ${phone}
-Email: ${email}
-District: ${district}
-Location: ${location}
+      districts
+        .filter(d => d.toLowerCase().startsWith(val))
+        .forEach(match => {
+          const div = document.createElement("div");
+          div.textContent = match;
+          div.onclick = () => {
+            districtInput.value = match;
+            districtList.innerHTML = "";
+          };
+          districtList.appendChild(div);
+        });
+    });
 
-Request: ${service}`;
+    /* ---------------- FORM SUBMISSION ---------------- */
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
 
-  if (date) message += `\nPreferred Date: ${date}`;
-  if (time) message += `\nPreferred Time: ${time}`;
-  if (guests) message += `\nNumber of Guests: ${guests}`;
+      const name = document.getElementById("fullname").value;
+      const phone = iti.getNumber(); // Gets full international number
+      const email = document.getElementById("email").value;
+      const district = districtInput.value;
+      const location = document.getElementById("landmark").value;
+      const service = document.getElementById("service").value;
+      const date = document.getElementById("date").value;
+      const time = document.getElementById("time").value;
+      const guests = document.getElementById("guests").value;
+      const delivery = document.querySelector('input[name="delivery"]:checked').value;
 
-  const success = document.getElementById("successMessage");
+      // Construct the message
+      let message =
+        `*New Inquiry – La-Koi Restaurant & Lounge*\n\n` +
+        `*Name:* ${name}\n` +
+        `*Phone:* ${phone}\n` +
+        `*Email:* ${email}\n` +
+        `*District:* ${district}\n` +
+        `*Location:* ${location}\n\n` +
+        `*Request:* ${service}`;
 
-  if (delivery === "whatsapp") {
-    const waURL =
-      "https://wa.me/256779384198?text=" + encodeURIComponent(message);
+      if (date) message += `\n*Preferred Date:* ${date}`;
+      if (time) message += `\n*Preferred Time:* ${time}`;
+      if (guests) message += `\n*Number of Guests:* ${guests}`;
 
-    window.open(waURL, "_blank");
-    success.textContent = "WhatsApp message ready. Tap Send.";
+      const success = document.getElementById("successMessage");
 
-  } else {
-    const mailtoURL =
-      "mailto:olwenyoisaac@gmail.com" +
-      "?subject=" + encodeURIComponent("La-Koi Restaurant Inquiry") +
-      "&body=" + encodeURIComponent(message);
+      if (delivery === "whatsapp") {
+        // === THIS IS THE LINE CONNECTING TO YOUR NUMBER ===
+        const waURL = "https://wa.me/256779384198?text=" + encodeURIComponent(message);
 
-    window.location.href = mailtoURL;
-    success.textContent = "Email draft prepared with your details.";
-  }
+        window.open(waURL, "_blank");
+        success.textContent = "WhatsApp message ready. Tap Send.";
 
-  success.style.display = "block";
-  setTimeout(() => this.reset(), 1200);
-});
-</script>
+      } else {
+        const mailtoURL =
+          "mailto:olwenyoisaac@gmail.com" +
+          "?subject=" + encodeURIComponent("La-Koi Restaurant Inquiry") +
+          "&body=" + encodeURIComponent(message);
+
+        window.location.href = mailtoURL;
+        success.textContent = "Email draft prepared with your details.";
+      }
+
+      success.style.display = "block";
+      // Clear form after 1.5 seconds
+      setTimeout(() => {
+        this.reset();
+        success.style.display = "none";
+      }, 3000);
+    });
+  </script>
 
 </body>
 </html>

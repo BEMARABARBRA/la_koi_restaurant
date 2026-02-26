@@ -1,72 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Character encoding -->
     <meta charset="UTF-8">
+
+    <!-- Responsive viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO title -->
     <title>La-Koi | Dessert Menu</title>
-    
+
     <!-- External CSS -->
     <link rel="stylesheet" href="deserts.css">
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- 'Oswald' for big MENU, 'Great Vibes' for script, 'Montserrat' for text -->
+
+    <!-- Google Fonts import -->
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&family=Oswald:wght@700&display=swap" rel="stylesheet">
+
+    <!-- Inline CSS for WhatsApp and Cart -->
+    <style>
+        /* Floating WhatsApp button */
+        .whatsapp-footer-btn {
+            position: fixed; /* Fixed on screen */
+            bottom: 20px; /* Distance from bottom */
+            left: 20px; /* LEFT side */
+            background: #25D366; /* WhatsApp green */
+            color: white; /* Text color */
+            padding: 12px 20px; /* Spacing */
+            border-radius: 30px; /* Rounded corners */
+            text-decoration: none; /* Remove underline */
+            font-weight: bold; /* Bold text */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* Shadow */
+            z-index: 997; /* Layer priority */
+            display: flex; /* Flex layout */
+            align-items: center; /* Center vertically */
+            gap: 8px; /* Space between icon and text */
+            font-family: 'Montserrat', sans-serif; /* Font */
+        }
+        .whatsapp-footer-btn::before {
+            font-size: 18px; /* Icon size */
+            font-weight: 800px; /* Icon weight */
+        }
+
+        /* Floating cart button */
+        .cart-float {
+            position: fixed; /* Fixed */
+            bottom: 20px; /* Above WhatsApp */
+            right: 20px; /* Right side */
+            background: #622312; /* Dark company-style color */
+            border: 2px solid gold; /* Gold border */
+            color: white; /* Icon color */
+            width: 60px; /* Width */
+            height: 60px; /* Height */
+            border-radius: 50%; /* Circle shape */
+            display: flex; /* Flexbox */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            font-size: 24px; /* Icon size */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* Shadow */
+            cursor: pointer; /* Pointer cursor */
+            z-index: 998; /* Layer */
+            transition: transform 0.2s; /* Animation */
+        }
+
+        /* Cart badge */
+        #cart-count {
+            position: absolute; /* Absolute inside cart */
+            top: 0;
+            right: 0;
+            background: red; /* Red badge */
+            color: white;
+            font-size: 12px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        /* Cart overlay */
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0, 0.5);
+            display: none;
+            z-index: 999;
+        }
+        .cart-overlay.open {
+            display: block;
+        }
+
+        /* Cart drawer */
+        .cart-drawer {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 320px;
+            height: 100%;
+            background: #fff;
+            z-index: 1000;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+            font-family: 'Montserrat', sans-serif;
+            color: #2b0b02;
+        }
+        .cart-drawer.open {
+            right: 0;
+        }
+
+        /* Cart header */
+        .cart-drawer .cart-header {
+            padding: 15px;
+            background: #612412;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .cart-drawer .cart-header h3 { margin: 0; font-size: 1.2rem; }
+        .cart-drawer .close-cart { cursor: pointer; font-size: 28px; font-weight: bold; line-height: 1; }
+
+        /* Cart items area */
+        #cart-items-area { flex-grow: 1; padding: 15px; overflow-y: auto; }
+        .empty-msg { text-align: center; color: #888; font-style: italic; margin-top: 20px; }
+
+        /* Cart row */
+        .cart-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #eee; }
+        .row-info .r-name { font-weight: bold; margin-bottom: 4px; }
+        .row-info .r-price { color: rgb(235, 57, 12); font-size: 0.9em; font-weight: 600; }
+        .row-controls { display: flex; gap: 10px; align-items: center; }
+        .qty-btn { background: #eee; border: none; padding: 4px 10px; cursor: pointer; border-radius: 4px; font-weight: bold; font-size: 16px; transition: background 0.2s; }
+        .qty-btn:hover { background: #ddd; }
+
+        /* Cart footer */
+        .cart-drawer .cart-footer { padding: 15px; background: #f9f9f9; border-top: 1px solid #ddd; }
+        .total-line { display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 15px; font-size: 1.2em; }
+        .checkout-btn { display: block; width: 100%; padding: 12px; background: #25D366; color: white; text-align: center; text-decoration: none; box-sizing: border-box; border-radius: 5px; font-weight: bold; font-size: 16px; transition: background 0.2s; }
+        .checkout-btn:hover { background: #20b858; }
+    </style>
 </head>
 <body>
 
-    <!-- Back Button -->
+    <!-- Back button -->
     <a href="index.html" class="back-btn">Home</a>
 
-    <!-- HEADER SECTION -->
+    <!-- Header -->
     <header class="menu-header">
         <h1 class="bg-text">MENU</h1>
         <h2 class="script-text">Desserts</h2>
     </header>
 
-    <!-- FLOATING CART BUTTON -->
-    <div class="cart-floating" onclick="toggleCart()">
-        <span class="cart-icon">🛒</span>
-        <span id="cart-count-badge" style="display:none;">0</span>
-    </div>
-
-    <!-- CART MODAL -->
-    <div id="cart-modal" class="cart-modal">
-        <div class="cart-header">
-            <h3>Your Order</h3>
-            <button onclick="toggleCart()" class="close-btn">&times;</button>
-        </div>
-        <div id="cart-items" class="cart-items">
-            <!-- Items injected by JS -->
-            <p class="empty-msg">Your cart is empty.</p>
-        </div>
-        <div class="cart-footer">
-            <div class="total-row">Total: <span id="cart-total">0/=</span></div>
-            <button onclick="checkoutWhatsApp()" class="checkout-btn">
-                Complete Order on WhatsApp
-            </button>
-        </div>
-    </div>
-
-    <!-- MENU GRID -->
+    <!-- Menu grid -->
     <main class="card-grid">
 
         <!-- ITEM 1 -->
         <div class="food-card">
             <div class="plate-container">
-                <!-- <span class="top-badge">TOP 1</span> -->
                 <img src="la_koi_photos/fruit_salad_bowl.jpeg" alt="Fruit Salad">
             </div>
             <div class="card-details">
                 <h3>Fruit Salad</h3>
                 <p class="desc">Fresh seasonal fruits, diced and served chilled for natural sweetness.</p>
                 <div class="price">10,000/=</div>
-                
                 <div class="controls">
-                    <button onclick="changeQty('item1', -1)">-</button>
-                    <span id="qty-item1">0</span>
-                    <button onclick="changeQty('item1', 1, 'Fruit Salad', 10000)">+</button>
+                    <button onclick="changeQty('Fruit Salad', -1)">-</button>
+                    <span class="item-qty-display" data-name="Fruit Salad">0</span>
+                    <button onclick="changeQty('Fruit Salad', 1, 10000)">+</button>
                 </div>
             </div>
         </div>
@@ -74,18 +183,16 @@
         <!-- ITEM 2 -->
         <div class="food-card">
             <div class="plate-container">
-                <!-- <span class="top-badge">TOP 2</span> -->
                 <img src="la_koi_photos/fruit_icecream2.png" alt="Ice Cream Combo">
             </div>
             <div class="card-details">
                 <h3>Ice Cream + Fruit</h3>
                 <p class="desc">Velvety vanilla ice cream paired with fresh, juicy fruit slices.</p>
                 <div class="price">8,000/=</div>
-
                 <div class="controls">
-                    <button onclick="changeQty('item2', -1)">-</button>
-                    <span id="qty-item2">0</span>
-                    <button onclick="changeQty('item2', 1, 'Ice Cream + Fruit', 8000)">+</button>
+                    <button onclick="changeQty('Ice Cream + Fruit', -1)">-</button>
+                    <span class="item-qty-display" data-name="Ice Cream + Fruit">0</span>
+                    <button onclick="changeQty('Ice Cream + Fruit', 1, 8000)">+</button>
                 </div>
             </div>
         </div>
@@ -93,18 +200,16 @@
         <!-- ITEM 3 -->
         <div class="food-card">
             <div class="plate-container">
-                <!-- <span class="top-badge">TOP 3</span> -->
                 <img src="la_koi_photos/yoghurt_fruits.jpeg" alt="Yogurt Cup">
             </div>
             <div class="card-details">
                 <h3>Fruit & Yogurt Cup</h3>
                 <p class="desc">Creamy natural yogurt layered with vibrant seasonal fruits.</p>
                 <div class="price">8,000/=</div>
-
                 <div class="controls">
-                    <button onclick="changeQty('item3', -1)">-</button>
-                    <span id="qty-item3">0</span>
-                    <button onclick="changeQty('item3', 1, 'Fruit & Yogurt Cup', 8000)">+</button>
+                    <button onclick="changeQty('Fruit & Yogurt Cup', -1)">-</button>
+                    <span class="item-qty-display" data-name="Fruit & Yogurt Cup">0</span>
+                    <button onclick="changeQty('Fruit & Yogurt Cup', 1, 8000)">+</button>
                 </div>
             </div>
         </div>
@@ -118,11 +223,10 @@
                 <h3>Banana & Honey</h3>
                 <p class="desc">Sliced ripe bananas drizzled with pure golden honey.</p>
                 <div class="price">6,000/=</div>
-
                 <div class="controls">
-                    <button onclick="changeQty('item4', -1)">-</button>
-                    <span id="qty-item4">0</span>
-                    <button onclick="changeQty('item4', 1, 'Banana & Honey', 6000)">+</button>
+                    <button onclick="changeQty('Banana & Honey', -1)">-</button>
+                    <span class="item-qty-display" data-name="Banana & Honey">0</span>
+                    <button onclick="changeQty('Banana & Honey', 1, 6000)">+</button>
                 </div>
             </div>
         </div>
@@ -136,99 +240,156 @@
                 <h3>Ice Cream Scoop</h3>
                 <p class="desc">Classic scoop. Vanilla, Chocolate, or Strawberry.</p>
                 <div class="price">5,000/=</div>
-
                 <div class="controls">
-                    <button onclick="changeQty('item5', -1)">-</button>
-                    <span id="qty-item5">0</span>
-                    <button onclick="changeQty('item5', 1, 'Ice Cream Scoop', 5000)">+</button>
+                    <button onclick="changeQty('Ice Cream Scoop', -1)">-</button>
+                    <span class="item-qty-display" data-name="Ice Cream Scoop">0</span>
+                    <button onclick="changeQty('Ice Cream Scoop', 1, 5000)">+</button>
                 </div>
             </div>
         </div>
 
     </main>
 
-    <!-- JAVASCRIPT -->
+    <!-- Floating WhatsApp button -->
+    <a href="#" id="wa-footer-btn" target="_blank" class="whatsapp-footer-btn">
+        Inquiries
+    </a>
+
+    <!-- Floating Cart -->
+    <div class="cart-float" id="cart-float">🛒 <span id="cart-count">0</span></div>
+
+    <!-- Cart overlay -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+
+    <!-- Cart drawer -->
+    <div class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <h3>Your Order</h3>
+            <span class="close-cart" id="close-cart">×</span>
+        </div>
+        <div id="cart-items-area"><p class="empty-msg">Your cart is empty.</p></div>
+        <div class="cart-footer">
+            <div class="total-line"><span>Total:</span><span id="cart-total">0/=</span></div>
+            <a href="#" id="checkout-btn" class="checkout-btn" target="_blank">Confirm & Send Order</a>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
     <script>
-        const WHATSAPP_NUMBER = "256700000000"; // REPLACE THIS
+        // ======= Setup Data =======
+        const CART_KEY = "lakoi_cart"; // Key for localStorage
+        const phone = "256779384198"; // WhatsApp Number
+        let cart = JSON.parse(localStorage.getItem(CART_KEY)) || {}; // Initialize cart
 
-        let cart = {};
-
-        function changeQty(id, change, name, price) {
-            if (!cart[id] && change > 0) {
-                cart[id] = { name: name, price: price, qty: 0 };
+        // ======= WhatsApp Link Generator =======
+        function getWhatsAppLink(phoneNumber, messageText) {
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            const encodedText = messageText ? `&text=${encodeURIComponent(messageText)}` : "";
+            if (isMobile) {
+                return `https://api.whatsapp.com/send?phone=${phoneNumber}${encodedText}`;
+            } else {
+                return `https://web.whatsapp.com/send?phone=${phoneNumber}${encodedText}`;
             }
-            if (!cart[id]) return;
+        }
 
-            cart[id].qty += change;
-            
-            if (cart[id].qty <= 0) {
-                delete cart[id];
-                const display = document.getElementById(`qty-${id}`);
-                if(display) display.innerText = "0";
-            }
+        // Set WhatsApp button href on page load
+        document.getElementById("wa-footer-btn").href = getWhatsAppLink(phone, "");
+
+        // ======= Cart Functions =======
+        function changeQty(name, amt, price = 0) {
+            if (!cart[name] && amt > 0) cart[name] = { price: +price, qty: 0 };
+            if (!cart[name]) return;
+            cart[name].qty += amt;
+            if (cart[name].qty <= 0) delete cart[name];
             updateUI();
+            if (amt > 0) {
+                const cartFloat = document.getElementById('cart-float');
+                cartFloat.style.transform = 'scale(1.2)';
+                setTimeout(() => cartFloat.style.transform = 'scale(1)', 200);
+            }
         }
 
+        // Update UI
         function updateUI() {
-            let totalCount = 0;
-            let totalPrice = 0;
-            const container = document.getElementById('cart-items');
-            container.innerHTML = "";
+            const itemsArea = document.getElementById("cart-items-area");
+            const totalEl = document.getElementById("cart-total");
+            const countEl = document.getElementById("cart-count");
+            const checkoutBtn = document.getElementById("checkout-btn");
+            let total = 0, count = 0;
+            let msg = "Hello La-Koi, I would like to order:\n\n";
 
-            for (let id in cart) {
-                let item = cart[id];
-                totalCount += item.qty;
-                totalPrice += (item.price * item.qty);
+            itemsArea.innerHTML = "";
+            document.querySelectorAll('.item-qty-display').forEach(el => el.innerText = "0");
 
-                const display = document.getElementById(`qty-${id}`);
-                if (display) display.innerText = item.qty;
+            for (let name in cart) {
+                let item = cart[name];
+                let subTotal = item.price * item.qty;
+                total += subTotal;
+                count += item.qty;
+                msg += `▪️ ${name} (x${item.qty}) - ${subTotal.toLocaleString()}/=\n`;
+                document.querySelectorAll(`.item-qty-display[data-name="${name}"]`).forEach(el => el.innerText = item.qty);
 
-                const row = document.createElement('div');
-                row.className = 'cart-row';
-                row.innerHTML = `
-                    <div style="flex-grow:1;"><strong>${item.name}</strong></div>
-                    <div style="margin-right:15px;">x${item.qty}</div>
-                    <div>${(item.price * item.qty).toLocaleString()}/=</div>
-                `;
-                container.appendChild(row);
+                const div = document.createElement("div");
+                div.className = "cart-row";
+                div.innerHTML = `
+                <div class="row-info">
+                    <div class="r-name">${name}</div>
+                    <div class="r-price">${item.price.toLocaleString()}/=</div>
+                </div>
+                <div class="row-controls">
+                    <button class="qty-btn" data-name="${name}" data-amt="-1">−</button>
+                    <span>${item.qty}</span>
+                    <button class="qty-btn" data-name="${name}" data-amt="1">+</button>
+                </div>`;
+                itemsArea.appendChild(div);
             }
 
-            const badge = document.getElementById('cart-count-badge');
-            badge.innerText = totalCount;
-            badge.style.display = totalCount > 0 ? 'flex' : 'none';
-            
-            document.getElementById('cart-total').innerText = totalPrice.toLocaleString() + "/=";
-
-            if (totalCount === 0) {
-                container.innerHTML = '<p class="empty-msg">Your cart is empty.</p>';
+            if (count === 0) {
+                itemsArea.innerHTML = '<p class="empty-msg">Your cart is empty.</p>';
+                checkoutBtn.href = "#";
+            } else {
+                msg += `\n*TOTAL: ${total.toLocaleString()}/=*`;
+                checkoutBtn.href = getWhatsAppLink(phone, msg);
             }
+
+            totalEl.innerText = total.toLocaleString() + "/=";
+            countEl.innerText = count;
+
+            localStorage.setItem(CART_KEY, JSON.stringify(cart));
+
+            document.querySelectorAll(".cart-row .qty-btn").forEach(btn => {
+                btn.onclick = () => changeQty(btn.dataset.name, +btn.dataset.amt);
+            });
         }
 
+        // Sync cart across pages
+        window.addEventListener('storage', function(e) {
+            if (e.key === CART_KEY) {
+                cart = JSON.parse(e.newValue) || {};
+                updateUI();
+            }
+        });
+
+        // Cart toggle
         function toggleCart() {
-            document.getElementById('cart-modal').classList.toggle('active');
+            document.getElementById("cart-drawer").classList.toggle("open");
+            document.getElementById("cart-overlay").classList.toggle("open");
         }
 
-        function checkoutWhatsApp() {
-            let msg = "Hello! I'd like to order:%0A%0A";
-            let total = 0;
-            let hasItems = false;
+        document.getElementById("cart-float").onclick = toggleCart;
+        document.getElementById("cart-overlay").onclick = toggleCart;
+        document.getElementById("close-cart").onclick = toggleCart;
 
-            for (let id in cart) {
-                let item = cart[id];
-                let sub = item.price * item.qty;
-                total += sub;
-                msg += `- ${item.name} x${item.qty} (${sub.toLocaleString()}/=)%0A`;
-                hasItems = true;
+        // Prevent checkout if empty
+        document.getElementById("checkout-btn").onclick = function(e) {
+            if(Object.keys(cart).length === 0) {
+                e.preventDefault(); 
+                alert("Your cart is empty. Please add items first."); 
             }
+        };
 
-            if (!hasItems) {
-                alert("Cart is empty!");
-                return;
-            }
-
-            msg += `%0A*Total: ${total.toLocaleString()}/=*`;
-            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
-        }
+        // Initialize UI
+        updateUI();
     </script>
 </body>
 </html>

@@ -7,89 +7,384 @@
   <title>La-Koi Luxury Soft Drinks Menu</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="non_alcoholic_drinks.css">
+
+  <!-- STYLES FOR CART & FLOATING BUTTON (Added based on guidance code) -->
+  <style>
+    /* Floating WhatsApp Button */
+    .whatsapp-footer-btn {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background-color: #25D366;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      font-family: 'Poppins', sans-serif;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .whatsapp-footer-btn:hover { background-color: #1ebc57; }
+
+    /* Cart Floating Icon */
+    .cart-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #5c2111; /* Matching your theme likely */
+      border: 2px solid gold; /* Gold border for luxury feel */
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      z-index: 1000;
+      transition: transform 0.2s;
+    }
+    .cart-float span {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: red;
+      color: white;
+      font-size: 12px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+    }
+
+    /* Cart Drawer Styles */
+    .cart-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 1001;
+      display: none;
+    }
+    .cart-overlay.open { display: block; }
+
+    .cart-drawer {
+      position: fixed; top: 0; right: -100%; width: 350px; height: 100%;
+      background: white;
+      z-index: 1002;
+      transition: right 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+      max-width: 90%;
+    }
+    .cart-drawer.open { right: 0; }
+
+    .cart-header {
+      padding: 20px;
+      background: #612412;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .close-cart { font-size: 30px; cursor: pointer; }
+    
+    #cart-items-area {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      background: #f9f9f9;
+    }
+    
+    .cart-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 10px;
+    }
+    .row-info { font-size: 14px; }
+    .r-name { font-weight: bold; color: #333; }
+    .r-price { color: #e60505; font-size: 12px; }
+
+    .row-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .qty-btn {
+      background: #ddd; border: none; width: 25px; height: 25px; cursor: pointer; font-weight: bold;
+    }
+
+    .cart-footer {
+      padding: 20px;
+      background: white;
+      border-top: 1px solid #eee;
+    }
+    .total-line {
+      display: flex; justify-content: space-between; font-size: 18px; font-weight: bold; margin-bottom: 15px; color: #333;
+    }
+    .checkout-btn {
+      display: block;
+      width: 100%;
+      background: #25D366;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .empty-msg { text-align: center; color: #777; margin-top: 50px; }
+
+    /* Button Style for Cards */
+    .add-to-cart-btn {
+      background-color: #333;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      cursor: pointer;
+      border-radius: 4px;
+      margin-top: 10px;
+      width: 100%;
+      font-family: inherit;
+    }
+    .add-to-cart-btn:hover { background-color: #555; }
+    .drink-header h3 { margin: 0; font-size: 1.1rem; }
+    .drink-header span { font-weight: bold; color: #e67e22; }
+  </style>
 </head>
 
 <body>
   <a href="index.html" class="back-btn">Home</a>
+  
+  <section class="split-menu">
+    <div class="menu-content">
+      <h1 class="menu-title">NON-ALCOHOLIC MENU</h1>
 
-<section class="split-menu">
-  <div class="menu-content">
-    <h1 class="menu-title">NON-ALCOHOLIC MENU</h1>
+      <h2 class="section-title">Soft & Energy Drinks</h2>
+      <div class="drink-grid">
+        <div class="drink-item" data-name="Soda" data-price="2000"></div>
+        <div class="drink-item" data-name="Salt Water" data-price="2000"></div>
+        <div class="drink-item" data-name="Fresh Juice" data-price="10000"></div>
+        <div class="drink-item" data-name="Red Bull" data-price="10000"></div>
+        <div class="drink-item" data-name="Minute Maid 500ml" data-price="8000"></div>
+        <div class="drink-item" data-name="Minute Maid 300ml" data-price="4000"></div>
+        <div class="drink-item" data-name="Rockboom 300ml" data-price="4000"></div>
+        <div class="drink-item" data-name="Sting" data-price="4000"></div>
+      </div>
 
-    <h2 class="section-title">Soft & Energy Drinks</h2>
-    <div class="drink-grid">
-      <div class="drink-item" data-name="Soda" data-price="2000"></div>
-      <div class="drink-item" data-name="Salt Water" data-price="2000"></div>
-      <div class="drink-item" data-name="Fresh Juice" data-price="10000"></div>
-      <div class="drink-item" data-name="Red Bull" data-price="10000"></div>
-      <div class="drink-item" data-name="Minute Maid 500ml" data-price="8000"></div>
-      <div class="drink-item" data-name="Minute Maid 300ml" data-price="4000"></div>
-      <div class="drink-item" data-name="Rockboom 300ml" data-price="4000"></div>
-      <div class="drink-item" data-name="Sting" data-price="4000"></div>
+      <h2 class="section-title">Shakes & Smoothies</h2>
+      <div class="drink-grid">
+        <div class="drink-item" data-name="Milkshake" data-price="14000"></div>
+        <div class="drink-item" data-name="Smoothie" data-price="15000"></div>
+      </div>
+
+      <h2 class="section-title">Hot Teas & Special Brews</h2>
+      <div class="drink-grid">
+        <div class="drink-item" data-name="Traditional Black Tea" data-price="5000"></div>
+        <div class="drink-item" data-name="African Tea" data-price="7000"></div>
+        <div class="drink-item" data-name="Dawa Tea" data-price="8000"></div>
+        <div class="drink-item" data-name="Tropical Pineapple Bliss" data-price="12000"></div>
+      </div>
+
+      <h2 class="section-title">Refreshing Mocktails</h2>
+      <div class="drink-grid">
+        <div class="drink-item" data-name="Virgin Mojito" data-price="15000"></div>
+        <div class="drink-item" data-name="Pineapple Ginger Fizz" data-price="15000"></div>
+        <div class="drink-item" data-name="Tropical Sunrise" data-price="15000"></div>
+        <div class="drink-item" data-name="Blue Breeze – Virgin" data-price="15000"></div>
+        <div class="drink-item" data-name="Cucumber Mint Cooler" data-price="15000"></div>
+        <div class="drink-item" data-name="Berry Lemonade" data-price="15000"></div>
+      </div>
+
     </div>
+    <div class="menu-image"></div>
+  </section>
 
-    <h2 class="section-title">Shakes & Smoothies</h2>
-    <div class="drink-grid">
-      <div class="drink-item" data-name="Milkshake" data-price="14000"></div>
-      <div class="drink-item" data-name="Smoothie" data-price="15000"></div>
+  <!-- WhatsApp Floating Inquiry Button -->
+  <a href="#" id="wa-footer-btn" target="_blank" class="whatsapp-footer-btn">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="20" alt="WA"> Chat on WhatsApp
+  </a>
+
+  <!-- Cart UI Elements -->
+  <div class="cart-float" id="cart-float">🛒 <span id="cart-count">0</span></div>
+  <div class="cart-overlay" id="cart-overlay"></div>
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+      <h3>Your Order</h3>
+      <span class="close-cart" id="close-cart">×</span>
     </div>
-
-    <h2 class="section-title">Hot Teas & Special Brews</h2>
-    <div class="drink-grid">
-      <div class="drink-item" data-name="Traditional Black Tea" data-price="5000"></div>
-      <div class="drink-item" data-name="African Tea" data-price="7000"></div>
-      <div class="drink-item" data-name="Dawa Tea" data-price="8000"></div>
-      <div class="drink-item" data-name="Tropical Pineapple Bliss" data-price="12000"></div>
+    <div id="cart-items-area"><p class="empty-msg">Your cart is empty.</p></div>
+    <div class="cart-footer">
+      <div class="total-line"><span>Total:</span><span id="cart-total">0/=</span></div>
+      <!-- Checkout Link -->
+      <a href="#" id="checkout-btn" class="checkout-btn" target="_blank">Confirm & Send Order</a>
     </div>
-
-    <h2 class="section-title">Refreshing Mocktails</h2>
-    <div class="drink-grid">
-      <div class="drink-item" data-name="Virgin Mojito" data-price="15000"></div>
-      <div class="drink-item" data-name="Pineapple Ginger Fizz" data-price="15000"></div>
-      <div class="drink-item" data-name="Tropical Sunrise" data-price="15000"></div>
-      <div class="drink-item" data-name="Blue Breeze – Virgin" data-price="15000"></div>
-      <div class="drink-item" data-name="Cucumber Mint Cooler" data-price="15000"></div>
-      <div class="drink-item" data-name="Berry Lemonade" data-price="15000"></div>
-    </div>
-
   </div>
 
-  <div class="menu-image"></div>
-</section>
+  <script>
+    // ======= Configuration =======
+    const CART_KEY = "lakoi_cart"; 
+    const phoneNumber = "256779384198"; 
 
-<script>
-const whatsappNumber = "256784948474";
-document.querySelectorAll(".drink-item").forEach(card => {
-  const name = card.dataset.name;
-  const price = parseInt(card.dataset.price);
+    // ======= 1. Generate Drink Cards =======
+    // This replaces your old script that created separate Order buttons
+    document.querySelectorAll(".drink-item").forEach(card => {
+      const name = card.dataset.name;
+      const price = parseInt(card.dataset.price);
 
-  card.innerHTML = `
-    <div class="drink-header">
-      <h3>${name}</h3>
-      <span>${price.toLocaleString()}/=</span>
-    </div>
-    <div class="controls">
-      <button class="minus">−</button>
-      <input type="number" value="1" min="1">
-      <button class="plus">+</button>
-      <button class="order-btn">Order</button>
-    </div>
-  `;
+      card.innerHTML = `
+        <div class="drink-header">
+          <h3>${name}</h3>
+          <span>${price.toLocaleString()}/=</span>
+        </div>
+        <button class="add-to-cart-btn" data-name="${name}" data-price="${price}">
+          Add to Cart
+        </button>
+      `;
+    });
 
-  const minus = card.querySelector(".minus");
-  const plus = card.querySelector(".plus");
-  const qtyInput = card.querySelector("input");
-  const orderBtn = card.querySelector(".order-btn");
+    // ======= 2. Global WhatsApp Logic =======
+    function getWhatsAppLink(phone, messageText) {
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      const encodedText = messageText ? `&text=${encodeURIComponent(messageText)}` : "";
+      
+      if (isMobile) {
+        return `https://api.whatsapp.com/send?phone=${phone}${encodedText}`;
+      } else {
+        return `https://web.whatsapp.com/send?phone=${phone}${encodedText}`;
+      }
+    }
 
-  minus.onclick = () => { if (qtyInput.value > 1) qtyInput.value--; };
-  plus.onclick = () => { qtyInput.value++; };
-  orderBtn.onclick = () => {
-    const qty = qtyInput.value;
-    const total = price * qty;
-    const message = `*Order from La-Koi*\nItem: ${name}\nQuantity: ${qty}\nTotal: ${total.toLocaleString()}/=`;
-    window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, "_blank");
-  };
-});
-</script>
+    // Initialize Floating WhatsApp Button
+    document.getElementById("wa-footer-btn").href = getWhatsAppLink(phoneNumber, "Hello La-Koi, I have an inquiry regarding the menu.");
+
+    // ======= 3. Cart Logic =======
+    let cart = JSON.parse(localStorage.getItem(CART_KEY)) || {};
+
+    function addToCart(name, price){
+      if (cart[name]) {
+        cart[name].qty++;
+      } else {
+        cart[name] = { price: +price, qty: 1 };
+      }
+      
+      // Animation for the cart icon
+      const cartFloat = document.getElementById('cart-float');
+      cartFloat.style.transform = 'scale(1.2)';
+      setTimeout(() => cartFloat.style.transform = 'scale(1)', 200);
+      
+      updateUI();
+      // Optional: Open cart immediately
+      // toggleCart(); 
+    }
+
+    function changeQty(name, amt){
+      if(!cart[name]) return;
+      cart[name].qty += amt;
+      if(cart[name].qty <= 0) delete cart[name];
+      updateUI();
+    }
+
+    function updateUI(){
+      const itemsArea = document.getElementById("cart-items-area");
+      const totalEl = document.getElementById("cart-total");
+      const countEl = document.getElementById("cart-count");
+      const checkoutBtn = document.getElementById("checkout-btn");
+      
+      let total = 0, count = 0;
+      let msg = "Hello La-Koi, I would like to place an order:\n\n";
+      
+      itemsArea.innerHTML = "";
+
+      for(let name in cart){
+        let item = cart[name];
+        let subTotal = item.price * item.qty;
+        
+        total += subTotal;
+        count += item.qty;
+        msg += `▪️ ${name} (x${item.qty}) - ${subTotal.toLocaleString()}/=\n`;
+
+        const div = document.createElement("div");
+        div.className = "cart-row";
+        div.innerHTML = `
+        <div class="row-info">
+            <div class="r-name">${name}</div>
+            <div class="r-price">${item.price.toLocaleString()}/=</div>
+        </div>
+        <div class="row-controls">
+            <button class="qty-btn" data-name="${name}" data-amt="-1">−</button>
+            <span>${item.qty}</span>
+            <button class="qty-btn" data-name="${name}" data-amt="1">+</button>
+        </div>
+        `;
+        itemsArea.appendChild(div);
+      }
+
+      if(count === 0) {
+        itemsArea.innerHTML = '<p class="empty-msg">Your cart is empty.</p>';
+        checkoutBtn.href = "#";
+        checkoutBtn.style.opacity = "0.5";
+        checkoutBtn.style.pointerEvents = "none";
+      } else {
+        msg += `\n*TOTAL: ${total.toLocaleString()}/=*`;
+        checkoutBtn.href = getWhatsAppLink(phoneNumber, msg);
+        checkoutBtn.style.opacity = "1";
+        checkoutBtn.style.pointerEvents = "auto";
+      }
+      
+      totalEl.innerText = total.toLocaleString()+"/=";
+      countEl.innerText = count;
+
+      // Save to localStorage so other pages can see this cart
+      localStorage.setItem(CART_KEY, JSON.stringify(cart));
+
+      // Re-bind listeners for +/- buttons inside the cart
+      document.querySelectorAll(".qty-btn").forEach(btn=>{
+        btn.onclick = ()=>changeQty(btn.dataset.name, +btn.dataset.amt);
+      });
+    }
+
+    // Sync cart if user adds items from another page while this page is open
+    window.addEventListener('storage', function(e) {
+      if (e.key === CART_KEY) {
+        cart = JSON.parse(e.newValue) || {};
+        updateUI();
+      }
+    });
+
+    // Cart Drawer Toggle
+    function toggleCart(){
+      document.getElementById("cart-drawer").classList.toggle("open");
+      document.getElementById("cart-overlay").classList.toggle("open");
+    }
+
+    // ======= 4. Event Listeners =======
+    
+    // Listen for clicks on "Add to Cart" buttons generated in Step 1
+    document.querySelectorAll(".add-to-cart-btn").forEach(btn => {
+      btn.onclick = () => {
+        addToCart(btn.dataset.name, btn.dataset.price);
+      };
+    });
+
+    // Cart Open/Close triggers
+    document.getElementById("cart-float").onclick = toggleCart;
+    document.getElementById("cart-overlay").onclick = toggleCart;
+    document.getElementById("close-cart").onclick = toggleCart;
+
+    // Initial Load
+    updateUI();
+  </script>
 </body>
 </html>
