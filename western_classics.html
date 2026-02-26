@@ -3,33 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="La Koi Restaurant - Premium Dining Menu">
-    <title>La Koi Restaurant | Food Menu</title>
+    
+    <!-- ================= SEO OPTIMIZATION ================= -->
+    <title>La-Koi Restaurant | Premium Lunch & Dinner Menu</title>
+    <meta name="description" content="Order authentic Ugandan cuisine, Luwombo, Pilao, and premium roasted meats from La-Koi Restaurant's Lunch & Dinner Menu. Delivery and Dine-in available.">
+    <meta name="keywords" content="La-Koi, Lunch Menu, Dinner Menu, Ugandan Food, Luwombo, Roasted Pork, Tilapia, Kampala Restaurant, Order Food WhatsApp">
+    <meta name="author" content="La-Koi Restaurant">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph (Social Media Previews) -->
+    <meta property="og:title" content="La-Koi | Lunch & Dinner Menu">
+    <meta property="og:description" content="Explore our rich menu of authentic Ugandan food, roasted meats, and more. Order instantly via WhatsApp!">
+    <meta property="og:image" content="la_koi_photos/Luwombo_food.jpg">
+    <meta property="og:type" content="website">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     
-    <!-- Link to your External CSS file -->
+    <!-- Preload Hero Image for Faster Loading -->
+    <link rel="preload" href="la_koi_photos/lakoi_newlogo_julius.jpeg" as="image" fetchpriority="high">
+
+    <!-- External CSS -->
     <link rel="stylesheet" href="western_classics.css">
+    
+    <!-- ================= RESPONSIVE UI CSS ================= -->
+    <style>
+        /* Floating WhatsApp Inquiry Button (Bottom Left) */
+        .wa-inquiry-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #25D366;
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s ease-in-out;
+        }
+        .wa-inquiry-btn:hover {
+            background-color: #1ebe57;
+            transform: scale(1.05);
+        }
+
+        /* Floating Cart Button (Bottom Right) */
+        .cart-float { position: fixed; bottom: 20px; right: 20px; background-color: #14213d; color: #fff; padding: 15px; border-radius: 50%; font-size: 1.5rem; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 1000; transition: 0.3s; display: flex; align-items: center; justify-content: center; width: 65px; height: 65px; }
+        .cart-float:hover { transform: scale(1.1); background-color: #fca311; }
+        #cart-count { position: absolute; top: -5px; right: -5px; background: red; color: white; border-radius: 50%; padding: 2px 8px; font-size: 0.85rem; font-weight: bold; border: 2px solid white; }
+        
+        /* Cart Drawer */
+        .cart-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1001; visibility: hidden; opacity: 0; transition: 0.3s; }
+        .cart-drawer { position: fixed; top: 0; right: -450px; width: 100%; max-width: 450px; height: 100vh; background: #fff; z-index: 1002; box-shadow: -5px 0 15px rgba(0,0,0,0.2); transition: 0.4s ease-in-out; display: flex; flex-direction: column; color: #333; font-family: 'Montserrat', sans-serif; }
+        .cart-overlay.open { visibility: visible; opacity: 1; }
+        .cart-drawer.open { right: 0; }
+        .cart-header { display: flex; justify-content: space-between; align-items: center; padding: 20px; background: #14213d; color: #fff; }
+        .cart-header h3 { margin: 0; font-size: 1.3rem;}
+        .close-cart { font-size: 2rem; cursor: pointer; line-height: 1; }
+        #cart-items-area { flex: 1; padding: 20px; overflow-y: auto; }
+        .cart-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
+        .row-info .r-name { font-weight: bold; font-size: 1rem; color: #14213d; }
+        .row-info .r-price { color: #fca311; font-weight: 600; font-size: 0.95rem; }
+        .row-controls { display: flex; align-items: center; gap: 10px; }
+        .qty-btn { background: #f8f9fa; border: 1px solid #ccc; padding: 5px 12px; cursor: pointer; border-radius: 5px; color: #333; font-weight: bold; transition: 0.2s; }
+        .qty-btn:hover { background: #e2e6ea; }
+        .cart-footer { padding: 20px; border-top: 2px solid #eee; background: #f8f9fa; }
+        .total-line { display: flex; justify-content: space-between; font-size: 1.3rem; font-weight: bold; margin-bottom: 15px; color:#14213d;}
+        .checkout-btn { width: 100%; padding: 15px; background: #25D366; color: white; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.3s; display: block; text-align: center; text-decoration: none; box-sizing: border-box; }
+        .checkout-btn:hover { background: #1ebe57; }
+        .empty-msg { text-align: center; color: #888; margin-top: 30px; font-style: italic; }
+
+        /* ================= MOBILE RESPONSIVENESS ================= */
+        @media (max-width: 768px) {
+            .wa-inquiry-btn {
+                bottom: 15px;
+                left: 10px;
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+            .cart-float {
+                bottom: 15px;
+                right: 10px;
+                width: 55px;
+                height: 55px;
+                font-size: 1.2rem;
+            }
+            #cart-count {
+                padding: 2px 6px;
+                font-size: 0.75rem;
+            }
+            /* Cart takes full screen on mobile for easy viewing */
+            .cart-drawer {
+                max-width: 100%;
+                right: -100%;
+            }
+        }
+    </style>
 </head>
 <body>
 
     <!-- Back Button -->
-    <a href="index.html" class="back-btn">Home</a>
+    <a href="index.html" class="back-btn" aria-label="Go back to Home">Home</a>
 
     <!-- HEADER / HERO SECTION -->
-    <!-- 'edge-to-edge-bg' ensures full width background -->
     <header class="hero edge-to-edge-bg">
         <div class="hero-content fade-in">
-            <!-- TOP LOGO IMAGE -->
-            <img src="la_koi_photos/lakoi_newlogo_julius.jpeg" alt="La Koi Logo" class="io-top">
+            <!-- IMAGE OPTIMIZATION: High Priority Load -->
+            <img src="la_koi_photos/lakoi_newlogo_julius.jpeg" alt="La Koi Logo" class="io-top" fetchpriority="high" loading="eager" decoding="async">
             
-            <div class="logo-text">LUNCH & DINNER</div>
+            <h1 class="logo-text">LUNCH & DINNER</h1>
             <p class="brand-subtitle">LA-KOI RESTAURANT & LOUNGE</p>
             <div class="divider"></div>
-            <p class="menu-label">Authentic Ugandan Cuisine </p>
+            <p class="menu-label">Authentic Ugandan Cuisine</p>
         </div>
     </header>
 
@@ -38,287 +131,301 @@
         <main>
             <!-- ================= MAINS ================= -->
             <section class="menu-category fade-in-up">
-                <div class="category-banner" style="background-image: url('la_koi_photos/Luwombo_food.jpg');">
+                <div class="category-banner" style="background-image: url('la_koi_photos/Luwombo_food.jpg');" role="img" aria-label="Traditional Luwombo Meal">
                     <div class="banner-overlay"></div>
                     <h2>Mains</h2>
                 </div>
                 
                 <div class="menu-grid">
-                    <div class="menu-item" data-name="Posho/Matooke & Fresh Beans" data-price="7000">
+                    <article class="menu-item" data-name="Posho/Matooke & Fresh Beans" data-price="7000">
                         <div class="details"><h3>Posho/Matooke & Fresh Beans</h3><span class="price">7,000/=</span></div>
-                        <div class="controls"><button class="btn-minus">−</button><span class="count">0</span><button class="btn-plus">+</button></div>
-                    </div>
-                    <div class="menu-item" data-name="Matooke & G.nut Paste" data-price="7000">
+                        <div class="controls"><button class="btn-minus" aria-label="Remove item">−</button><span class="count">0</span><button class="btn-plus" aria-label="Add item">+</button></div>
+                    </article>
+                    <article class="menu-item" data-name="Matooke & G.nut Paste" data-price="7000">
                         <div class="details"><h3>Matooke & G.nut Paste</h3><span class="price">7,000/=</span></div>
-                        <div class="controls"><button class="btn-minus">−</button><span class="count">0</span><button class="btn-plus">+</button></div>
-                    </div>
-                    <div class="menu-item" data-name="Chicken Pilao" data-price="12000">
+                        <div class="controls"><button class="btn-minus" aria-label="Remove item">−</button><span class="count">0</span><button class="btn-plus" aria-label="Add item">+</button></div>
+                    </article>
+                    <article class="menu-item" data-name="Chicken Pilao" data-price="12000">
                         <div class="details"><h3>Chicken Pilao</h3><span class="price">12,000/=</span></div>
-                        <div class="controls"><button class="btn-minus">−</button><span class="count">0</span><button class="btn-plus">+</button></div>
-                    </div>
-                    <div class="menu-item" data-name="Beef Pilao" data-price="10000">
+                        <div class="controls"><button class="btn-minus" aria-label="Remove item">−</button><span class="count">0</span><button class="btn-plus" aria-label="Add item">+</button></div>
+                    </article>
+                    <article class="menu-item" data-name="Beef Pilao" data-price="10000">
                         <div class="details"><h3>Beef Pilao</h3><span class="price">10,000/=</span></div>
-                        <div class="controls"><button class="btn-minus">−</button><span class="count">0</span><button class="btn-plus">+</button></div>
-                    </div>
-                    <div class="menu-item" data-name="Vegetable Pilao" data-price="8000">
+                        <div class="controls"><button class="btn-minus" aria-label="Remove item">−</button><span class="count">0</span><button class="btn-plus" aria-label="Add item">+</button></div>
+                    </article>
+                    <article class="menu-item" data-name="Vegetable Pilao" data-price="8000">
                         <div class="details"><h3>Vegetable Pilao</h3><span class="price">8,000/=</span></div>
-                        <div class="controls"><button class="btn-minus">−</button><span class="count">0</span><button class="btn-plus">+</button></div>
-                    </div>
+                        <div class="controls"><button class="btn-minus" aria-label="Remove item">−</button><span class="count">0</span><button class="btn-plus" aria-label="Add item">+</button></div>
+                    </article>
                 </div>
             </section>
 
             <!-- ================= LUO FOOD ================= -->
             <section class="menu-category fade-in-up">
-                <div class="category-banner" style="background-image: url('la_koi_photos/malakwang-removebg-preview.png');">
+                <div class="category-banner" style="background-image: url('la_koi_photos/malakwang-removebg-preview.png');" role="img" aria-label="Delicious Malakwang Dish">
                     <div class="banner-overlay"></div>
                     <h2>Luo Food</h2>
                 </div>
 
                 <div class="menu-grid">
-                    <div class="menu-item" data-name="Malakwang in G.nut Paste" data-price="12000">
+                    <article class="menu-item" data-name="Malakwang in G.nut Paste" data-price="12000">
                         <div class="details"><h3>Malakwang in G.nut Paste</h3><p class="desc">With Sweet potato/Kalo/Matooke</p><span class="price">12,000/=</span></div>
                         <div class="controls"><button class="btn-minus">−</button><span class="count">0</span><button class="btn-plus">+</button></div>
-                    </div>
-                    <div class="menu-item" data-name="Boo in G.nut Paste" data-price="10000">
+                    </article>
+                    <article class="menu-item" data-name="Boo in G.nut Paste" data-price="10000">
                         <div class="details"><h3>Boo in G.nut Paste</h3><p class="desc">With Posho/Kalo/Matooke</p><span class="price">10,000/=</span></div>
                         <div class="controls"><button class="btn-minus">−</button><span class="count">0</span><button class="btn-plus">+</button></div>
-                    </div>
-                    <div class="menu-item" data-name="Dry Fish in G.nut Sauce" data-price="15000">
+                    </article>
+                    <article class="menu-item" data-name="Dry Fish in G.nut Sauce" data-price="15000">
                         <div class="details"><h3>Dry Fish in G.nut Sauce</h3><p class="desc">With Posho/Kalo/Matooke</p><span class="price">15,000/=</span></div>
                         <div class="controls"><button class="btn-minus">−</button><span class="count">0</span><button class="btn-plus">+</button></div>
-                    </div>
-                    <div class="menu-item" data-name="Traditional Roasted Beef (G.nut)" data-price="17000">
+                    </article>
+                    <article class="menu-item" data-name="Traditional Roasted Beef (G.nut)" data-price="17000">
                         <div class="details"><h3>Traditional Roasted Beef (G.nut)</h3><p class="desc">With Kalo/Matooke</p><span class="price">17,000/=</span></div>
                         <div class="controls"><button class="btn-minus">−</button><span class="count">0</span><button class="btn-plus">+</button></div>
-                    </div>
+                    </article>
                 </div>
             </section>
 
             <!-- ================= GOAT TOURNAMENT ================= -->
             <section class="menu-category fade-in-up">
-                <div class="category-banner" style="background-image: url('la_koi_photos/meat_sticks.jpeg');">
+                <div class="category-banner" style="background-image: url('la_koi_photos/meat_sticks.jpeg');" role="img" aria-label="Roasted Meat Skewers">
                     <div class="banner-overlay"></div>
                     <h2>Goat Tournament</h2>
                 </div>
                 
                 <h3 class="sub-cat-title">Boiled Goat's Meat (with Posho/Rice)</h3>
                 <div class="menu-grid">
-                    <div class="menu-item" data-name="Boiled Goat (1/4 Kg)" data-price="17000">
+                    <article class="menu-item" data-name="Boiled Goat (1/4 Kg)" data-price="17000">
                         <div class="details"><h3>1/4 Kg</h3><span class="price">17,000/=</span></div>
                         <div class="controls"><button class="btn-minus">−</button><span class="count">0</span><button class="btn-plus">+</button></div>
-                    </div>
-                    <div class="menu-item" data-name="Boiled Goat (1/2 Kg)" data-price="30000">
+                    </article>
+                    <article class="menu-item" data-name="Boiled Goat (1/2 Kg)" data-price="30000">
                         <div class="details"><h3>1/2 Kg</h3><span class="price">30,000/=</span></div>
                         <div class="controls"><button class="btn-minus">−</button><span class="count">0</span><button class="btn-plus">+</button></div>
-                    </div>
-                    <div class="menu-item" data-name="Boiled Goat (1 Kg)" data-price="50000">
+                    </article>
+                    <article class="menu-item" data-name="Boiled Goat (1 Kg)" data-price="50000">
                         <div class="details"><h3>1 Kg</h3><span class="price">50,000/=</span></div>
                         <div class="controls"><button class="btn-minus">−</button><span class="count">0</span><button class="btn-plus">+</button></div>
-                    </div>
+                    </article>
                 </div>
 
                 <h3 class="sub-cat-title">Dry Goat's Meat - Roasted/Fried</h3>
                 <div class="menu-grid">
-                    <div class="menu-item" data-name="Dry/Roasted Goat (1/4 Kg)" data-price="17000">
+                    <article class="menu-item" data-name="Dry/Roasted Goat (1/4 Kg)" data-price="17000">
                         <div class="details"><h3>1/4 Kg</h3><span class="price">17,000/=</span></div>
                         <div class="controls"><button class="btn-minus">−</button><span class="count">0</span><button class="btn-plus">+</button></div>
-                    </div>
-                    <div class="menu-item" data-name="Dry/Roasted Goat (1/2 Kg)" data-price="30000">
+                    </article>
+                    <article class="menu-item" data-name="Dry/Roasted Goat (1/2 Kg)" data-price="30000">
                         <div class="details"><h3>1/2 Kg</h3><span class="price">30,000/=</span></div>
                         <div class="controls"><button class="btn-minus">−</button><span class="count">0</span><button class="btn-plus">+</button></div>
-                    </div>
-                    <div class="menu-item" data-name="Dry/Roasted Goat (1 Kg)" data-price="50000">
+                    </article>
+                    <article class="menu-item" data-name="Dry/Roasted Goat (1 Kg)" data-price="50000">
                         <div class="details"><h3>1 Kg</h3><span class="price">50,000/=</span></div>
                         <div class="controls"><button class="btn-minus">−</button><span class="count">0</span><button class="btn-plus">+</button></div>
-                    </div>
+                    </article>
                 </div>
             </section>
 
             <!-- ================= CHICKEN FARM ================= -->
             <section class="menu-category fade-in-up">
-                <div class="category-banner" style="background-image: url('la_koi_photos/friedchicken_nobackground.png');">
+                <div class="category-banner" style="background-image: url('la_koi_photos/friedchicken_nobackground.png');" role="img" aria-label="Fried Chicken">
                     <div class="banner-overlay"></div>
                     <h2>Chicken Farm</h2>
                 </div>
 
                 <h3 class="sub-cat-title">Boiled Chicken (with Posho/Kalo)</h3>
                 <div class="menu-grid">
-                    <div class="menu-item" data-name="Boiled Chicken (1/4 Kg)" data-price="20000">
+                    <article class="menu-item" data-name="Boiled Chicken (1/4 Kg)" data-price="20000">
                         <div class="details"><h3>1/4 Kg</h3><span class="price">20,000/=</span></div>
                         <div class="controls"><button class="btn-minus">−</button><span class="count">0</span><button class="btn-plus">+</button></div>
-                    </div>
-                    <div class="menu-item" data-name="Boiled Chicken (1/2 Kg)" data-price="38000">
+                    </article>
+                    <article class="menu-item" data-name="Boiled Chicken (1/2 Kg)" data-price="38000">
                         <div class="details"><h3>1/2 Kg</h3><span class="price">38,000/=</span></div>
                         <div class="controls"><button class="btn-minus">−</button><span class="count">0</span><button class="btn-plus">+</button></div>
-                    </div>
+                    </article>
                 </div>
 
                 <h3 class="sub-cat-title">Toasted in Vegetable Gravy</h3>
                 <div class="menu-grid">
-                    <div class="menu-item" data-name="Toasted Chicken (1/4 Kg)" data-price="20000">
+                    <article class="menu-item" data-name="Toasted Chicken (1/4 Kg)" data-price="20000">
                         <div class="details"><h3>1/4 Kg</h3><span class="price">20,000/=</span></div>
                         <div class="controls"><button class="btn-minus">−</button><span class="count">0</span><button class="btn-plus">+</button></div>
-                    </div>
-                    <div class="menu-item" data-name="Toasted Chicken (1/2 Kg)" data-price="35000">
+                    </article>
+                    <article class="menu-item" data-name="Toasted Chicken (1/2 Kg)" data-price="35000">
                         <div class="details"><h3>1/2 Kg</h3><span class="price">35,000/=</span></div>
                         <div class="controls"><button class="btn-minus">−</button><span class="count">0</span><button class="btn-plus">+</button></div>
-                    </div>
-                    <div class="menu-item" data-name="Toasted Chicken (Full)" data-price="60000">
+                    </article>
+                    <article class="menu-item" data-name="Toasted Chicken (Full)" data-price="60000">
                         <div class="details"><h3>Full Chicken</h3><span class="price">60,000/=</span></div>
                         <div class="controls"><button class="btn-minus">−</button><span class="count">0</span><button class="btn-plus">+</button></div>
-                    </div>
+                    </article>
                 </div>
 
                 <h3 class="sub-cat-title">Deep Fried / Roasted (with Chips)</h3>
                 <div class="menu-grid">
-                    <div class="menu-item" data-name="Fried/Roasted Chicken (1/4 Kg)" data-price="20000">
+                    <article class="menu-item" data-name="Fried/Roasted Chicken (1/4 Kg)" data-price="20000">
                         <div class="details"><h3>1/4 Kg</h3><span class="price">20,000/=</span></div>
                         <div class="controls"><button class="btn-minus">−</button><span class="count">0</span><button class="btn-plus">+</button></div>
-                    </div>
-                    <div class="menu-item" data-name="Fried/Roasted Chicken (1/2 Kg)" data-price="35000">
+                    </article>
+                    <article class="menu-item" data-name="Fried/Roasted Chicken (1/2 Kg)" data-price="35000">
                         <div class="details"><h3>1/2 Kg</h3><span class="price">35,000/=</span></div>
                         <div class="controls"><button class="btn-minus">−</button><span class="count">0</span><button class="btn-plus">+</button></div>
-                    </div>
-                    <div class="menu-item" data-name="Fried/Roasted Chicken (Full)" data-price="60000">
+                    </article>
+                    <article class="menu-item" data-name="Fried/Roasted Chicken (Full)" data-price="60000">
                         <div class="details"><h3>Full</h3><span class="price">60,000/=</span></div>
                         <div class="controls"><button class="btn-minus">−</button><span class="count">0</span><button class="btn-plus">+</button></div>
-                    </div>
-                    <div class="menu-item" data-name="Boneless Chicken Skewers" data-price="25000">
+                    </article>
+                    <article class="menu-item" data-name="Boneless Chicken Skewers" data-price="25000">
                         <div class="details"><h3>Boneless Skewers</h3><span class="price">25,000/=</span></div>
                         <div class="controls"><button class="btn-minus">−</button><span class="count">0</span><button class="btn-plus">+</button></div>
-                    </div>
+                    </article>
                 </div>
             </section>
 
             <!-- ================= BEEF KRAAL ================= -->
             <section class="menu-category fade-in-up">
-                <div class="category-banner" style="background-image: url('la_koi_photos/steak_sticks.png');">
+                <div class="category-banner" style="background-image: url('la_koi_photos/steak_sticks.png');" role="img" aria-label="Steak Sticks">
                     <div class="banner-overlay"></div>
                     <h2>The Beef Kraal</h2>
                 </div>
 
                 <div class="menu-grid">
-                    <div class="menu-item" data-name="Beef Stew (with Rice/Kalo)" data-price="16000">
+                    <article class="menu-item" data-name="Beef Stew (with Rice/Kalo)" data-price="16000">
                         <div class="details"><h3>Beef Stew</h3><p class="desc">Served with Rice/Kalo</p><span class="price">16,000/=</span></div>
                         <div class="controls"><button class="btn-minus">−</button><span class="count">0</span><button class="btn-plus">+</button></div>
-                    </div>
-                    <div class="menu-item" data-name="Boneless Beef Skewers" data-price="19000">
+                    </article>
+                    <article class="menu-item" data-name="Boneless Beef Skewers" data-price="19000">
                         <div class="details"><h3>Boneless Skewers</h3><p class="desc">Served with Rice/Matooke</p><span class="price">19,000/=</span></div>
                         <div class="controls"><button class="btn-minus">−</button><span class="count">0</span><button class="btn-plus">+</button></div>
-                    </div>
-                    <div class="menu-item" data-name="Special Liver (1/4 Kg)" data-price="16000">
+                    </article>
+                    <article class="menu-item" data-name="Special Liver (1/4 Kg)" data-price="16000">
                         <div class="details"><h3>Special Liver (1/4 Kg)</h3><p class="desc">Served with Rice/Kalo</p><span class="price">16,000/=</span></div>
                         <div class="controls"><button class="btn-minus">−</button><span class="count">0</span><button class="btn-plus">+</button></div>
-                    </div>
+                    </article>
                 </div>
             </section>
 
             <!-- ================= FROM THE LAKE ================= -->
             <section class="menu-category fade-in-up">
-                <div class="category-banner" style="background-image: url('la_koi_photos/twowholefish.png');">
+                <div class="category-banner" style="background-image: url('la_koi_photos/twowholefish.png');" role="img" aria-label="Fried Fish">
                     <div class="banner-overlay"></div>
                     <h2>From The Lake</h2>
                 </div>
                 
                 <div class="menu-grid">
-                    <div class="menu-item" data-name="Deep Fried Whole Fish" data-price="35000">
+                    <article class="menu-item" data-name="Deep Fried Whole Fish" data-price="35000">
                         <div class="details"><h3>Deep Fried Whole Fish</h3><p class="desc">With Chips/Posho/Rice</p><span class="price">35,000/=</span></div>
                         <div class="controls"><button class="btn-minus">−</button><span class="count">0</span><button class="btn-plus">+</button></div>
-                    </div>
-                    <div class="menu-item" data-name="Lakoi Special Tilapia in Stew" data-price="15000">
+                    </article>
+                    <article class="menu-item" data-name="Lakoi Special Tilapia in Stew" data-price="15000">
                         <div class="details"><h3>Lakoi Special Tilapia in Stew</h3><span class="price">15,000/=</span></div>
                         <div class="controls"><button class="btn-minus">−</button><span class="count">0</span><button class="btn-plus">+</button></div>
-                    </div>
-                    <div class="menu-item" data-name="Dry Fish in G.nut Paste (Lake)" data-price="15000">
+                    </article>
+                    <article class="menu-item" data-name="Dry Fish in G.nut Paste (Lake)" data-price="15000">
                         <div class="details"><h3>Dry Fish in G.nut Paste</h3><span class="price">15,000/=</span></div>
                         <div class="controls"><button class="btn-minus">−</button><span class="count">0</span><button class="btn-plus">+</button></div>
-                    </div>
+                    </article>
                 </div>
             </section>
             
             <!-- ================= PORK ZONE ================= -->
             <section class="menu-category fade-in-up">
-                <div class="category-banner" style="background-image: url('la_koi_photos/pork_veggies.jpeg');">
+                <div class="category-banner" style="background-image: url('la_koi_photos/pork_veggies.jpeg');" role="img" aria-label="Pork Dish">
                     <div class="banner-overlay"></div>
                     <h2>Pork Zone</h2>
                 </div>
 
                 <h3 class="sub-cat-title">Roasted/Deep Fried</h3>
                 <div class="menu-grid">
-                    <div class="menu-item" data-name="Roasted Pork (1/4 Kg)" data-price="17500">
+                    <article class="menu-item" data-name="Roasted Pork (1/4 Kg)" data-price="17500">
                         <div class="details"><h3>1/4 Kg</h3><span class="price">17,500/=</span></div>
                         <div class="controls"><button class="btn-minus">−</button><span class="count">0</span><button class="btn-plus">+</button></div>
-                    </div>
-                    <div class="menu-item" data-name="Roasted Pork (1/2 Kg)" data-price="28000">
+                    </article>
+                    <article class="menu-item" data-name="Roasted Pork (1/2 Kg)" data-price="28000">
                         <div class="details"><h3>1/2 Kg</h3><span class="price">28,000/=</span></div>
                         <div class="controls"><button class="btn-minus">−</button><span class="count">0</span><button class="btn-plus">+</button></div>
-                    </div>
-                    <div class="menu-item" data-name="Roasted Pork (1 Kg)" data-price="45000">
+                    </article>
+                    <article class="menu-item" data-name="Roasted Pork (1 Kg)" data-price="45000">
                         <div class="details"><h3>1 Kg</h3><span class="price">45,000/=</span></div>
                         <div class="controls"><button class="btn-minus">−</button><span class="count">0</span><button class="btn-plus">+</button></div>
-                    </div>
+                    </article>
                 </div>
 
                 <h3 class="sub-cat-title">Toasted in Vegetable Gravy</h3>
                 <div class="menu-grid">
-                    <div class="menu-item" data-name="Toasted Pork (1/4 Kg)" data-price="20000">
+                    <article class="menu-item" data-name="Toasted Pork (1/4 Kg)" data-price="20000">
                         <div class="details"><h3>1/4 Kg</h3><span class="price">20,000/=</span></div>
                         <div class="controls"><button class="btn-minus">−</button><span class="count">0</span><button class="btn-plus">+</button></div>
-                    </div>
-                    <div class="menu-item" data-name="Toasted Pork (1/2 Kg)" data-price="30000">
+                    </article>
+                    <article class="menu-item" data-name="Toasted Pork (1/2 Kg)" data-price="30000">
                         <div class="details"><h3>1/2 Kg</h3><span class="price">30,000/=</span></div>
                         <div class="controls"><button class="btn-minus">−</button><span class="count">0</span><button class="btn-plus">+</button></div>
-                    </div>
-                    <div class="menu-item" data-name="Boneless Pork Skewers" data-price="25000">
+                    </article>
+                    <article class="menu-item" data-name="Boneless Pork Skewers" data-price="25000">
                         <div class="details"><h3>Boneless Skewers (with Chips)</h3><span class="price">25,000/=</span></div>
                         <div class="controls"><button class="btn-minus">−</button><span class="count">0</span><button class="btn-plus">+</button></div>
-                    </div>
+                    </article>
                 </div>
             </section>
-                  
-            
-
         </main>
     </div> <!-- END MENU CONTAINER -->
 
-    <!-- ================= FOOTER ================= -->
-    <!-- NOTE: This is OUTSIDE the menu-container so it can stretch edge-to-edge -->
-    <!-- 'edge-to-edge-bg' class applies the exact same background style as the Hero -->
-    <footer class="edge-to-edge-bg">
-        <!--  -->
-    </footer>
+    <footer class="edge-to-edge-bg"></footer>
 
-    <!-- FLOATING CART BUTTON -->
-    <div class="floating-cart-btn" onclick="toggleCart()">
-        <span class="cart-icon">🛒</span>
-        <span class="cart-badge" id="cart-total-count">0</span>
+    <!-- ======================================================= -->
+    <!-- FLOATING ACTION BUTTONS & GLOBAL CART                   -->
+    <!-- ======================================================= -->
+
+    <!-- Floating WhatsApp Inquiry Button (Bottom Left) -->
+    <a href="#" id="wa-inquiry-link" target="_blank" class="wa-inquiry-btn" aria-label="Ask a question on WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+        </svg>
+        Inquiry
+    </a>
+
+    <!-- Global Cart HTML (Bottom Right) -->
+    <div class="cart-float" id="cart-float" aria-label="Open Shopping Cart" role="button">
+        🛒 <span id="cart-count">0</span>
     </div>
-
-    <!-- CART DRAWER -->
-    <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
-    <div class="cart-drawer" id="cart-drawer">
+    
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <aside class="cart-drawer" id="cart-drawer" aria-label="Shopping Cart">
         <div class="cart-header">
-            <h2>Your Order</h2>
-            <button class="close-btn" onclick="toggleCart()">×</button>
+            <h3>Your Order</h3>
+            <span class="close-cart" id="close-cart" aria-label="Close Cart">&times;</span>
         </div>
-        
-        <div class="cart-items" id="cart-items-container">
-            <p class="empty-msg">Your cart is empty.</p>
-        </div>
-
+        <div id="cart-items-area"><p class="empty-msg">Your cart is empty.</p></div>
         <div class="cart-footer">
-            <div class="total-row">
-                <span>Total</span>
-                <span id="cart-final-total">UGX 0</span>
-            </div>
-            <button class="checkout-btn" onclick="placeOrder()">Place Order via WhatsApp</button>
+            <div class="total-line"><span>Total:</span><span id="cart-total">0/=</span></div>
+            <a href="#" id="checkout-btn" class="checkout-btn" target="_blank">Confirm & Send Order</a>
         </div>
-    </div>
+    </aside>
 
+    <!-- ================= JAVASCRIPT LOGIC ================= -->
     <script>
-        const cart = {};
+        // 1. Unified Memory Key
+        const CART_KEY = "lakoi_cart"; 
+        const waPhoneNumber = "256779384198"; // MTN Number
+        let cart = JSON.parse(localStorage.getItem(CART_KEY)) || {};
 
-        // 1. Initialize Buttons
+        // 2. Universal WhatsApp Link Generator (Detects Mobile vs PC)
+        function getWhatsAppLink(phoneNumber, messageText = "") {
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            const encodedText = messageText ? `&text=${encodeURIComponent(messageText)}` : "";
+            if (isMobile) {
+                return `https://api.whatsapp.com/send?phone=${phoneNumber}${encodedText}`;
+            } else {
+                return `https://web.whatsapp.com/send?phone=${phoneNumber}${encodedText}`;
+            }
+        }
+
+        // Setup Floating Inquiry Button automatically on page load
+        const inquiryMsg = "Hello La-Koi, I have an inquiry regarding the Lunch and Dinner Menu...";
+        document.getElementById("wa-inquiry-link").href = getWhatsAppLink(waPhoneNumber, inquiryMsg);
+
+        // 3. Map Page Buttons (+ and -) to Cart Logic
         document.querySelectorAll('.menu-item').forEach(item => {
             const minusBtn = item.querySelector('.btn-minus');
             const plusBtn = item.querySelector('.btn-plus');
@@ -326,108 +433,126 @@
             const price = parseInt(item.dataset.price);
 
             plusBtn.onclick = () => {
-                let current = cart[name] ? cart[name].qty : 0;
-                updateCart(name, price, current + 1);
+                cart[name] ? changeQty(name, 1) : addToCart(name, price);
             };
 
             minusBtn.onclick = () => {
-                let current = cart[name] ? cart[name].qty : 0;
-                if(current > 0) updateCart(name, price, current - 1);
+                changeQty(name, -1);
             };
         });
 
-        // 2. Logic
-        function updateCart(name, price, newQty) {
-            if (newQty <= 0) delete cart[name];
-            else cart[name] = { qty: newQty, price: price };
+        // 4. Cart Core Functions
+        function addToCart(name, price){
+            cart[name] = { price: +price, qty: 1 };
+            updateUI();
+            triggerCartAnimation();
+        }
+
+        function changeQty(name, amt){
+            if(!cart[name]) return;
+            cart[name].qty += amt;
+            if(cart[name].qty <= 0) delete cart[name];
             updateUI();
         }
 
-        // 3. UI Updates
-        function updateUI() {
-            let totalCount = 0;
-            let totalPrice = 0;
+        function triggerCartAnimation() {
+            const cartFloat = document.getElementById('cart-float');
+            cartFloat.style.transform = 'scale(1.2)';
+            setTimeout(() => cartFloat.style.transform = 'scale(1)', 200);
+        }
+
+        // 5. Master UI Updater
+        function updateUI(){
+            const itemsArea = document.getElementById("cart-items-area");
+            const totalEl = document.getElementById("cart-total");
+            const countEl = document.getElementById("cart-count");
+            const checkoutBtn = document.getElementById("checkout-btn");
             
-            for (let name in cart) {
-                totalCount += cart[name].qty;
-                totalPrice += cart[name].qty * cart[name].price;
+            let total = 0, count = 0;
+            let msg = "Hello La-Koi, I would like to order:\n\n";
+            
+            itemsArea.innerHTML = "";
+
+            for(let name in cart){
+                let item = cart[name];
+                let subTotal = item.price * item.qty;
+                total += subTotal;
+                count += item.qty;
+                msg += `▪️ ${name} (x${item.qty}) - ${subTotal.toLocaleString()}/=\n`;
+
+                // Build Drawer Row
+                const div = document.createElement("div");
+                div.className = "cart-row";
+                div.innerHTML = `
+                <div class="row-info">
+                    <div class="r-name">${name}</div>
+                    <div class="r-price">${item.price.toLocaleString()}/=</div>
+                </div>
+                <div class="row-controls">
+                    <button class="qty-btn" aria-label="Decrease quantity" onclick="changeQty('${name}', -1)">−</button>
+                    <span>${item.qty}</span>
+                    <button class="qty-btn" aria-label="Increase quantity" onclick="changeQty('${name}', 1)">+</button>
+                </div>
+                `;
+                itemsArea.appendChild(div);
+            }
+
+            if(count === 0) {
+                itemsArea.innerHTML = '<p class="empty-msg">Your cart is empty.</p>';
+                checkoutBtn.href = "#"; 
+            } else {
+                msg += `\n*TOTAL: ${total.toLocaleString()}/=*`;
+                checkoutBtn.href = getWhatsAppLink(waPhoneNumber, msg);
             }
             
-            // Badge & Total
-            document.getElementById('cart-total-count').innerText = totalCount;
-            document.getElementById('cart-final-total').innerText = totalPrice.toLocaleString() + "/=";
+            totalEl.innerText = total.toLocaleString()+"/=";
+            countEl.innerText = count;
 
-            // In-Menu Counters
+            // Sync the In-Menu Grid Numbers (Protects items added from other pages)
             document.querySelectorAll('.menu-item').forEach(item => {
                 const name = item.dataset.name;
                 const countSpan = item.querySelector('.count');
-                const qty = cart[name] ? cart[name].qty : 0;
-                countSpan.innerText = qty;
                 
-                if(qty > 0) item.classList.add('active-item');
-                else item.classList.remove('active-item');
+                if(countSpan) {
+                    const qty = cart[name] ? cart[name].qty : 0;
+                    countSpan.innerText = qty;
+                    
+                    if(qty > 0) item.classList.add('active-item');
+                    else item.classList.remove('active-item');
+                }
             });
 
-            renderDrawer();
+            // Save to browser memory
+            localStorage.setItem(CART_KEY, JSON.stringify(cart));
         }
 
-        function renderDrawer() {
-            const container = document.getElementById('cart-items-container');
-            container.innerHTML = '';
-
-            if (Object.keys(cart).length === 0) {
-                container.innerHTML = '<p class="empty-msg">Your cart is empty.</p>';
-                return;
+        // Cross-tab synchronization (Syncs if they open Morning menu in another tab)
+        window.addEventListener('storage', function(e) {
+            if (e.key === CART_KEY) {
+                cart = JSON.parse(e.newValue) || {};
+                updateUI();
             }
+        });
 
-            for (let name in cart) {
-                const item = cart[name];
-                const row = document.createElement('div');
-                row.className = 'cart-row';
-                row.innerHTML = `
-                    <div class="cart-row-info">
-                        <div class="cart-name">${name}</div>
-                        <div class="cart-price">@ ${item.price.toLocaleString()}/=</div>
-                    </div>
-                    <div class="cart-controls">
-                        <button class="c-btn" onclick="updateCart('${name}', ${item.price}, ${item.qty - 1})">−</button>
-                        <span>${item.qty}</span>
-                        <button class="c-btn" onclick="updateCart('${name}', ${item.price}, ${item.qty + 1})">+</button>
-                    </div>
-                `;
-                container.appendChild(row);
-            }
+        // 6. Drawer Toggle Logic
+        function toggleCart(){
+            document.getElementById("cart-drawer").classList.toggle("open");
+            document.getElementById("cart-overlay").classList.toggle("open");
         }
 
-        function toggleCart() {
-            const drawer = document.getElementById('cart-drawer');
-            const overlay = document.getElementById('cart-overlay');
-            if (drawer.style.right === '0px') {
-                drawer.style.right = '-100%';
-                overlay.style.display = 'none';
-            } else {
-                drawer.style.right = '0px';
-                overlay.style.display = 'block';
+        document.getElementById("cart-float").onclick = toggleCart;
+        document.getElementById("cart-overlay").onclick = toggleCart;
+        document.getElementById("close-cart").onclick = toggleCart;
+
+        document.getElementById("checkout-btn").onclick = function(e) {
+            if(Object.keys(cart).length === 0){
+                e.preventDefault(); 
+                alert("Your cart is empty. Please add items first."); 
             }
-        }
+        };
 
-        function placeOrder() {
-            if (Object.keys(cart).length === 0) return;
-
-            let msg = "Hello La Koi, I would like to order:\n\n";
-            let total = 0;
-
-            for (let name in cart) {
-                const item = cart[name];
-                const subtotal = item.qty * item.price;
-                total += subtotal;
-                msg += `▪️ ${name} (x${item.qty}) - ${subtotal.toLocaleString()}/=\n`;
-            }
-
-            msg += `\n*TOTAL: UGX ${total.toLocaleString()}/=*`;
-            const url = `https://wa.me/256784948474?text=${encodeURIComponent(msg)}`;
-            window.open(url, '_blank');
-        }
+        // Run UI update on initial load
+        updateUI();
     </script>
 </body>
 </html>
