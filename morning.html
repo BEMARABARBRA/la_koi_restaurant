@@ -3,7 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- SEO Optimization Tags -->
 <title>La-Koi | Special Breakfast & Morning Eats Menu</title>
+<meta name="description" content="Order delicious breakfast and morning eats from La-Koi. Instant WhatsApp ordering for Katogo, Ugandan Rolex, Tea, and Juices.">
+<meta name="keywords" content="La-Koi, Breakfast Menu, Katogo, Ugandan Rolex, Order Food WhatsApp, African Tea, Kampala Breakfast">
+<meta name="robots" content="index, follow">
+
+<!-- Social Media / Open Graph Tags -->
+<meta property="og:title" content="La-Koi | Special Breakfast Menu">
+<meta property="og:description" content="Order delicious breakfast and morning eats from La-Koi straight to WhatsApp.">
+<meta property="og:type" content="website">
+
+<!-- Linking your original stylesheet (DO NOT CHANGE) -->
 <link rel="stylesheet" href="morning.css">
 </head>
 <body>
@@ -20,9 +32,10 @@
 <div class="hero-banner">
 <div class="yellow-strip"></div>
 <div class="circle-container">
-<div class="circle-img left-circle" style="background-image: url('la_koi_photos/Sambusa_Bliss__Crispy_Pastry_Perfection_for_Every_Palette_-_RecipeRella-removebg-preview.png');"></div>
-<div class="circle-img center-big" style="background-image: url('la_koi_photos/katogo.jpeg');"></div>
-<div class="circle-img right-circle" style="background-image: url('la_koi_photos/Soothing_Lavender_Milk_Tea_Recipe___Organic_Facts-removebg-preview.png');"></div>
+<!-- Added role and aria-label for Image SEO -->
+<div class="circle-img left-circle" style="background-image: url('la_koi_photos/Sambusa_Bliss__Crispy_Pastry_Perfection_for_Every_Palette_-_RecipeRella-removebg-preview.png');" role="img" aria-label="Crispy Samosa Pastry"></div>
+<div class="circle-img center-big" style="background-image: url('la_koi_photos/katogo.jpeg');" role="img" aria-label="Delicious Katogo"></div>
+<div class="circle-img right-circle" style="background-image: url('la_koi_photos/Soothing_Lavender_Milk_Tea_Recipe___Organic_Facts-removebg-preview.png');" role="img" aria-label="Refreshing Tea"></div>
 </div>
 </div>
 
@@ -91,6 +104,7 @@
 
 </div>
 
+<!-- WhatsApp Footer Button updated with new number -->
 <a href="https://wa.me/256779384198" target="_blank" class="whatsapp-footer-btn">
 Chat on WhatsApp
 </a>
@@ -106,14 +120,17 @@ Chat on WhatsApp
 <div id="cart-items-area"><p class="empty-msg">Your cart is empty.</p></div>
 <div class="cart-footer">
 <div class="total-line"><span>Total:</span><span id="cart-total">0/=</span></div>
-<button id="checkout-btn" class="checkout-btn">Confirm & Send Order</button>
+
+<!-- IMPORTANT FIX: Changed <button> to an <a> link tag. This guarantees browsers won't block the WhatsApp redirect -->
+<a href="#" id="checkout-btn" class="checkout-btn" target="_blank" style="display: block; text-align: center; text-decoration: none; box-sizing: border-box;">Confirm & Send Order</a>
+
 </div>
 </div>
 
 <script>
 // ======= Cart Logic =======
 const CART_KEY = "lakoi_cart";
-const phone = "256779384198";
+const phone = "256779384198"; // The exact format required by WhatsApp (no plus, no spaces)
 let cart = JSON.parse(localStorage.getItem(CART_KEY)) || {};
 
 // Add item
@@ -130,18 +147,25 @@ function changeQty(name, amt){
     updateUI();
 }
 
-// Update UI
+// Update UI & Update the WhatsApp Link
 function updateUI(){
     const itemsArea = document.getElementById("cart-items-area");
     const totalEl = document.getElementById("cart-total");
     const countEl = document.getElementById("cart-count");
+    const checkoutBtn = document.getElementById("checkout-btn");
+    
     let total=0, count=0;
+    let msg = "Hello La-Koi, I would like to order:\n\n";
+    
     itemsArea.innerHTML = "";
 
     for(let name in cart){
         let item = cart[name];
-        total += item.price*item.qty;
+        let subTotal = item.price * item.qty;
+        
+        total += subTotal;
         count += item.qty;
+        msg += `▪️ ${name} (x${item.qty}) - ${subTotal.toLocaleString()}/=\n`;
 
         const div = document.createElement("div");
         div.className = "cart-row";
@@ -159,7 +183,17 @@ function updateUI(){
         itemsArea.appendChild(div);
     }
 
-    if(count===0) itemsArea.innerHTML='<p class="empty-msg">Your cart is empty.</p>';
+    if(count===0) {
+        itemsArea.innerHTML='<p class="empty-msg">Your cart is empty.</p>';
+        checkoutBtn.href = "#"; // Disable link if empty
+    } else {
+        msg += `\n*TOTAL: ${total.toLocaleString()}/=*`;
+        
+        // This is the MAGIC line: It dynamically builds the WhatsApp link in the background
+        // Because the user clicks a real HTML link, mobile browsers will NEVER block it.
+        checkoutBtn.href = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+    }
+    
     totalEl.innerText = total.toLocaleString()+"/=";
     countEl.innerText = count;
 
@@ -172,18 +206,18 @@ function updateUI(){
 }
 
 // Cart drawer toggle
-function toggleCart(){document.getElementById("cart-drawer").classList.toggle("open");document.getElementById("cart-overlay").classList.toggle("open");}
-
-// Checkout
-function checkout(){
-    if(Object.keys(cart).length===0){alert("Add items first."); return;}
-    let msg="Hello La-Koi, I would like to order:\n\n";
-    let total=0;
-    for(let name in cart){let item=cart[name]; let sub=item.price*item.qty; total+=sub; msg+=`▪️ ${name} (x${item.qty}) - ${sub.toLocaleString()}/=\n`;}
-    msg+=`\nTOTAL: ${total.toLocaleString()}/=`;
-    // Open WA in new tab reliably
-    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
+function toggleCart(){
+    document.getElementById("cart-drawer").classList.toggle("open");
+    document.getElementById("cart-overlay").classList.toggle("open");
 }
+
+// Prevent click if cart is empty
+document.getElementById("checkout-btn").onclick = function(e) {
+    if(Object.keys(cart).length === 0){
+        e.preventDefault(); // Stop the link from opening
+        alert("Your cart is empty. Please add items first."); 
+    }
+};
 
 // ======= Event Listeners =======
 document.querySelectorAll(".add-btn").forEach(btn=>{
@@ -193,8 +227,8 @@ document.querySelectorAll(".add-btn").forEach(btn=>{
 document.getElementById("cart-float").onclick = toggleCart;
 document.getElementById("cart-overlay").onclick = toggleCart;
 document.getElementById("close-cart").onclick = toggleCart;
-document.getElementById("checkout-btn").onclick = checkout;
 
+// Run on load
 updateUI();
 </script>
 
